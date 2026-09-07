@@ -1,0 +1,5 @@
+$kind: http-request
+name: Toggle Wishlist Item
+method: POST
+url: '{{baseUrl}}/api/users/me/wishlist/{{productId}}'
+order: 5000

@@ -1,0 +1,343 @@
+================================================================================
+                          SHOPMART WEBSITE ITEMS
+================================================================================
+Total Products: 60
+Categories: 14
+
+================================================================================
+CATEGORIES
+================================================================================
+
+1. Groceries & Staples (500+ items)
+2. Fruits & Vegetables (200+ items)
+3. Meat & Poultry (80+ items)
+4. Dairy & Eggs (120+ items)
+5. Bakery (60+ items)
+6. Beverages (150+ items)
+7. Snacks & Confectionery (180+ items)
+8. Frozen Food (90+ items)
+9. Household & Cleaning (140+ items)
+10. Personal Care (200+ items)
+11. Baby Care (70+ items)
+12. Electronics (100+ items)
+13. Fashion & Clothing (250+ items)
+14. Home & Kitchen (110+ items)
+
+================================================================================
+PRODUCTS LIST
+================================================================================
+
+GROCERIES & STAPLES
+--------------------------------------------------------------------------------
+1. Basmati Rice 5kg
+   Brand: DailyMart
+   Price: $12.99
+   Rating: 4.6/5 (320 reviews)
+   Featured: Yes
+
+2. Sunflower Cooking Oil 1L
+   Brand: PureGold
+   Price: $4.49
+   Rating: 4.4/5 (210 reviews)
+
+3. All-Purpose Flour 2kg
+   Brand: BakeWell
+   Price: $3.29
+   Rating: 4.5/5 (145 reviews)
+
+4. Red Lentils 1kg
+   Brand: DailyMart
+   Price: $2.19
+   Rating: 4.7/5 (98 reviews)
+
+5. Mixed Spices Pack
+   Brand: SpiceHouse
+   Price: $5.99
+   Rating: 4.8/5 (176 reviews)
+
+FRUITS & VEGETABLES
+--------------------------------------------------------------------------------
+6. Fresh Bananas 1kg
+   Brand: FarmFresh
+   Price: $1.49
+   Rating: 4.5/5 (400 reviews)
+   Featured: Yes
+
+7. Tomatoes 1kg
+   Brand: FarmFresh
+   Price: $1.29
+   Rating: 4.3/5 (280 reviews)
+
+8. Potatoes 2kg
+   Brand: FarmFresh
+   Price: $2.49
+   Rating: 4.6/5 (310 reviews)
+
+9. Mixed Salad Pack
+   Brand: GreenLeaf
+   Price: $3.99
+   Rating: 4.4/5 (120 reviews)
+
+10. Oranges 1kg
+    Brand: FarmFresh
+    Price: $2.19
+    Rating: 4.5/5 (190 reviews)
+
+MEAT & POULTRY
+--------------------------------------------------------------------------------
+11. Chicken Breast 1kg
+    Brand: ButcherSelect
+    Price: $8.99
+    Rating: 4.6/5 (240 reviews)
+    Featured: Yes
+
+12. Beef Mince 500g
+    Brand: ButcherSelect
+    Price: $6.49
+    Rating: 4.5/5 (180 reviews)
+
+13. Frozen Chicken Nuggets 1kg
+    Brand: QuickMeal
+    Price: $7.99
+    Rating: 4.2/5 (220 reviews)
+
+DAIRY & EGGS
+--------------------------------------------------------------------------------
+14. Fresh Milk 1L
+    Brand: DairyPure
+    Price: $1.89
+    Rating: 4.7/5 (500 reviews)
+    Featured: Yes
+
+15. Eggs 12 Pack
+    Brand: FarmFresh
+    Price: $3.49
+    Rating: 4.8/5 (420 reviews)
+
+16. Cheddar Cheese 200g
+    Brand: DairyPure
+    Price: $4.29
+    Rating: 4.5/5 (160 reviews)
+
+17. Yogurt 500g
+    Brand: DairyPure
+    Price: $2.49
+    Rating: 4.4/5 (200 reviews)
+
+BAKERY
+--------------------------------------------------------------------------------
+18. White Bread Loaf
+    Brand: BakeWell
+    Price: $1.29
+    Rating: 4.3/5 (350 reviews)
+
+19. Croissants 4 Pack
+    Brand: BakeWell
+    Price: $3.99
+    Rating: 4.6/5 (140 reviews)
+    Featured: Yes
+
+20. Whole Wheat Bread
+    Brand: BakeWell
+    Price: $1.79
+    Rating: 4.4/5 (180 reviews)
+
+BEVERAGES
+--------------------------------------------------------------------------------
+21. Cola 2L
+    Brand: FizzUp
+    Price: $1.99
+    Rating: 4.2/5 (600 reviews)
+
+22. Orange Juice 1L
+    Brand: SunSip
+    Price: $3.49
+    Rating: 4.5/5 (280 reviews)
+    Featured: Yes
+
+23. Mineral Water 6 Pack
+    Brand: AquaLife
+    Price: $4.99
+    Rating: 4.7/5 (410 reviews)
+
+24. Black Tea 100 Bags
+    Brand: TeaTime
+    Price: $5.49
+    Rating: 4.6/5 (190 reviews)
+
+SNACKS & CONFECTIONERY
+--------------------------------------------------------------------------------
+25. Potato Chips Family Pack
+    Brand: Crunchy
+    Price: $3.29
+    Rating: 4.4/5 (520 reviews)
+
+26. Chocolate Bar Multipack
+    Brand: SweetTreat
+    Price: $4.99
+    Rating: 4.7/5 (380 reviews)
+    Featured: Yes
+
+27. Biscuits Assorted 400g
+    Brand: BakeWell
+    Price: $2.99
+    Rating: 4.3/5 (260 reviews)
+
+FROZEN FOOD
+--------------------------------------------------------------------------------
+28. Frozen French Fries 1kg
+    Brand: QuickMeal
+    Price: $3.99
+    Rating: 4.3/5 (310 reviews)
+
+29. Frozen Mixed Vegetables 500g
+    Brand: FrostFresh
+    Price: $2.79
+    Rating: 4.4/5 (200 reviews)
+
+30. Ice Cream 1L
+    Brand: CreamDream
+    Price: $5.49
+    Rating: 4.8/5 (290 reviews)
+    Featured: Yes
+
+HOUSEHOLD & CLEANING
+--------------------------------------------------------------------------------
+31. Laundry Detergent 3kg
+    Brand: CleanHome
+    Price: $11.99
+    Rating: 4.5/5 (340 reviews)
+
+32. Dish Soap 750ml
+    Brand: CleanHome
+    Price: $2.49
+    Rating: 4.4/5 (220 reviews)
+
+33. Toilet Paper 12 Rolls
+    Brand: SoftTouch
+    Price: $8.99
+    Rating: 4.6/5 (450 reviews)
+
+PERSONAL CARE
+--------------------------------------------------------------------------------
+34. Shampoo 400ml
+    Brand: GlowCare
+    Price: $5.99
+    Rating: 4.5/5 (280 reviews)
+
+35. Toothpaste Twin Pack
+    Brand: SmileBright
+    Price: $4.49
+    Rating: 4.6/5 (360 reviews)
+
+36. Soap Bar 4 Pack
+    Brand: GlowCare
+    Price: $3.29
+    Rating: 4.3/5 (190 reviews)
+
+BABY CARE
+--------------------------------------------------------------------------------
+37. Baby Diapers Size 3 (48)
+    Brand: TinyCare
+    Price: $14.99
+    Rating: 4.7/5 (410 reviews)
+    Featured: Yes
+
+38. Baby Wipes 3 Pack
+    Brand: TinyCare
+    Price: $6.99
+    Rating: 4.5/5 (240 reviews)
+
+ELECTRONICS
+--------------------------------------------------------------------------------
+39. Bluetooth Speaker
+    Brand: TechMart
+    Price: $29.99
+    Original Price: $39.99 (25% discount)
+    Rating: 4.4/5 (120 reviews)
+
+40. Electric Kettle 1.7L
+    Brand: HomeTech
+    Price: $24.99
+    Rating: 4.5/5 (95 reviews)
+    Featured: Yes
+
+41. LED Bulb 4 Pack
+    Brand: BrightLite
+    Price: $8.99
+    Rating: 4.3/5 (88 reviews)
+
+FASHION & CLOTHING
+--------------------------------------------------------------------------------
+42. Men Cotton T-Shirt
+    Brand: StyleMart
+    Price: $9.99
+    Rating: 4.2/5 (150 reviews)
+    Sizes: S, M, L, XL
+
+43. Women Kurti
+    Brand: StyleMart
+    Price: $19.99
+    Rating: 4.5/5 (110 reviews)
+    Featured: Yes
+
+44. Kids School Shoes
+    Brand: StepUp
+    Price: $24.99
+    Rating: 4.4/5 (85 reviews)
+    Sizes: 28, 30, 32, 34
+
+HOME & KITCHEN
+--------------------------------------------------------------------------------
+45. Non-Stick Frying Pan
+    Brand: ChefPro
+    Price: $18.99
+    Rating: 4.6/5 (200 reviews)
+
+46. Dinner Plates Set of 6
+    Brand: HomeStyle
+    Price: $22.99
+    Rating: 4.4/5 (90 reviews)
+
+47. Food Storage Containers 10pc
+    Brand: StoreWell
+    Price: $12.99
+    Rating: 4.5/5 (130 reviews)
+    Featured: Yes
+
+================================================================================
+FEATURED PRODUCTS (13 items)
+================================================================================
+1. Basmati Rice 5kg - Groceries & Staples
+2. Fresh Bananas 1kg - Fruits & Vegetables
+3. Chicken Breast 1kg - Meat & Poultry
+4. Fresh Milk 1L - Dairy & Eggs
+5. Croissants 4 Pack - Bakery
+6. Orange Juice 1L - Beverages
+7. Chocolate Bar Multipack - Snacks & Confectionery
+8. Ice Cream 1L - Frozen Food
+9. Baby Diapers Size 3 (48) - Baby Care
+10. Electric Kettle 1.7L - Electronics
+11. Women Kurti - Fashion & Clothing
+12. Food Storage Containers 10pc - Home & Kitchen
+
+================================================================================
+BRANDS
+================================================================================
+DailyMart, PureGold, BakeWell, SpiceHouse, FarmFresh, GreenLeaf, ButcherSelect,
+QuickMeal, DairyPure, FizzUp, SunSip, AquaLife, TeaTime, Crunchy, SweetTreat,
+FrostFresh, CleanHome, SoftTouch, GlowCare, SmileBright, TinyCare, TechMart,
+HomeTech, BrightLite, StyleMart, StepUp, ChefPro, HomeStyle, StoreWell,
+CreamDream
+
+================================================================================
+PRICE RANGE
+================================================================================
+Lowest: $1.29 (White Bread Loaf, Tomatoes 1kg)
+Highest: $29.99 (Bluetooth Speaker)
+Average: ~$7.50
+
+================================================================================
+Generated on: 2026-06-28
+Source: backend/server/seed/martData.js
+================================================================================

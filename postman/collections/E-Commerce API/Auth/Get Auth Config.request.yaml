@@ -1,0 +1,7 @@
+$kind: http-request
+name: Get Auth Config
+method: GET
+url: '{{baseUrl}}/api/auth/config'
+order: 4000
+auth:
+  type: noauth

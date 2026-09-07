@@ -1,0 +1,8 @@
+$kind: http-request
+name: Track Order
+method: GET
+url: '{{baseUrl}}/api/orders/track/{{orderId}}'
+order: 3000
+queryParams:
+  - key: email
+    value: '{{userEmail}}'

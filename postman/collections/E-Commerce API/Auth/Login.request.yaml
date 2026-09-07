@@ -1,0 +1,33 @@
+$kind: http-request
+name: Login
+method: POST
+url: '{{baseUrl}}/api/auth/login'
+order: 3000
+auth:
+  type: noauth
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "demo@shophub.com",
+      "password": "demo123"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status is 200", function () {
+        pm.response.to.have.status(200);
+      });
+      pm.test("Response has token", function () {
+        const json = pm.response.json();
+        pm.expect(json).to.have.property("token");
+        pm.environment.set("authToken", json.token);
+      });
+      pm.test("Response has user", function () {
+        const json = pm.response.json();
+        pm.expect(json).to.have.property("user");
+      });

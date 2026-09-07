@@ -1,0 +1,16 @@
+export const SIDEBAR_NAV_ITEMS = [
+  { label: 'Home', href: '/' },
+  { label: 'Shop', href: '/products', mega: true },
+  { label: 'Our Brands', href: '/brands' },
+  { label: 'Store Locator', href: '/stores' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Events', href: '/events' },
+  { label: 'Gift Cards', href: '/gift-cards' },
+  { label: 'Loyalty', href: '/loyalty' },
+  { label: 'CSR', href: '/csr' },
+  { label: 'About', href: '/about' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Return Policy', href: '/return-policy' },
+  { label: 'Supplier Form', href: '/supplier-form' },
+  { label: 'Contact', href: '/contact' },
+];

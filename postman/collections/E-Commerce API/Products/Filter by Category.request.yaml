@@ -1,0 +1,10 @@
+$kind: http-request
+name: Filter by Category
+method: GET
+url: '{{baseUrl}}/api/products'
+order: 4000
+auth:
+  type: noauth
+queryParams:
+  - key: category
+    value: Electronics

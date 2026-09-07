@@ -1,0 +1,10 @@
+$kind: http-request
+name: Search Products
+method: GET
+url: '{{baseUrl}}/api/products'
+order: 3000
+auth:
+  type: noauth
+queryParams:
+  - key: search
+    value: shirt

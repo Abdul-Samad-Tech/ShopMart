@@ -1,0 +1,18 @@
+$kind: collection
+name: E-Commerce API
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{authToken}}'
+variables:
+  - key: baseUrl
+    value: 'http://localhost:5000'
+  - key: authToken
+    value: ''
+  - key: productId
+    value: ''
+  - key: orderId
+    value: ''
+  - key: userEmail
+    value: ''
