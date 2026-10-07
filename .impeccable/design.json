@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T19:30:00Z",
+  "title": "Design System: ShopMart",
+  "extensions": {
+    "colorMeta": {
+      "brand": {
+        "role": "primary",
+        "displayName": "Market Green",
+        "canonical": "#146B45",
+        "tonalRamp": ["#072818", "#0B3D27", "#0E5436", "#146B45", "#1F8A56", "#5BB888", "#A8D9C0", "#E7F5EE"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#F6F3EC",
+        "tonalRamp": ["#1C1917", "#3F3A34", "#5C564E", "#8A8378", "#C4BBAF", "#E4DDD2", "#F6F3EC", "#FFFCF7"]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Clay",
+        "canonical": "#9A4E24",
+        "tonalRamp": ["#3A1C0C", "#5C2E14", "#7A3E1C", "#9A4E24", "#B86A3A", "#D4A07A", "#E8CDB8", "#F8F1EA"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Homepage hero only." },
+      "headline": { "displayName": "Headline", "purpose": "Page titles." },
+      "title": { "displayName": "Title", "purpose": "Product and section titles." },
+      "body": { "displayName": "Body", "purpose": "Reading, prices, and forms." },
+      "label": { "displayName": "Label", "purpose": "Buttons, badges, and meta." }
+    },
+    "shadows": [
+      { "name": "rest", "value": "0 1px 2px rgb(28 25 23 / 0.06)", "purpose": "Optional card at rest. Neutral, not a glow." },
+      { "name": "raised", "value": "0 8px 20px rgb(28 25 23 / 0.08)", "purpose": "Drawers, menus, and dialogs." }
+    ],
+    "motion": [
+      { "name": "ease-shop", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "The only easing curve." },
+      { "name": "duration-fast", "value": "150ms", "purpose": "Hover color and exits." },
+      { "name": "duration-base", "value": "250ms", "purpose": "Default state change." },
+      { "name": "duration-slow", "value": "400ms", "purpose": "A single larger reveal." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "360px" },
+      { "name": "tablet", "value": "768px" },
+      { "name": "desktop", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one main action. Market Green, white label, 44px tall.",
+      "html": "<button class=\"ds-btn-primary\">Add to cart</button>",
+      "css": ".ds-btn-primary { background: #146B45; color: #FFFFFF; font-family: Nunito Sans, Segoe UI, sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1.4; padding: 12px 20px; min-height: 44px; border: none; border-radius: 12px; cursor: pointer; transition: background 150ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-primary:hover { background: #0E5436; } .ds-btn-primary:focus-visible { outline: 2px solid #146B45; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A quieter action beside the primary.",
+      "html": "<button class=\"ds-btn-secondary\">View aisle</button>",
+      "css": ".ds-btn-secondary { background: #FFFCF7; color: #1C1917; font-family: Nunito Sans, Segoe UI, sans-serif; font-size: 0.875rem; font-weight: 600; padding: 12px 20px; min-height: 44px; border: 1px solid #E4DDD2; border-radius: 12px; cursor: pointer; transition: border-color 150ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-secondary:hover { border-color: #146B45; } .ds-btn-secondary:focus-visible { outline: 2px solid #146B45; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Text action with no fill.",
+      "html": "<button class=\"ds-btn-ghost\">See all</button>",
+      "css": ".ds-btn-ghost { background: transparent; color: #146B45; font-family: Nunito Sans, Segoe UI, sans-serif; font-size: 0.875rem; font-weight: 600; padding: 12px 16px; min-height: 44px; border: none; border-radius: 12px; cursor: pointer; } .ds-btn-ghost:hover { background: #E7F5EE; } .ds-btn-ghost:focus-visible { outline: 2px solid #146B45; outline-offset: 2px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A product or content surface. Flat at rest.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Fresh Milk 1L</h3><p class=\"ds-card-price\">Rs. 250</p></article>",
+      "css": ".ds-card { background: #FFFCF7; color: #1C1917; border: 1px solid #E4DDD2; border-radius: 16px; padding: 16px; box-shadow: 0 1px 2px rgb(28 25 23 / 0.06); } .ds-card-title { font-family: Rubik, Nunito Sans, sans-serif; font-size: 1.25rem; font-weight: 600; line-height: 1.3; margin: 0 0 8px; } .ds-card-price { font-family: Nunito Sans, Segoe UI, sans-serif; font-size: 1rem; margin: 0; }"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Text field. Focus is a green border, not a glow.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Search the shop\" aria-label=\"Search the shop\" />",
+      "css": ".ds-input { background: #FFFCF7; color: #1C1917; font-family: Nunito Sans, Segoe UI, sans-serif; font-size: 1rem; padding: 12px 16px; min-height: 44px; width: 100%; border: 1px solid #E4DDD2; border-radius: 12px; } .ds-input:focus-visible { outline: 2px solid #146B45; outline-offset: 2px; border-color: #146B45; }"
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "A short status pill. Green text on paper.",
+      "html": "<span class=\"ds-badge\">Picked today</span>",
+      "css": ".ds-badge { display: inline-block; background: #F6F3EC; color: #0E5436; font-family: Nunito Sans, Segoe UI, sans-serif; font-size: 0.875rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Morning Market",
+    "overview": "ShopMart should feel like a well-kept market stall just after opening: fresh food, a clear price, and enough quiet to decide. The green is the awning. The paper is warm, not hospital white. Nothing shouts.\n\nDensity stays comfortable on a phone. One primary action per band. Product photos carry the color; the chrome stays calm. Light and dark are the same shop at different times of day.",
+    "keyCharacteristics": [
+      "Green brand, warm paper, near-black ink",
+      "Rubik for headings, Nunito Sans for reading and UI",
+      "Soft corners, hairline borders, shadows that barely lift",
+      "One easing curve, short durations, still when reduced motion is on",
+      "PKR prices and lucide icons, always"
+    ],
+    "rules": [
+      { "name": "The One Green Rule", "body": "Brand green covers actions and identity. It does not flood backgrounds. A screen is mostly paper and photos.", "section": "colors" },
+      { "name": "The No Gray-on-Green Rule", "body": "Never put muted gray type on a green, clay, warning, or danger fill. Labels on those fills are white or Lamp (#F4F1EA).", "section": "colors" },
+      { "name": "The Price Rule", "body": "A price is body or title size, tabular figures, prefixed Rs. with a thousands separator. Never $.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Product cards do not float, tilt, or glow on hover.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do take every color, radius, and font from this frontmatter.",
+      "Do keep white labels on Market Green and Leaf Shade.",
+      "Do use one hover change on a product card: a second photo or a quiet border.",
+      "Do respect prefers-reduced-motion by dropping movement and keeping opacity or instant state."
+    ],
+    "donts": [
+      "Don't use purple gradients, gold (#D4AF37 and kin), neon, or the current luxury theme tokens.",
+      "Don't use glassmorphism, liquid glass, or blur as a default surface.",
+      "Don't use bounce, overshoot, or glow shadows.",
+      "Don't nest cards, put gray text on a colored fill, or use emoji as icons.",
+      "Don't load fonts from a third-party stylesheet in the app."
+    ]
+  }
+}
