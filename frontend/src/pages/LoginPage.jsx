@@ -59,47 +59,8 @@ const LoginPage = () => {
     },
   };
 
-  const floatingVariants = {
-    initial: { y: 0 },
-    animate: {
-      y: [-10, 10, -10],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      },
-    },
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden relative">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          variants={floatingVariants}
-          initial="initial"
-          animate="animate"
-          className="absolute top-20 left-20 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          variants={floatingVariants}
-          initial="initial"
-          animate="animate"
-          transition={{ delay: 1 }}
-          className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          variants={floatingVariants}
-          initial="initial"
-          animate="animate"
-          transition={{ delay: 2 }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl"
-        />
-      </div>
-
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjxwYXRoIGQ9Ik0zNiAxOGMtOS45NDEgMC0xOCA4LjA1OS0xOCAxOHM4LjA1OSAxOCAxOCAxOGM5Ljk0MSAwIDE4LTguMDU5IDE4LTE4cy04LjA1OS0xOC0xOC0xOHptMCAzMmMtNy43MzIgMC0xNC02LjI2OC0xNC0xNHM2LjI2OC0xNCAxNC0xNHMxNCA2LjI2OCAxNCAxNC02LjI2OCAxNC0xNCAxNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30" />
-
+    <div className="min-h-screen bg-chrome overflow-hidden relative">
       <div className="relative min-h-screen flex">
         {/* Left Side - Hero Section */}
         <motion.div
@@ -115,8 +76,8 @@ const LoginPage = () => {
               transition={{ delay: 0.3 }}
               className="mb-6"
             >
-              <Sparkles className="w-12 h-12 text-purple-400 mb-4" />
-              <p className="text-purple-300 text-sm uppercase tracking-[0.3em] mb-4">Welcome Back</p>
+              <Sparkles className="w-12 h-12 text-brand-text mb-4" />
+              <p className="text-brand-text text-sm uppercase tracking-[0.3em] mb-4">Welcome Back</p>
               <h2 className="text-5xl font-display font-bold text-white mb-6 leading-tight">
                 Experience the Future of Shopping
               </h2>
@@ -129,17 +90,17 @@ const LoginPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="mt-12 p-6 bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20"
+              className="mt-12 p-6 bg-white/10 bg-chrome/80 rounded-2xl border border-white/20"
             >
-              <p className="text-white/60 text-sm mb-3">Demo Credentials:</p>
+              <p className="text-white/80 text-sm mb-3">Demo accounts use the emails below. Passwords stay in your local environment, not on this page.</p>
               <div className="space-y-2 text-white/90 text-sm">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                  <span>Member: demo@shophub.com / demo123</span>
+                  <div className="w-2 h-2 bg-brand rounded-full" />
+                  <span>Member: demo@shophub.com</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                  <span>Admin: admin@shophub.com / ShopHub@Admin2026</span>
+                  <div className="w-2 h-2 bg-brand rounded-full" />
+                  <span>Admin: admin@shophub.com</span>
                 </div>
               </div>
             </motion.div>
@@ -161,7 +122,7 @@ const LoginPage = () => {
 
             <motion.div
               variants={itemVariants}
-              className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl"
+              className="bg-white/10 bg-chrome/80 rounded-3xl p-8 border border-white/20 shadow-2xl"
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <motion.div variants={itemVariants}>
@@ -175,7 +136,7 @@ const LoginPage = () => {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       onFocus={() => setIsFocused('email')}
                       onBlur={() => setIsFocused('')}
-                      className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                      className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all duration-300"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -192,7 +153,7 @@ const LoginPage = () => {
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                       onFocus={() => setIsFocused('password')}
                       onBlur={() => setIsFocused('')}
-                      className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                      className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all duration-300"
                       placeholder="Enter your password"
                     />
                     <button
@@ -204,7 +165,7 @@ const LoginPage = () => {
                     </button>
                   </div>
                   <div className="text-right mt-2">
-                    <Link to="/forgot-password" className="text-sm text-purple-400 hover:text-purple-300 font-medium transition-colors">
+                    <Link to="/forgot-password" className="text-sm text-brand-text hover:text-brand-text font-medium transition-colors">
                       Forgot password?
                     </Link>
                   </div>
@@ -215,7 +176,7 @@ const LoginPage = () => {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+                  className="w-full py-4 bg-gradient-to-r from-brand to-brand-strong hover:from-brand-strong hover:to-brand-strong text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group"
                 >
                   <span>Sign In</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -239,7 +200,7 @@ const LoginPage = () => {
 
             <motion.p variants={itemVariants} className="text-center text-sm text-white/60 mt-8">
               New to ShopMart?{' '}
-              <Link to="/register" className="text-purple-400 hover:text-purple-300 font-semibold transition-colors">
+              <Link to="/register" className="text-brand-text hover:text-brand-text font-semibold transition-colors">
                 Create an account
               </Link>
             </motion.p>

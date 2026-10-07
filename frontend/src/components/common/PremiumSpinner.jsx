@@ -8,17 +8,17 @@ const PremiumSpinner = ({ label = 'Loading', size = 'md', fullScreen = false }) 
   const ring = (
     <div className={`relative ${dim}`}>
       <motion.div
-        className={`absolute inset-0 rounded-full border-2 border-luxury-line/80 dark:border-white/10`}
+        className={`absolute inset-0 rounded-full border-2 border-line/80 dark:border-white/10`}
         animate={reduced ? {} : { rotate: 360 }}
         transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
       />
       <motion.div
-        className={`absolute inset-0 rounded-full border-2 border-transparent border-t-gold-500 border-r-primary-600`}
+        className={`absolute inset-0 rounded-full border-2 border-transparent border-t-accent border-r-brand`}
         animate={reduced ? {} : { rotate: -360 }}
         transition={{ duration: 1.1, repeat: Infinity, ease: 'linear' }}
       />
       <motion.div
-        className="absolute inset-[30%] rounded-full bg-gradient-gold opacity-80"
+        className="absolute inset-[30%] rounded-full bg-accent opacity-80"
         animate={reduced ? {} : { scale: [0.85, 1, 0.85], opacity: [0.5, 1, 0.5] }}
         transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
       />
@@ -30,7 +30,7 @@ const PremiumSpinner = ({ label = 'Loading', size = 'md', fullScreen = false }) 
       {ring}
       {label && (
         <motion.p
-          className="text-[10px] font-semibold uppercase tracking-[0.25em] text-luxury-muted"
+          className="text-[10px] font-semibold uppercase tracking-[0.25em] text-ink-muted"
           animate={reduced ? {} : { opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -42,7 +42,7 @@ const PremiumSpinner = ({ label = 'Loading', size = 'md', fullScreen = false }) 
 
   if (fullScreen) {
     return (
-      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-luxury-cream/90 dark:bg-luxury-charcoal/95 backdrop-blur-md">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-surface/90 dark:bg-chrome/95 backdrop-blur-md">
         {content}
       </div>
     );

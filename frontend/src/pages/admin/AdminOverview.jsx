@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { DollarSign, Package, ShoppingBag, Users, MessageSquare } from 'lucide-react';
+import { Banknote, Package, ShoppingBag, Users, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import {
   Area,
@@ -14,7 +14,7 @@ import {
 } from 'recharts';
 import { apiEndpoints } from '../../services/api';
 import StatCard from '../../components/admin/StatCard';
-import Loader from '../../components/common/Loader';
+import { formatPrice } from '../../utils/helpers';
 
 const AdminOverview = () => {
   const [stats, setStats] = useState(null);
@@ -49,7 +49,7 @@ const AdminOverview = () => {
       </header>
 
       <div className="grid sm:grid-cols-2 xl:grid-cols-5 gap-4">
-        <StatCard label="Revenue" value={`$${stats.revenue?.toFixed(0) || 0}`} icon={DollarSign} />
+        <StatCard label="Revenue" value={formatPrice(stats.revenue || 0)} icon={Banknote} />
         <StatCard label="Orders" value={stats.orders} sub={`${stats.ordersLast30} last 30 days`} icon={ShoppingBag} />
         <StatCard label="Products" value={stats.products} icon={Package} />
         <StatCard label="Customers" value={stats.users} icon={Users} />
@@ -71,17 +71,17 @@ const AdminOverview = () => {
               <AreaChart data={stats.salesByDay || []}>
                 <defs>
                   <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#a78bfa" stopOpacity={0.4} />
-                    <stop offset="100%" stopColor="#a78bfa" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#146B45" stopOpacity={0.4} />
+                    <stop offset="100%" stopColor="#146B45" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" />
                 <XAxis dataKey="date" tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 11 }} />
                 <YAxis tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 11 }} />
                 <Tooltip
-                  contentStyle={{ background: '#1a1816', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12 }}
+                  contentStyle={{ background: '#121614', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12 }}
                 />
-                <Area type="monotone" dataKey="revenue" stroke="#a78bfa" fill="url(#revGrad)" />
+                <Area type="monotone" dataKey="revenue" stroke="#146B45" fill="url(#revGrad)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -96,9 +96,9 @@ const AdminOverview = () => {
                 <XAxis dataKey="status" tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 11 }} />
                 <YAxis tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 11 }} />
                 <Tooltip
-                  contentStyle={{ background: '#1a1816', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12 }}
+                  contentStyle={{ background: '#121614', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12 }}
                 />
-                <Bar dataKey="count" fill="#c9a227" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="count" fill="var(--brand)" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -122,7 +122,7 @@ const AdminOverview = () => {
                 <td>#{o.orderId || o.id?.slice(-6).toUpperCase()}</td>
                 <td>{o.userName || o.userEmail}</td>
                 <td className="capitalize">{o.status}</td>
-                <td>${o.total?.toFixed(2)}</td>
+                <td>{formatPrice(o.total)}</td>
               </tr>
             ))}
           </tbody>

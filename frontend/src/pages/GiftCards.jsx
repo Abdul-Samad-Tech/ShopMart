@@ -71,7 +71,7 @@ const GiftCards = () => {
       />
 
       {/* Hero Section */}
-      <section className="section-premium bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+      <section className="section-premium bg-gradient-to-br from-brand to-brand text-white">
         <div className="container-premium text-center py-16">
           <h2 className="text-4xl font-display mb-4">ShopMart Gift Cards</h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
@@ -114,11 +114,11 @@ const GiftCards = () => {
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`card-premium p-6 text-center transition-all ${
-                  selectedAmount === amount ? 'border-2 border-primary-500 bg-primary-50 dark:bg-primary-900/30' : ''
+                className={`card p-6 text-center transition-all ${
+                  selectedAmount === amount ? 'border-2 border-brand bg-brand/10 dark:bg-brand/30' : ''
                 }`}
               >
-                <p className="text-2xl font-display font-semibold text-luxury-charcoal dark:text-white">PKR {amount}</p>
+                <p className="text-2xl font-display font-semibold text-ink dark:text-white">PKR {amount}</p>
               </motion.button>
             ))}
           </div>
@@ -135,17 +135,17 @@ const GiftCards = () => {
                 setSelectedAmount('');
               }}
               placeholder="Enter amount"
-              className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+              className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
             />
           </div>
         </div>
       </section>
 
       {/* Purchase Form */}
-      <section className="section-premium bg-luxury-ivory dark:bg-luxury-slate/30">
+      <section className="section-premium bg-surface-raised dark:bg-surface-raised/30">
         <div className="container-premium max-w-2xl">
           <h2 className="text-3xl font-display mb-8 text-center">Send Gift Card</h2>
-          <form onSubmit={handleSubmit} className="card-premium p-8">
+          <form onSubmit={handleSubmit} className="card p-8">
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2">Recipient Email *</label>
               <input
@@ -154,7 +154,7 @@ const GiftCards = () => {
                 value={recipientEmail}
                 onChange={(e) => setRecipientEmail(e.target.value)}
                 placeholder="recipient@email.com"
-                className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
               />
             </div>
 
@@ -166,7 +166,7 @@ const GiftCards = () => {
                 value={senderName}
                 onChange={(e) => setSenderName(e.target.value)}
                 placeholder="Your name"
-                className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
               />
             </div>
 
@@ -177,17 +177,17 @@ const GiftCards = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Add a personal message..."
-                className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none resize-none"
               />
             </div>
 
-            <div className="mb-6 p-4 bg-luxury-ivory dark:bg-white/5 rounded-xl">
-              <p className="text-sm text-luxury-muted">
+            <div className="mb-6 p-4 bg-surface-raised dark:bg-white/5 rounded-xl">
+              <p className="text-sm text-ink-muted">
                 <strong>Selected Amount:</strong> PKR {selectedAmount || customAmount || '0'}
               </p>
             </div>
 
-            <button type="submit" className="btn-premium w-full">
+            <button type="submit" className="btn-primary w-full">
               Purchase Gift Card
             </button>
           </form>
@@ -213,11 +213,11 @@ const GiftCards = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-12 h-12 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center text-xl font-display font-bold mx-auto mb-4">
+                <div className="w-12 h-12 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xl font-display font-bold mx-auto mb-4">
                   {item.step}
                 </div>
                 <h3 className="font-display text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-luxury-muted">{item.description}</p>
+                <p className="text-sm text-ink-muted">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -225,7 +225,7 @@ const GiftCards = () => {
       </section>
 
       {/* FAQs */}
-      <section className="section-premium bg-luxury-ivory dark:bg-luxury-slate/30">
+      <section className="section-premium bg-surface-raised dark:bg-surface-raised/30">
         <div className="container-premium max-w-3xl">
           <h2 className="text-3xl font-display mb-8 text-center">Frequently Asked Questions</h2>
           <div className="space-y-4">
@@ -242,10 +242,10 @@ const GiftCards = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="card-premium p-6"
+                className="card p-6"
               >
                 <h3 className="font-display text-lg mb-2">{faq.q}</h3>
-                <p className="text-luxury-muted text-sm">{faq.a}</p>
+                <p className="text-ink-muted text-sm">{faq.a}</p>
               </motion.div>
             ))}
           </div>
@@ -286,7 +286,7 @@ const GiftCards = () => {
               </div>
               <button
                 onClick={() => setShowThankYou(false)}
-                className="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                className="w-full bg-brand hover:bg-brand-strong text-white font-semibold py-3 px-6 rounded-lg transition-colors"
               >
                 Close
               </button>

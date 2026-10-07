@@ -77,7 +77,7 @@ const OurBrands = () => {
       <section className="section-premium">
         <div className="container-premium text-center max-w-3xl">
           <h2 className="text-3xl font-display mb-6">{pageContent?.description || 'Trusted Brands, Quality Assured'}</h2>
-          <p className="text-luxury-muted leading-relaxed">
+          <p className="text-ink-muted leading-relaxed">
             At ShopMart, we partner with the world's leading brands and develop our own private labels to bring you the best products at the most competitive prices. Every brand in our stores is carefully selected to meet our strict quality standards.
           </p>
         </div>
@@ -94,15 +94,15 @@ const OurBrands = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="card-premium p-8 hover:shadow-premium-lg transition-shadow"
+                className="card p-8 hover:shadow-raised transition-shadow"
               >
-                <h3 className="font-display text-xl mb-3 text-gold-600">{category.name}</h3>
-                <p className="text-sm text-luxury-muted mb-6 leading-relaxed">{category.description}</p>
+                <h3 className="font-display text-xl mb-3 text-accent">{category.name}</h3>
+                <p className="text-sm text-ink-muted mb-6 leading-relaxed">{category.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {category.brands.map((brand) => (
                     <span
                       key={brand}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-luxury-ivory dark:bg-white/10 text-luxury-charcoal dark:text-white"
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-surface-raised dark:bg-white/10 text-ink dark:text-white"
                     >
                       {brand}
                     </span>
@@ -115,13 +115,13 @@ const OurBrands = () => {
       </section>
 
       {/* Become a Partner CTA */}
-      <section className="section-premium bg-mart-green text-white">
+      <section className="section-premium bg-brand text-white">
         <div className="container-premium text-center">
           <h2 className="text-3xl font-display mb-4">Partner With Us</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
             Are you a brand owner or supplier? Join our network of trusted partners and reach millions of customers across Pakistan.
           </p>
-          <a href="/supplier-form" className="inline-block btn-mart-outline">
+          <a href="/supplier-form" className="inline-block btn-secondary">
             Become a Supplier
           </a>
         </div>

@@ -16,7 +16,7 @@ const CartPage = () => {
         <PageHeader title="Your Cart" subtitle="Review items before checkout." />
         <div className="container-premium py-24 text-center">
           <h2 className="font-display text-3xl mb-3">Your bag is empty</h2>
-          <Link to="/products" className="btn-premium inline-block mt-6">
+          <Link to="/products" className="btn-primary inline-block mt-6">
             Explore Collection
           </Link>
         </div>
@@ -34,7 +34,7 @@ const CartPage = () => {
 
       <div className="container-premium py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          <div className="lg:col-span-2 card-premium p-6 md:p-8">
+          <div className="lg:col-span-2 card p-6 md:p-8">
             {items.map((item) => (
               <CartItem key={item.id} item={item} />
             ))}
@@ -43,11 +43,11 @@ const CartPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            className="card-elevated p-6 md:p-8 sticky top-28 h-fit"
+            className="card p-6 md:p-8 sticky top-28 h-fit"
           >
             <h2 className="font-display text-2xl mb-6">Order Summary</h2>
             <OrderSummary />
-            <Link to="/products" className="btn-outline w-full block text-center mt-4">
+            <Link to="/products" className="btn-secondary w-full block text-center mt-4">
               Continue Shopping
             </Link>
           </motion.div>

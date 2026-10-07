@@ -19,13 +19,13 @@ createRoot(document.getElementById('root')).render(
             toastOptions={{
               duration: 3500,
               style: {
-                background: '#1a1816',
-                color: '#faf8f5',
+                background: 'var(--chrome)',
+                color: 'var(--on-chrome)',
                 borderRadius: '12px',
                 fontSize: '14px',
                 padding: '14px 18px',
               },
-              success: { iconTheme: { primary: '#c9a227', secondary: '#1a1816' } },
+              success: { iconTheme: { primary: 'var(--brand)', secondary: 'var(--on-chrome)' } },
             }}
           />
         </GoogleAuthProvider>

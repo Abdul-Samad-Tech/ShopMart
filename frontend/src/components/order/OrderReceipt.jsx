@@ -78,7 +78,7 @@ const OrderReceipt = ({ order, onClose }) => {
           className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white p-6 flex justify-between items-start">
+          <div className="bg-gradient-to-r from-brand to-brand text-white p-6 flex justify-between items-start">
             <div>
               <h2 className="text-2xl font-display font-bold mb-1">Order Confirmed!</h2>
               <p className="text-white/80 text-sm">Thank you for your purchase</p>
@@ -181,7 +181,7 @@ const OrderReceipt = ({ order, onClose }) => {
               </div>
 
               {/* Payment Summary */}
-              <div className="mb-6 p-4 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-xl border border-primary-200 dark:border-primary-700">
+              <div className="mb-6 p-4 bg-gradient-to-r from-brand to-brand dark:from-brand/20 dark:to-brand/20 rounded-xl border border-brand dark:border-brand">
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                   <CreditCard className="w-4 h-4" />
                   Payment Summary
@@ -207,7 +207,7 @@ const OrderReceipt = ({ order, onClose }) => {
                   )}
                   <div className="flex justify-between pt-3 border-t border-gray-300 dark:border-slate-600">
                     <span className="font-semibold text-gray-900 dark:text-white">Total</span>
-                    <span className="font-bold text-xl text-primary-600 dark:text-primary-400">
+                    <span className="font-bold text-xl text-brand dark:text-brand">
                       {formatCurrency(order.total)}
                     </span>
                   </div>
@@ -251,7 +251,7 @@ const OrderReceipt = ({ order, onClose }) => {
             <button
               onClick={handleDownloadPDF}
               disabled={isDownloading}
-              className="flex-1 flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors disabled:opacity-50"
+              className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-semibold py-3 px-4 rounded-xl transition-colors disabled:opacity-50"
             >
               <Download className="w-5 h-5" />
               {isDownloading ? 'Downloading...' : 'Download PDF'}

@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, Sparkles, KeyRound, Search, ShoppingBag, Tag, TrendingUp, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { apiEndpoints } from '../../services/api';
-import { useSelector } from 'react-redux';
+import { formatPrice } from '../../utils/helpers';
 
 const STORAGE_KEY = 'shophub_gemini_api_key';
 const WELCOME = 'Hi! I\'m your personal shopping assistant. I can help you find products, discover deals, or answer any questions. What are you looking for today?';
 
 const QUICK_ACTIONS = [
-  { icon: Search, label: 'Find products', query: 'Show me products under $50' },
+  { icon: Search, label: 'Find products', query: 'Show me products under Rs. 50' },
   { icon: ShoppingBag, label: 'Best sellers', query: 'What are your best selling products?' },
   { icon: Tag, label: 'Deals', query: 'Show me current deals and discounts' },
   { icon: TrendingUp, label: 'New arrivals', query: 'What\'s new in the store?' },
@@ -79,9 +79,9 @@ const ChatWidget = () => {
         const results = filteredProducts.filter(p => p.price <= maxPrice).slice(0, 5);
         if (results.length > 0) {
           setSearchResults(results);
-          return `I found ${results.length} products under $${maxPrice}:`;
+          return `I found ${results.length} products under Rs. ${maxPrice}:`;
         } else {
-          return `I couldn't find any products under $${maxPrice}. Would you like to see products in a different price range?`;
+          return `I couldn't find any products under Rs. ${maxPrice}. Would you like to see products in a different price range?`;
         }
       }
     }
@@ -157,7 +157,7 @@ const ChatWidget = () => {
     // Help commands
     if (lowerText.includes('help') || lowerText.includes('what can you do')) {
       setSearchResults(null);
-      return `I can help you with:\n• 🔍 Find products by name or category\n• 💰 Search within your budget\n• 🏷️ Discover deals and discounts\n• 📦 Navigate to any page\n• ❓ Answer questions about orders\n\nTry asking: "Find products under $50" or "Show me best sellers"`;
+      return `I can help you with:\n• Find products by name or category\n• Search within your budget\n• Discover deals and discounts\n• Navigate to any page\n• Answer questions about orders\n\nTry asking: "Find products under Rs. 50" or "Show me best sellers"`;
     }
     
     return null; // No command matched, send to AI
@@ -376,7 +376,7 @@ const ChatWidget = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-neutral-900 truncate">{product.name}</p>
-                        <p className="text-xs text-neutral-500">${product.price}</p>
+                        <p className="text-xs text-ink-muted">{formatPrice(product.price)}</p>
                       </div>
                       <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-600 transition-colors" />
                     </Link>

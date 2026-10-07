@@ -76,7 +76,7 @@ const ProductListing = () => {
         <PageHeader title="All Products" subtitle="Loading…" breadcrumbs={[{ label: 'Home', to: '/' }, { label: 'Products' }]} />
         <div className="container-premium py-12">
           <div className="grid lg:grid-cols-4 gap-10">
-            <div className="hidden lg:block h-96 skeleton-shimmer rounded-2xl bg-luxury-line/40" />
+            <div className="hidden lg:block h-96 skeleton-shimmer rounded-2xl bg-line/40" />
             <div className="lg:col-span-3">
               <ProductGridSkeleton count={6} />
             </div>
@@ -92,9 +92,9 @@ const ProductListing = () => {
       <div className="page-shell">
         <PageHeader title="All Products" subtitle="No products found" breadcrumbs={[{ label: 'Home', to: '/' }, { label: 'Products' }]} />
         <div className="container-premium py-12">
-          <div className="text-center py-24 card-premium">
+          <div className="text-center py-24 card">
             <p className="font-display text-2xl mb-2">No products available</p>
-            <p className="text-sm text-luxury-muted mb-6">Please try again later or contact support.</p>
+            <p className="text-sm text-ink-muted mb-6">Please try again later or contact support.</p>
             <button type="button" onClick={() => window.location.reload()} className="btn-primary">
               Refresh Page
             </button>
@@ -119,29 +119,29 @@ const ProductListing = () => {
           </aside>
 
           <div className="flex-1 min-w-0">
-            <div className="flex flex-col sm:flex-row justify-between gap-4 mb-8 pb-6 border-b border-luxury-line dark:border-white/10">
+            <div className="flex flex-col sm:flex-row justify-between gap-4 mb-8 pb-6 border-b border-line dark:border-white/10">
               <div className="flex items-center gap-3 flex-wrap">
                 <button
                   type="button"
                   onClick={() => setFiltersOpen(true)}
-                  className="lg:hidden inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-luxury-line dark:border-white/15 bg-white dark:bg-white/5 text-sm font-semibold text-luxury-charcoal dark:text-white"
+                  className="lg:hidden inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-line dark:border-white/15 bg-white dark:bg-white/5 text-sm font-semibold text-ink dark:text-white"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.036a2.5 2.5 0 01-.659 1.591l-5.432 6.198v4.864a1 1 0 01-.553.894l-4 2A1 1 0 019 20.106V13.5L3.659 7.409A2.5 2.5 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A41.026 41.026 0 0112 3z" />
                   </svg>
                   Filters
                   {activeFilterCount > 0 && (
-                    <span className="min-w-[20px] h-5 px-1.5 flex items-center justify-center rounded-full bg-mart-green text-white text-[10px] font-bold">
+                    <span className="min-w-[20px] h-5 px-1.5 flex items-center justify-center rounded-full bg-brand text-white text-[10px] font-bold">
                       {activeFilterCount}
                     </span>
                   )}
                 </button>
-                <p className="text-sm text-luxury-muted dark:text-neutral-400">
-                  <span className="font-semibold text-luxury-charcoal dark:text-white">{total}</span> products
-                  {loading && <span className="ml-2 text-primary-600 dark:text-primary-400">Updating…</span>}
+                <p className="text-sm text-ink-muted dark:text-neutral-400">
+                  <span className="font-semibold text-ink dark:text-white">{total}</span> products
+                  {loading && <span className="ml-2 text-brand dark:text-brand">Updating…</span>}
                 </p>
               </div>
-              <select value={sort} onChange={(e) => handleSort(e.target.value)} className="select-premium w-full sm:w-auto">
+              <select value={sort} onChange={(e) => handleSort(e.target.value)} className="input w-full sm:w-auto">
                 <option value="default">Featured</option>
                 <option value="featured">Deals</option>
                 <option value="popularity">Popularity</option>
@@ -153,10 +153,10 @@ const ProductListing = () => {
             </div>
 
             {filteredProducts.length === 0 ? (
-              <div className="text-center py-24 card-premium">
+              <div className="text-center py-24 card">
                 <p className="font-display text-2xl mb-2">No matches</p>
-                <p className="text-sm text-luxury-muted mb-6">Try adjusting your filters or search term.</p>
-                <button type="button" onClick={() => setSearchParams({})} className="btn-outline">
+                <p className="text-sm text-ink-muted mb-6">Try adjusting your filters or search term.</p>
+                <button type="button" onClick={() => setSearchParams({})} className="btn-secondary">
                   Clear all filters
                 </button>
               </div>

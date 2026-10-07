@@ -1,9 +1,8 @@
 const brand = {
-  name: 'ShopHub',
-  color: '#7349ad',
-  gold: '#c9a227',
-  dark: '#1a1816',
-  cream: '#faf8f5',
+  name: 'ShopMart',
+  color: '#146B45',
+  dark: '#1C1917',
+  cream: '#F6F3EC',
 };
 
 const esc = (s) =>
@@ -21,9 +20,9 @@ const layout = (title, body) => `
   <table width="100%" cellpadding="0" cellspacing="0" style="background:${brand.cream};padding:32px 16px;">
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(26,24,22,0.08);">
-        <tr><td style="background:linear-gradient(135deg,${brand.dark},${brand.color});padding:28px 32px;">
+        <tr><td style="background:${brand.color};padding:28px 32px;">
           <h1 style="margin:0;color:#fff;font-size:28px;letter-spacing:0.02em;">${brand.name}</h1>
-          <p style="margin:8px 0 0;color:rgba(255,255,255,0.7);font-size:12px;text-transform:uppercase;letter-spacing:0.2em;">Curated Excellence</p>
+          <p style="margin:8px 0 0;color:rgba(255,255,255,0.75);font-size:12px;letter-spacing:0.04em;">Your Neighborhood Superstore</p>
         </td></tr>
         <tr><td style="padding:32px;font-family:Arial,sans-serif;color:${brand.dark};font-size:15px;line-height:1.6;">
           ${body}
@@ -39,7 +38,7 @@ const layout = (title, body) => `
 
 export const welcomeEmail = (name) =>
   layout(
-    'Welcome to ShopHub',
+    'Welcome to ShopMart',
     `
     <h2 style="font-family:Georgia,serif;color:${brand.dark};margin-top:0;">Welcome, ${name}!</h2>
     <p>Thank you for joining <strong>${brand.name}</strong>. Your account is ready — explore our curated collection, save favourites, and enjoy a seamless checkout experience.</p>
@@ -56,7 +55,7 @@ export const orderConfirmationEmail = ({ name, orderId, items, subtotal, shippin
       (i) =>
         `<tr>
           <td style="padding:10px 0;border-bottom:1px solid #e8e4de;">${i.name} × ${i.quantity}</td>
-          <td style="padding:10px 0;border-bottom:1px solid #e8e4de;text-align:right;">$${(i.price * i.quantity).toFixed(2)}</td>
+          <td style="padding:10px 0;border-bottom:1px solid #e8e4de;text-align:right;">Rs. ${(i.price * i.quantity).toFixed(2)}</td>
         </tr>`
     )
     .join('');
@@ -75,14 +74,14 @@ export const orderConfirmationEmail = ({ name, orderId, items, subtotal, shippin
     <p>Hi ${name}, we've received your order <strong>#${orderId}</strong> and it's being prepared with care.</p>
     <table width="100%" style="margin:20px 0;font-size:14px;">${rows}</table>
     <table width="100%" style="font-size:14px;margin-bottom:20px;">
-      <tr><td>Subtotal</td><td style="text-align:right;">$${Number(subtotal || 0).toFixed(2)}</td></tr>
-      <tr><td>Shipping</td><td style="text-align:right;">$${Number(shipping || 0).toFixed(2)}</td></tr>
-      <tr><td>Tax</td><td style="text-align:right;">$${Number(tax || 0).toFixed(2)}</td></tr>
-      <tr><td style="font-weight:bold;padding-top:8px;">Total</td><td style="text-align:right;font-weight:bold;padding-top:8px;color:${brand.color};">$${Number(total || 0).toFixed(2)}</td></tr>
+      <tr><td>Subtotal</td><td style="text-align:right;">Rs. ${Number(subtotal || 0).toFixed(2)}</td></tr>
+      <tr><td>Shipping</td><td style="text-align:right;">Rs. ${Number(shipping || 0).toFixed(2)}</td></tr>
+      <tr><td>Tax</td><td style="text-align:right;">Rs. ${Number(tax || 0).toFixed(2)}</td></tr>
+      <tr><td style="font-weight:bold;padding-top:8px;">Total</td><td style="text-align:right;font-weight:bold;padding-top:8px;color:${brand.color};">Rs. ${Number(total || 0).toFixed(2)}</td></tr>
     </table>
     <p style="font-size:13px;color:#6b6560;"><strong>Shipping to:</strong><br/>${addr}</p>
     <p style="margin:28px 0;">
-      <a href="${process.env.CLIENT_URL || 'http://localhost:5173'}/dashboard" style="display:inline-block;background:${brand.gold};color:${brand.dark};text-decoration:none;padding:14px 28px;border-radius:999px;font-size:13px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;">View Order</a>
+      <a href="${process.env.CLIENT_URL || 'http://localhost:5173'}/dashboard" style="display:inline-block;background:${brand.color};color:#fff;text-decoration:none;padding:14px 28px;border-radius:999px;font-size:13px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;">View Order</a>
     </p>
   `
   );
@@ -124,7 +123,7 @@ export const orderDeliveredEmail = ({ name, orderId, total }) =>
     <p>Hi ${name},</p>
     <p>Your order <strong>#${orderId}</strong> has been delivered. We hope you love every item from your ${brand.name} selection.</p>
     <p style="font-size:18px;color:${brand.color};font-family:Georgia,serif;">Thank you for choosing us.</p>
-    <p style="color:#6b6560;font-size:14px;">Order total: <strong>$${Number(total || 0).toFixed(2)}</strong></p>
+    <p style="color:#6b6560;font-size:14px;">Order total: <strong>Rs. ${Number(total || 0).toFixed(2)}</strong></p>
     <p style="margin:28px 0;">
       <a href="${process.env.CLIENT_URL || 'http://localhost:5173'}/products" style="display:inline-block;background:${brand.dark};color:#fff;text-decoration:none;padding:14px 28px;border-radius:999px;font-size:13px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;">Shop Again</a>
     </p>
@@ -176,7 +175,7 @@ export const giftCardPurchaseEmail = ({ name, cardNumber, amount, recipientEmail
     <p>Your gift card purchase is complete!</p>
     <table width="100%" style="font-size:14px;margin:16px 0;">
       <tr><td style="padding:6px 0;color:#6b6560;width:100px;">Card Number</td><td style="padding:6px 0;"><strong>${esc(cardNumber)}</strong></td></tr>
-      <tr><td style="padding:6px 0;color:#6b6560;">Amount</td><td style="padding:6px 0;"><strong>$${Number(amount).toFixed(2)}</strong></td></tr>
+      <tr><td style="padding:6px 0;color:#6b6560;">Amount</td><td style="padding:6px 0;"><strong>Rs. ${Number(amount).toFixed(2)}</strong></td></tr>
       ${recipientEmail ? `<tr><td style="padding:6px 0;color:#6b6560;">Recipient</td><td style="padding:6px 0;">${esc(recipientName || recipientEmail)}</td></tr>` : ''}
     </table>
     <p>The gift card has been sent to ${recipientEmail ? esc(recipientEmail) : 'your email'}.</p>
@@ -198,7 +197,7 @@ export const loyaltyPointsEarnedEmail = ({ name, points, newBalance, tier }) =>
     </table>
     <p>Keep shopping to unlock more rewards and tier upgrades!</p>
     <p style="margin:28px 0;">
-      <a href="${process.env.CLIENT_URL || 'http://localhost:5173'}/loyalty" style="display:inline-block;background:${brand.gold};color:${brand.dark};text-decoration:none;padding:14px 28px;border-radius:999px;font-size:13px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;">View Rewards</a>
+      <a href="${process.env.CLIENT_URL || 'http://localhost:5173'}/loyalty" style="display:inline-block;background:${brand.color};color:#fff;text-decoration:none;padding:14px 28px;border-radius:999px;font-size:13px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;">View Rewards</a>
     </p>
   `
   );
@@ -212,7 +211,7 @@ export const promoCodeAppliedEmail = ({ name, code, discount }) =>
     <p>Promo code <strong>${esc(code)}</strong> has been applied to your order.</p>
     <table width="100%" style="font-size:14px;margin:16px 0;">
       <tr><td style="padding:6px 0;color:#6b6560;width:100px;">Promo Code</td><td style="padding:6px 0;"><strong>${esc(code)}</strong></td></tr>
-      <tr><td style="padding:6px 0;color:#6b6560;">Discount</td><td style="padding:6px 0;"><strong>$${Number(discount).toFixed(2)}</strong></td></tr>
+      <tr><td style="padding:6px 0;color:#6b6560;">Discount</td><td style="padding:6px 0;"><strong>Rs. ${Number(discount).toFixed(2)}</strong></td></tr>
     </table>
     <p>Enjoy your savings!</p>
   `
@@ -232,7 +231,7 @@ export const loyaltyCardActivatedEmail = ({ name, cardNumber, tier, pointsBalanc
     </table>
     <p>Start shopping to earn more points and unlock exclusive rewards!</p>
     <p style="margin:28px 0;">
-      <a href="${process.env.CLIENT_URL || 'http://localhost:5173'}/loyalty" style="display:inline-block;background:${brand.gold};color:${brand.dark};text-decoration:none;padding:14px 28px;border-radius:999px;font-size:13px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;">View Rewards Program</a>
+      <a href="${process.env.CLIENT_URL || 'http://localhost:5173'}/loyalty" style="display:inline-block;background:${brand.color};color:#fff;text-decoration:none;padding:14px 28px;border-radius:999px;font-size:13px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;">View Rewards Program</a>
     </p>
   `
   );

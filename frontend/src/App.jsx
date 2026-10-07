@@ -5,7 +5,6 @@ import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import DealsBanner from './components/common/DealsBanner';
 import CartDrawer from './components/cart/CartDrawer';
-import AmbientOrbs from './components/ui/AmbientOrbs';
 import AppBootstrap from './components/layout/AppBootstrap';
 import AnimatedMain from './components/layout/AnimatedMain';
 import HomePage from './pages/HomePage';
@@ -48,7 +47,6 @@ import OrderThankYouPage from './pages/OrderThankYouPage';
 import ChatWidget from './components/chat/ChatWidget';
 import QuickViewModal from './components/product/QuickViewModal';
 import CommandPalette from './components/command/CommandPalette';
-import MatrixModeProvider from './providers/MatrixModeProvider';
 import OrderSuccessPage from './pages/OrderSuccessPage';
 import GhostCartPage from './pages/GhostCartPage';
 import { restoreSession, logout } from './store/authSlice';
@@ -82,8 +80,7 @@ const AppLayout = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-luxury-cream dark:bg-luxury-charcoal">
-      <AmbientOrbs />
+    <div className="flex flex-col min-h-screen bg-surface">
       {!hideChrome && <DealsBanner />}
       {!hideChrome && <Navbar />}
       <AnimatedMain>
@@ -142,9 +139,7 @@ function App() {
   return (
     <Router>
       <AppBootstrap>
-        <MatrixModeProvider>
-          <AppLayout />
-        </MatrixModeProvider>
+        <AppLayout />
       </AppBootstrap>
     </Router>
   );

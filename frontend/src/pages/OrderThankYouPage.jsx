@@ -68,23 +68,23 @@ const OrderThankYouPage = () => {
       // Create a simple receipt content for PDF
       const receiptContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h1 style="color: #667eea; text-align: center;">Order Receipt</h1>
-          <div style="margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+          <h1 style="color: #146B45; text-align: center;">Order Receipt</h1>
+          <div style="margin: 20px 0; padding: 15px; background: #F6F3EC; border-radius: 8px;">
             <p><strong>Order Number:</strong> ${order.orderId || (order._id || order.id)?.slice(-6).toUpperCase()}</p>
             <p><strong>Date:</strong> ${new Date(order.createdAt || order.date).toLocaleDateString()}</p>
             <p><strong>Total:</strong> PKR ${Number(order.total).toFixed(2)}</p>
             <p><strong>Payment Method:</strong> ${order.paymentMethod === 'cod' ? 'Cash on Delivery' : order.paymentMethod?.replace('_', ' ')}</p>
             <p><strong>Status:</strong> ${order.status}</p>
           </div>
-          <h2 style="color: #333; margin-top: 20px;">Order Items</h2>
+          <h2 style="color: #1C1917; margin-top: 20px;">Order Items</h2>
           ${order.items?.map((item, index) => `
-            <div style="margin: 10px 0; padding: 10px; border-bottom: 1px solid #eee;">
+            <div style="margin: 10px 0; padding: 10px; border-bottom: 1px solid #E4DDD2;">
               <p><strong>${item.name}</strong></p>
               <p>Quantity: ${item.quantity} | Price: PKR ${Number(item.price).toFixed(2)}</p>
             </div>
           `).join('') || '<p>No items</p>'}
-          <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #667eea;">
-            <p style="text-align: center; color: #666;">Thank you for shopping with ShopMart!</p>
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #146B45;">
+            <p style="text-align: center; color: #5C564E;">Thank you for shopping with ShopMart!</p>
           </div>
         </div>
       `;
@@ -117,7 +117,7 @@ const OrderThankYouPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand mx-auto mb-4"></div>
           <p className="text-gray-600">Loading order details...</p>
         </div>
       </div>
@@ -131,7 +131,7 @@ const OrderThankYouPage = () => {
           <p className="text-red-600 mb-4">Order not found</p>
           <button
             onClick={() => navigate('/')}
-            className="bg-primary-600 text-white px-6 py-2 rounded-lg"
+            className="bg-brand text-white px-6 py-2 rounded-lg"
           >
             Go to Home
           </button>
@@ -141,7 +141,7 @@ const OrderThankYouPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-purple-50 dark:from-slate-900 dark:to-slate-800 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-brand to-surface dark:from-slate-900 dark:to-slate-800 py-12 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Success Card */}
         <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-8 mb-8">
@@ -220,7 +220,7 @@ const OrderThankYouPage = () => {
             <button
               onClick={handleDownloadPDF}
               disabled={isDownloading}
-              className="flex-1 flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors disabled:opacity-50"
+              className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-semibold py-3 px-4 rounded-xl transition-colors disabled:opacity-50"
             >
               <Download className="w-5 h-5" />
               {isDownloading ? 'Downloading...' : 'Download PDF'}
@@ -246,7 +246,7 @@ const OrderThankYouPage = () => {
             </button>
             <button
               onClick={() => navigate('/dashboard')}
-              className="flex-1 flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-xl transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-medium py-3 px-4 rounded-xl transition-colors"
             >
               <ShoppingBag className="w-5 h-5" />
               View Orders
@@ -262,7 +262,7 @@ const OrderThankYouPage = () => {
           </p>
           <button
             onClick={() => navigate('/contact')}
-            className="text-primary-600 hover:text-primary-700 font-medium"
+            className="text-brand hover:text-brand font-medium"
           >
             Contact Support
           </button>

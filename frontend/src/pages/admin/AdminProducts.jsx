@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { apiEndpoints } from '../../services/api';
-import Loader from '../../components/common/Loader';
+import { formatPrice } from '../../utils/helpers';
 
 const emptyForm = {
   name: '',
   price: '',
   category: 'Electronics',
-  brand: 'ShopHub',
+  brand: 'ShopMart',
   image: '',
   stock: 100,
   isLuxury: false,
@@ -70,7 +70,7 @@ const AdminProducts = () => {
       name: p.name,
       price: p.price,
       category: p.category,
-      brand: p.brand || 'ShopHub',
+      brand: p.brand || 'ShopMart',
       image: p.image,
       stock: p.stock ?? 100,
       isLuxury: !!p.isLuxury,
@@ -123,7 +123,7 @@ const AdminProducts = () => {
         </div>
         <button
           type="button"
-          className="btn-gold text-sm !py-2.5 !px-5"
+          className="btn-primary text-sm !py-2.5 !px-5"
           onClick={() => {
             setForm(emptyForm);
             setEditingId(null);
@@ -140,14 +140,14 @@ const AdminProducts = () => {
       {showForm && (
         <form onSubmit={handleSubmit} className="admin-glass p-6 grid sm:grid-cols-2 gap-4">
           <input
-            className="input-premium bg-white/5 border-white/20 text-white sm:col-span-2"
+            className="input bg-white/5 border-white/20 text-white sm:col-span-2"
             placeholder="Name"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             required
           />
           <input
-            className="input-premium bg-white/5 border-white/20 text-white"
+            className="input bg-white/5 border-white/20 text-white"
             placeholder="Price"
             type="number"
             step="0.01"
@@ -156,7 +156,7 @@ const AdminProducts = () => {
             required
           />
           <input
-            className="input-premium bg-white/5 border-white/20 text-white"
+            className="input bg-white/5 border-white/20 text-white"
             placeholder="Category"
             value={form.category}
             onChange={(e) => setForm({ ...form, category: e.target.value })}
@@ -166,14 +166,14 @@ const AdminProducts = () => {
             <div className="flex gap-4 mb-2">
               <button
                 type="button"
-                className={`text-sm px-3 py-1 rounded ${!useFileUpload ? 'bg-primary-600 text-white' : 'bg-white/10 text-white/70'}`}
+                className={`text-sm px-3 py-1 rounded ${!useFileUpload ? 'bg-brand text-white' : 'bg-white/10 text-white/70'}`}
                 onClick={() => setUseFileUpload(false)}
               >
                 URL
               </button>
               <button
                 type="button"
-                className={`text-sm px-3 py-1 rounded ${useFileUpload ? 'bg-primary-600 text-white' : 'bg-white/10 text-white/70'}`}
+                className={`text-sm px-3 py-1 rounded ${useFileUpload ? 'bg-brand text-white' : 'bg-white/10 text-white/70'}`}
                 onClick={() => setUseFileUpload(true)}
               >
                 Upload File
@@ -182,7 +182,7 @@ const AdminProducts = () => {
             
             {!useFileUpload ? (
               <input
-                className="input-premium bg-white/5 border-white/20 text-white w-full"
+                className="input bg-white/5 border-white/20 text-white w-full"
                 placeholder="Image URL"
                 value={form.image}
                 onChange={(e) => {
@@ -197,7 +197,7 @@ const AdminProducts = () => {
                   type="file"
                   accept="image/*"
                   onChange={handleFileSelect}
-                  className="input-premium bg-white/5 border-white/20 text-white w-full"
+                  className="input bg-white/5 border-white/20 text-white w-full"
                 />
                 <p className="text-xs text-white/50">Upload an image file (JPG, PNG, WebP)</p>
               </div>
@@ -226,10 +226,10 @@ const AdminProducts = () => {
             Featured
           </label>
           <div className="sm:col-span-2 flex gap-3">
-            <button type="submit" className="btn-premium !text-xs" disabled={submitting}>
+            <button type="submit" className="btn-primary !text-xs" disabled={submitting}>
               {submitting ? 'Saving...' : (editingId ? 'Update' : 'Create')}
             </button>
-            <button type="button" className="btn-outline !text-xs border-white/30 text-white" onClick={resetForm} disabled={submitting}>
+            <button type="button" className="btn-secondary !text-xs border-white/30 text-white" onClick={resetForm} disabled={submitting}>
               Cancel
             </button>
           </div>
@@ -257,7 +257,7 @@ const AdminProducts = () => {
                     {p.name}
                   </td>
                   <td>{p.category}</td>
-                  <td>${p.price?.toFixed(2)}</td>
+                  <td>{formatPrice(p.price)}</td>
                   <td>{p.stock}</td>
                   <td className="text-right whitespace-nowrap">
                     <button type="button" className="p-2 text-white/60 hover:text-white" onClick={() => startEdit(p)}>

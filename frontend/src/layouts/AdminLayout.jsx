@@ -40,9 +40,9 @@ const AdminLayout = () => {
         <aside className="hidden lg:flex w-64 flex-shrink-0 p-4">
           <div className="admin-sidebar w-full sticky top-4 h-[calc(100vh-2rem)]">
             <Link to="/" className="flex items-center gap-2 px-3 py-2 mb-6">
-              <Store className="w-5 h-5 text-primary-300" />
+              <Store className="w-5 h-5 text-brand" />
               <span className="font-display text-xl tracking-wide">ShopMart</span>
-              <span className="text-[10px] uppercase tracking-widest text-primary-300/80 ml-auto">Admin</span>
+              <span className="text-[10px] uppercase tracking-widest text-brand/80 ml-auto">Admin</span>
             </Link>
             <nav className="flex-1 space-y-1">
               {links.map(({ to, end, label, icon: Icon }) => (

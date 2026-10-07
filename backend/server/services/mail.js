@@ -65,7 +65,7 @@ export function sendWelcomeEmail(user) {
   if (!user?.email) return;
   sendEmailAsync({
     to: user.email,
-    subject: `Welcome to ShopHub, ${user.name?.split(' ')[0] || 'there'}!`,
+    subject: `Welcome to ShopMart, ${user.name?.split(' ')[0] || 'there'}!`,
     html: welcomeEmail(user.name),
   });
 }

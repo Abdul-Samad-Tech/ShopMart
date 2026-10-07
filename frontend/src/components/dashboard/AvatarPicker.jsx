@@ -23,9 +23,9 @@ const AvatarPicker = ({ value, onChange, name = '' }) => {
 
   return (
     <div className="space-y-3">
-      <p className="label-premium mb-0">Profile photo</p>
+      <p className="label mb-0">Profile photo</p>
       <div className="flex flex-wrap items-center gap-5">
-        <div className="w-24 h-24 rounded-2xl bg-gradient-gold flex items-center justify-center text-3xl font-display font-semibold text-luxury-charcoal shadow-gold-glow overflow-hidden ring-2 ring-luxury-line">
+        <div className="w-24 h-24 rounded-2xl bg-accent flex items-center justify-center text-3xl font-display font-semibold text-ink shadow-raised overflow-hidden ring-2 ring-line">
           {value ? (
             <img src={value} alt="" className="w-full h-full object-cover" />
           ) : (
@@ -44,7 +44,7 @@ const AvatarPicker = ({ value, onChange, name = '' }) => {
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="btn-outline !py-2 !px-5 !text-xs"
+            className="btn-secondary !py-2 !px-5 !text-xs"
           >
             Browse photo
           </button>
@@ -52,12 +52,12 @@ const AvatarPicker = ({ value, onChange, name = '' }) => {
             <button
               type="button"
               onClick={() => onChange('')}
-              className="text-xs text-luxury-muted hover:text-red-600 transition-colors text-left"
+              className="text-xs text-ink-muted hover:text-red-600 transition-colors text-left"
             >
               Remove photo
             </button>
           )}
-          <p className="text-xs text-luxury-muted max-w-xs">JPG, PNG or WebP · max 5 MB</p>
+          <p className="text-xs text-ink-muted max-w-xs">JPG, PNG or WebP · max 5 MB</p>
         </div>
       </div>
     </div>

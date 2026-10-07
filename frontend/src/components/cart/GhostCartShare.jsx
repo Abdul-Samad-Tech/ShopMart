@@ -29,10 +29,10 @@ const GhostCartShare = ({ items }) => {
   };
 
   return (
-    <div className="rounded-xl border border-luxury-line dark:border-white/10 bg-white/40 dark:bg-white/5 p-4 space-y-3">
+    <div className="rounded-xl border border-line dark:border-white/10 bg-white/40 dark:bg-white/5 p-4 space-y-3">
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wide text-mart-green">Ghost Cart</p>
-        <p className="text-[11px] text-luxury-muted dark:text-mono-muted mt-0.5">
+        <p className="text-xs font-semibold uppercase tracking-wide text-brand">Ghost Cart</p>
+        <p className="text-[11px] text-ink-muted dark:text-ink-muted mt-0.5">
           Save or share your bag — no login required. Link valid 7 days.
         </p>
       </div>
@@ -41,14 +41,14 @@ const GhostCartShare = ({ items }) => {
         whileTap={{ scale: 0.97 }}
         onClick={share}
         disabled={loading || !items.length}
-        className="btn-outline w-full !text-xs !py-2.5"
+        className="btn-secondary w-full !text-xs !py-2.5"
       >
         {loading ? 'Creating link…' : 'Copy shareable cart link'}
       </motion.button>
       {link && (
         <div className="space-y-2">
-          <p className="text-[10px] text-luxury-muted break-all">{link}</p>
-          <button type="button" onClick={whatsappShare} className="text-xs text-mart-green font-semibold hover:underline">
+          <p className="text-[10px] text-ink-muted break-all">{link}</p>
+          <button type="button" onClick={whatsappShare} className="text-xs text-brand font-semibold hover:underline">
             Share on WhatsApp →
           </button>
         </div>

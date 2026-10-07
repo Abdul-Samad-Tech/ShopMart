@@ -45,15 +45,15 @@ const ProductFilters = ({ onFilterChange, compact = false }) => {
     <div className={compact ? 'space-y-8' : 'glass-panel glass-panel-light p-6 lg:sticky lg:top-28 space-y-8 rounded-2xl'}>
       {!compact && (
         <div className="flex justify-between items-center">
-          <h2 className="font-display text-xl text-luxury-charcoal dark:text-white">Refine</h2>
-          <button type="button" onClick={reset} className="text-xs text-primary-700 dark:text-primary-300 hover:underline font-medium">
+          <h2 className="font-display text-xl text-ink dark:text-white">Refine</h2>
+          <button type="button" onClick={reset} className="text-xs text-brand dark:text-brand hover:underline font-medium">
             Reset all
           </button>
         </div>
       )}
 
       <div>
-        <h3 className="label-premium">Price</h3>
+        <h3 className="label">Price</h3>
         <PriceRangeSlider
           min={Math.floor(priceMin)}
           max={Math.ceil(priceMax)}
@@ -63,7 +63,7 @@ const ProductFilters = ({ onFilterChange, compact = false }) => {
       </div>
 
       <div>
-        <h3 className="label-premium">Category</h3>
+        <h3 className="label">Category</h3>
         <div className="space-y-2 max-h-40 overflow-y-auto">
           <label className="flex items-center gap-3 cursor-pointer text-sm">
             <input type="radio" checked={!category} onChange={() => handleCategory('')} className="radio-premium" />
@@ -85,11 +85,11 @@ const ProductFilters = ({ onFilterChange, compact = false }) => {
 
       {filterMeta?.brands?.length > 0 && (
         <div>
-          <h3 className="label-premium">Brand</h3>
+          <h3 className="label">Brand</h3>
           <select
             value={brand}
             onChange={(e) => updateParams({ brand: e.target.value || undefined })}
-            className="select-premium w-full"
+            className="input w-full"
           >
             <option value="">All brands</option>
             {filterMeta.brands.map((b) => (
@@ -103,7 +103,7 @@ const ProductFilters = ({ onFilterChange, compact = false }) => {
 
       {filterMeta?.colors?.length > 0 && (
         <div>
-          <h3 className="label-premium">Color</h3>
+          <h3 className="label">Color</h3>
           <div className="flex flex-wrap gap-2">
             {filterMeta.colors.map((c) => (
               <button
@@ -112,8 +112,8 @@ const ProductFilters = ({ onFilterChange, compact = false }) => {
                 onClick={() => updateParams({ color: color === c ? undefined : c })}
                 className={`px-3 py-1.5 rounded-full text-xs border transition-all ${
                   color === c
-                    ? 'border-luxury-charcoal bg-luxury-charcoal text-white'
-                    : 'border-luxury-line hover:border-primary-400'
+                    ? 'border-chrome bg-chrome text-white'
+                    : 'border-line hover:border-brand'
                 }`}
               >
                 {c}
@@ -124,16 +124,16 @@ const ProductFilters = ({ onFilterChange, compact = false }) => {
       )}
 
       <div>
-        <h3 className="label-premium">Minimum rating</h3>
+        <h3 className="label">Minimum rating</h3>
         <select
           value={minRating}
           onChange={(e) => updateParams({ minRating: e.target.value || undefined })}
-          className="select-premium w-full"
+          className="input w-full"
         >
           <option value="">Any rating</option>
-          <option value="3">3★ & up</option>
-          <option value="4">4★ & up</option>
-          <option value="4.5">4.5★ & up</option>
+          <option value="3">3 stars and up</option>
+          <option value="4">4 stars and up</option>
+          <option value="4.5">4.5 stars and up</option>
         </select>
       </div>
 
@@ -147,7 +147,7 @@ const ProductFilters = ({ onFilterChange, compact = false }) => {
         <span className="text-sm font-medium">Weekly deals only</span>
       </label>
 
-      <p className="text-[10px] text-luxury-muted">
+      <p className="text-[10px] text-ink-muted">
         Promo codes at checkout: SAVE10, WELCOME15
       </p>
     </div>

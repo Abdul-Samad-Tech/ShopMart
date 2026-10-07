@@ -20,14 +20,14 @@ const NotificationBell = () => {
       <button
         type="button"
         onClick={handleOpen}
-        className="relative p-2.5 rounded-full hover:bg-luxury-ivory dark:hover:bg-white/10 transition-colors"
+        className="relative p-2.5 rounded-full hover:bg-surface-raised dark:hover:bg-white/10 transition-colors"
         aria-label="Notifications"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
         </svg>
         {unread > 0 && (
-          <span className="absolute top-1 right-1 w-2 h-2 bg-gold-500 rounded-full" />
+          <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full" />
         )}
       </button>
 
@@ -39,21 +39,21 @@ const NotificationBell = () => {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
-              className="absolute right-0 mt-2 w-80 max-h-96 overflow-y-auto card-premium z-50 shadow-premium-xl"
+              className="absolute right-0 mt-2 w-80 max-h-96 overflow-y-auto card z-50 shadow-rest-xl"
             >
-              <div className="p-4 border-b border-luxury-line">
-                <p className="text-xs uppercase tracking-luxury text-gold-600 font-semibold">Notifications</p>
+              <div className="p-4 border-b border-line">
+                <p className="text-xs uppercase tracking-wide text-accent font-semibold">Notifications</p>
               </div>
               {items.length === 0 ? (
-                <p className="p-4 text-sm text-luxury-muted">No notifications</p>
+                <p className="p-4 text-sm text-ink-muted">No notifications</p>
               ) : (
                 items.map((n) => (
                   <div
                     key={n.id}
-                    className={`p-4 border-b border-luxury-line/50 text-sm ${!n.read ? 'bg-primary-50/50 dark:bg-white/5' : ''}`}
+                    className={`p-4 border-b border-line/50 text-sm ${!n.read ? 'bg-brand/10/50 dark:bg-white/5' : ''}`}
                   >
-                    <p className="font-semibold text-luxury-charcoal dark:text-white">{n.title}</p>
-                    <p className="text-luxury-muted mt-1">{n.message}</p>
+                    <p className="font-semibold text-ink dark:text-white">{n.title}</p>
+                    <p className="text-ink-muted mt-1">{n.message}</p>
                     {n.link && (
                       <Link
                         to={n.link}
@@ -61,7 +61,7 @@ const NotificationBell = () => {
                           dispatch(markRead(n.id));
                           setOpen(false);
                         }}
-                        className="text-primary-700 text-xs mt-2 inline-block hover:underline"
+                        className="text-brand text-xs mt-2 inline-block hover:underline"
                       >
                         View →
                       </Link>

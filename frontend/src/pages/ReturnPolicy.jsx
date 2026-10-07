@@ -110,22 +110,22 @@ const ReturnPolicy = () => {
       <section className="section-premium">
         <div className="container-premium max-w-3xl text-center">
           <h2 className="text-3xl font-display mb-6">Our Return Promise</h2>
-          <p className="text-luxury-muted leading-relaxed mb-8">
+          <p className="text-ink-muted leading-relaxed mb-8">
             At ShopMart, we want you to be completely satisfied with your purchase. If you're not happy with your purchase, 
             we offer a hassle-free return and exchange policy. Our goal is to make the return process as simple and convenient as possible.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="card-premium p-6">
-              <p className="text-3xl font-display text-primary-600 mb-2">7 Days</p>
-              <p className="text-sm text-luxury-muted">Return Window</p>
+            <div className="card p-6">
+              <p className="text-3xl font-display text-brand mb-2">7 Days</p>
+              <p className="text-sm text-ink-muted">Return Window</p>
             </div>
-            <div className="card-premium p-6">
-              <p className="text-3xl font-display text-primary-600 mb-2">14 Days</p>
-              <p className="text-sm text-luxury-muted">Exchange Window</p>
+            <div className="card p-6">
+              <p className="text-3xl font-display text-brand mb-2">14 Days</p>
+              <p className="text-sm text-ink-muted">Exchange Window</p>
             </div>
-            <div className="card-premium p-6">
-              <p className="text-3xl font-display text-primary-600 mb-2">5-7 Days</p>
-              <p className="text-sm text-luxury-muted">Refund Processing</p>
+            <div className="card p-6">
+              <p className="text-3xl font-display text-brand mb-2">5-7 Days</p>
+              <p className="text-sm text-ink-muted">Refund Processing</p>
             </div>
           </div>
         </div>
@@ -142,13 +142,13 @@ const ReturnPolicy = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="card-premium p-8"
+                className="card p-8"
               >
-                <h3 className="font-display text-xl mb-4 text-gold-600">{policy.title}</h3>
+                <h3 className="font-display text-xl mb-4 text-accent">{policy.title}</h3>
                 <ul className="space-y-3">
                   {policy.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-luxury-muted">
-                      <svg className="w-5 h-5 text-primary-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <li key={item} className="flex items-start gap-3 text-sm text-ink-muted">
+                      <svg className="w-5 h-5 text-brand shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       <span>{item}</span>
@@ -162,7 +162,7 @@ const ReturnPolicy = () => {
       </section>
 
       {/* How to Return */}
-      <section className="section-premium bg-luxury-ivory dark:bg-luxury-slate/30">
+      <section className="section-premium bg-surface-raised dark:bg-surface-raised/30">
         <div className="container-premium">
           <h2 className="text-3xl font-display mb-12 text-center">How to Return or Exchange</h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -180,11 +180,11 @@ const ReturnPolicy = () => {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-12 h-12 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center text-xl font-display font-bold mx-auto mb-4">
+                <div className="w-12 h-12 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xl font-display font-bold mx-auto mb-4">
                   {item.step}
                 </div>
                 <h3 className="font-display text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-luxury-muted">{item.description}</p>
+                <p className="text-sm text-ink-muted">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -203,10 +203,10 @@ const ReturnPolicy = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="card-premium p-6"
+                className="card p-6"
               >
                 <h3 className="font-display text-lg mb-2">{faq.question}</h3>
-                <p className="text-luxury-muted text-sm">{faq.answer}</p>
+                <p className="text-ink-muted text-sm">{faq.answer}</p>
               </motion.div>
             ))}
           </div>
@@ -214,7 +214,7 @@ const ReturnPolicy = () => {
       </section>
 
       {/* Contact */}
-      <section className="section-premium bg-mart-green text-white">
+      <section className="section-premium bg-brand text-white">
         <div className="container-premium text-center">
           <h2 className="text-3xl font-display mb-4">Need Help?</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">

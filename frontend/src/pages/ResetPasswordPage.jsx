@@ -41,39 +41,39 @@ const ResetPasswordPage = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
         <h1 className="text-3xl font-display mb-2">Reset Password</h1>
         <p className="text-slate-600 mb-8">Create a new password for your account</p>
-        <div className="card-premium p-8 space-y-5">
+        <div className="card p-8 space-y-5">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="label-premium">New Password</label>
+              <label className="label">New Password</label>
               <input
                 type="password"
                 required
                 minLength={6}
                 value={formData.newPassword}
                 onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
-                className="input-premium"
+                className="input"
                 placeholder="Enter new password"
               />
             </div>
             <div>
-              <label className="label-premium">Confirm Password</label>
+              <label className="label">Confirm Password</label>
               <input
                 type="password"
                 required
                 minLength={6}
                 value={formData.confirmPassword}
                 onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                className="input-premium"
+                className="input"
                 placeholder="Confirm new password"
               />
             </div>
-            <motion.button type="submit" className="btn-premium w-full" disabled={loading}>
+            <motion.button type="submit" className="btn-primary w-full" disabled={loading}>
               {loading ? 'Resetting...' : 'Reset Password'}
             </motion.button>
           </form>
         </div>
         <p className="text-center text-sm text-slate-500 mt-6">
-          <Link to="/login" className="text-indigo-600 hover:text-indigo-700 font-medium">
+          <Link to="/login" className="text-brand-text hover:text-brand-strong font-medium">
             Back to Sign In
           </Link>
         </p>

@@ -11,7 +11,7 @@ import ProductCard from '../components/common/ProductCard';
 import EditProfilePanel from '../components/dashboard/EditProfilePanel';
 import MotionSection from '../components/ui/MotionSection';
 import { listItemReveal } from '../animations/motionPresets';
-import OrderStatusStepper from '../components/orders/OrderStatusStepper';
+import { formatPrice } from '../utils/helpers';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -97,11 +97,11 @@ const DashboardPage = () => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.92, y: 12 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                className="card-premium p-6 bg-gradient-to-br from-primary-600 to-primary-800 text-white"
+                className="card p-6 bg-gradient-to-br from-brand to-brand text-white"
               >
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <p className="text-xs uppercase tracking-luxury text-white/70 mb-1">Loyalty Card</p>
+                    <p className="text-xs uppercase tracking-wide text-white/70 mb-1">Loyalty Card</p>
                     <p className="text-lg font-display font-semibold">{loyaltyCard.cardNumber}</p>
                   </div>
                   <div className="flex items-center gap-2">
@@ -152,15 +152,15 @@ const DashboardPage = () => {
               initial={{ opacity: 0, scale: 0.92, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="card-premium p-6"
+              className="card p-6"
             >
-              <p className="text-xs uppercase tracking-luxury text-luxury-muted mb-1">Gift Cards</p>
+              <p className="text-xs uppercase tracking-wide text-ink-muted mb-1">Gift Cards</p>
               <p className="text-3xl font-display font-semibold mb-2">{giftCards.length}</p>
-              <p className="text-sm text-luxury-muted">
+              <p className="text-sm text-ink-muted">
                 Total Balance: PKR {giftCards.reduce((sum, card) => sum + card.balance, 0).toFixed(2)}
               </p>
               {giftCards.length > 0 && (
-                <Link to="/gift-cards" className="text-primary-700 text-sm mt-2 inline-block hover:underline">
+                <Link to="/gift-cards" className="text-brand text-sm mt-2 inline-block hover:underline">
                   View all →
                 </Link>
               )}
@@ -171,17 +171,17 @@ const DashboardPage = () => {
               initial={{ opacity: 0, scale: 0.92, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="card-premium p-6"
+              className="card p-6"
             >
-              <p className="text-xs uppercase tracking-luxury text-luxury-muted mb-1">Available Promo Codes</p>
+              <p className="text-xs uppercase tracking-wide text-ink-muted mb-1">Available Promo Codes</p>
               <p className="text-3xl font-display font-semibold mb-2">{promoCodes.length}</p>
-              <p className="text-sm text-luxury-muted">
+              <p className="text-sm text-ink-muted">
                 Active codes you can use
               </p>
               {promoCodes.length > 0 && (
                 <div className="mt-2 space-y-1">
                   {promoCodes.slice(0, 2).map(code => (
-                    <div key={code._id} className="text-xs bg-luxury-ivory dark:bg-white/10 px-2 py-1 rounded">
+                    <div key={code._id} className="text-xs bg-surface-raised dark:bg-white/10 px-2 py-1 rounded">
                       {code.code} - {code.discountType === 'percentage' ? code.discountValue + '%' : 'PKR ' + code.discountValue} off
                     </div>
                   ))}
@@ -198,9 +198,9 @@ const DashboardPage = () => {
               initial={{ opacity: 0, scale: 0.92, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: i * 0.08, type: 'spring', stiffness: 260, damping: 22 }}
-              className="card-premium p-6 hover:shadow-premium-lg transition-shadow"
+              className="card p-6 hover:shadow-raised transition-shadow"
             >
-              <p className="text-xs uppercase tracking-luxury text-luxury-muted mb-1">{s.label}</p>
+              <p className="text-xs uppercase tracking-wide text-ink-muted mb-1">{s.label}</p>
               <p className="text-3xl font-display font-semibold truncate">{s.value}</p>
             </motion.div>
           ))}
@@ -218,12 +218,12 @@ const DashboardPage = () => {
         )}
 
         <section className="grid lg:grid-cols-2 gap-8">
-          <MotionSection variant="slideLeft" className="card-premium p-6 lg:p-8">
+          <MotionSection variant="slideLeft" className="card p-6 lg:p-8">
             <h2 className="font-display text-xl mb-4">Order History</h2>
             {orders.length === 0 ? (
-              <p className="text-sm text-luxury-muted">
+              <p className="text-sm text-ink-muted">
                 No orders yet.{' '}
-                <Link to="/products" className="text-primary-700 underline">
+                <Link to="/products" className="text-brand underline">
                   Start shopping
                 </Link>
               </p>
@@ -236,12 +236,12 @@ const DashboardPage = () => {
                     variants={listItemReveal}
                     initial="hidden"
                     animate="visible"
-                    className="border-b border-luxury-line pb-4 text-sm"
+                    className="border-b border-line pb-4 text-sm"
                   >
                     <div className="flex justify-between items-center gap-2 mb-1">
                       <span className="font-medium">#{order.orderId || order.id?.slice(-6).toUpperCase()}</span>
-                      <span className="capitalize text-luxury-muted text-xs">{order.status}</span>
-                      <span className="font-semibold">${order.total?.toFixed(2)}</span>
+                      <span className="capitalize text-ink-muted text-xs">{order.status}</span>
+                      <span className="font-semibold">{formatPrice(order.total)}</span>
                     </div>
                     <OrderStatusStepper status={order.status} />
                   </motion.li>
@@ -250,10 +250,10 @@ const DashboardPage = () => {
             )}
           </MotionSection>
 
-          <MotionSection variant="slideRight" className="card-premium p-6 lg:p-8">
+          <MotionSection variant="slideRight" className="card p-6 lg:p-8">
             <h2 className="font-display text-xl mb-4">Activity Log</h2>
             {activity.length === 0 ? (
-              <p className="text-sm text-luxury-muted">No recent activity</p>
+              <p className="text-sm text-ink-muted">No recent activity</p>
             ) : (
               <ul className="space-y-3 max-h-64 overflow-y-auto">
                 {activity.map((log, i) => (
@@ -266,7 +266,7 @@ const DashboardPage = () => {
                     className="text-sm"
                   >
                     <span className="font-medium capitalize">{log.action?.replace(/_/g, ' ')}</span>
-                    <span className="text-luxury-muted block text-xs">{new Date(log.at).toLocaleString()}</span>
+                    <span className="text-ink-muted block text-xs">{new Date(log.at).toLocaleString()}</span>
                   </motion.li>
                 ))}
               </ul>
@@ -275,30 +275,30 @@ const DashboardPage = () => {
         </section>
 
         {myReviews.length > 0 && (
-          <MotionSection variant="fadeUp" className="card-premium p-6 lg:p-8">
+          <MotionSection variant="fadeUp" className="card p-6 lg:p-8">
             <h2 className="font-display text-xl mb-4">My Reviews</h2>
             <div className="space-y-4">
               {myReviews.map((review) => (
-                <div key={review._id} className="border-b border-luxury-line pb-4 last:border-0">
+                <div key={review._id} className="border-b border-line pb-4 last:border-0">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
-                      <Link to={`/product/${review.product?._id}`} className="font-medium text-luxury-charcoal dark:text-white hover:text-primary-600">
+                      <Link to={`/product/${review.product?._id}`} className="font-medium text-ink dark:text-white hover:text-brand">
                         {review.product?.name || 'Product'}
                       </Link>
-                      <div className="flex text-gold-500 mt-1">
+                      <div className="flex text-accent mt-1">
                         {[1, 2, 3, 4, 5].map((star) => (
                           <svg
                             key={star}
-                            className={`w-4 h-4 ${star <= review.rating ? 'fill-current' : 'fill-luxury-line dark:fill-white/20'}`}
+                            className={`w-4 h-4 ${star <= review.rating ? 'fill-current' : 'fill-line dark:fill-white/20'}`}
                             viewBox="0 0 20 20"
                           >
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
                       </div>
-                      <p className="text-sm text-luxury-muted mt-2">{review.text}</p>
+                      <p className="text-sm text-ink-muted mt-2">{review.text}</p>
                     </div>
-                    <span className="text-xs text-luxury-muted whitespace-nowrap">
+                    <span className="text-xs text-ink-muted whitespace-nowrap">
                       {new Date(review.createdAt).toLocaleDateString()}
                     </span>
                   </div>
@@ -314,7 +314,7 @@ const DashboardPage = () => {
             dispatch(signOut());
             navigate('/');
           }}
-          className="btn-outline"
+          className="btn-secondary"
         >
           Sign Out
         </button>

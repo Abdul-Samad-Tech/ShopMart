@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { apiEndpoints } from '../../services/api';
-import Loader from '../../components/common/Loader';
+import { formatPrice } from '../../utils/helpers';
 
 const statuses = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
 
@@ -82,7 +82,7 @@ const AdminOrders = () => {
     return (
       <div className="admin-glass p-8 text-center">
         <p className="text-red-300">{error}</p>
-        <button type="button" onClick={load} className="btn-gold text-sm mt-4">
+        <button type="button" onClick={load} className="btn-primary text-sm mt-4">
           Retry
         </button>
       </div>
@@ -129,7 +129,7 @@ const AdminOrders = () => {
                         )}
                       </td>
                       <td className="text-white/80">{o.items?.length || 0}</td>
-                      <td className="text-white font-semibold">${Number(o.total || 0).toFixed(2)}</td>
+                      <td className="text-white font-semibold">{formatPrice(o.total || 0)}</td>
                       <td>
                         <select
                           value={o.status || 'pending'}
@@ -166,7 +166,7 @@ const AdminOrders = () => {
                       <p className="font-mono text-white font-semibold">{formatOrderId(o)}</p>
                       <p className="text-white/90 text-sm mt-1">{formatCustomer(o)}</p>
                     </div>
-                    <p className="text-gold-400 font-semibold">${Number(o.total || 0).toFixed(2)}</p>
+                    <p className="text-accent font-semibold">{formatPrice(o.total || 0)}</p>
                   </div>
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-xs text-white/50">

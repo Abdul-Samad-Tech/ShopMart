@@ -6,7 +6,7 @@ import { apiEndpoints } from '../services/api';
 import PageHeader from '../components/ui/PageHeader';
 import OrderStatusStepper from '../components/orders/OrderStatusStepper';
 import Loader from '../components/common/Loader';
-import RippleButton from '../animations/RippleButton';
+import { formatPrice } from '../utils/helpers';
 
 const formatOrderId = (order) => {
   const id = order?.orderId || order?.id || order?._id;
@@ -70,23 +70,23 @@ const OrderSuccessPage = () => {
       // Create a simple receipt content for PDF
       const receiptContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h1 style="color: #667eea; text-align: center;">Order Receipt</h1>
-          <div style="margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+          <h1 style="color: #146B45; text-align: center;">Order Receipt</h1>
+          <div style="margin: 20px 0; padding: 15px; background: #F6F3EC; border-radius: 8px;">
             <p><strong>Order Number:</strong> ${formatOrderId(order)}</p>
             <p><strong>Date:</strong> ${new Date(order.createdAt || order.date).toLocaleDateString()}</p>
             <p><strong>Total:</strong> PKR ${Number(order.total).toFixed(2)}</p>
             <p><strong>Payment Method:</strong> ${order.paymentMethod === 'cod' ? 'Cash on Delivery' : order.paymentMethod?.replace('_', ' ')}</p>
             <p><strong>Status:</strong> ${order.status}</p>
           </div>
-          <h2 style="color: #333; margin-top: 20px;">Order Items</h2>
+          <h2 style="color: #1C1917; margin-top: 20px;">Order Items</h2>
           ${(order.items || []).map((item, index) => `
-            <div style="margin: 10px 0; padding: 10px; border-bottom: 1px solid #eee;">
+            <div style="margin: 10px 0; padding: 10px; border-bottom: 1px solid #E4DDD2;">
               <p><strong>${item.name}</strong></p>
               <p>Quantity: ${item.quantity} | Price: PKR ${Number(item.price).toFixed(2)}</p>
             </div>
           `).join('') || '<p>No items</p>'}
-          <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #667eea;">
-            <p style="text-align: center; color: #666;">Thank you for shopping with ShopMart!</p>
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #146B45;">
+            <p style="text-align: center; color: #5C564E;">Thank you for shopping with ShopMart!</p>
           </div>
         </div>
       `;
@@ -126,8 +126,8 @@ const OrderSuccessPage = () => {
           breadcrumbs={[{ label: 'Home', to: '/' }, { label: 'Order' }]}
         />
         <div className="container-premium py-20 text-center">
-          <p className="text-luxury-muted dark:text-neutral-400 mb-6">{error || 'Order not found'}</p>
-          <Link to="/products" className="btn-premium">
+          <p className="text-ink-muted dark:text-neutral-400 mb-6">{error || 'Order not found'}</p>
+          <Link to="/products" className="btn-primary">
             Continue shopping
           </Link>
         </div>
@@ -137,11 +137,11 @@ const OrderSuccessPage = () => {
 
   const orderId = formatOrderId(order);
   const whatsappText = encodeURIComponent(
-    `Hi ShopMart, I placed order ${orderId}. Total: $${order.total?.toFixed(2)}. Please confirm delivery time.`
+    `Hi ShopMart, I placed order ${orderId}. Total: ${formatPrice(order.total)}. Please confirm delivery time.`
   );
 
   return (
-    <div className="page-shell bg-gradient-subtle">
+    <div className="page-shell bg-surface">
       <PageHeader
         title="Order confirmed"
         subtitle="Thank you — we're preparing your bag"
@@ -152,35 +152,35 @@ const OrderSuccessPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="card-premium p-8 lg:p-10 text-center mb-8"
+          className="card p-8 lg:p-10 text-center mb-8"
         >
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-mart-green/15 flex items-center justify-center text-3xl">
-            ✓
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-brand/15 flex items-center justify-center text-brand">
+            <CheckCircle className="w-8 h-8" aria-hidden="true" />
           </div>
-          <h2 className="font-display text-3xl mb-2 text-luxury-charcoal dark:text-white">
+          <h2 className="font-display text-3xl mb-2 text-ink dark:text-white">
             You're all set!
           </h2>
-          <p className="text-luxury-muted dark:text-neutral-400 text-sm mb-1">
+          <p className="text-ink-muted dark:text-neutral-400 text-sm mb-1">
             Order {orderId} · Confirmation sent to{' '}
-            <span className="font-medium text-luxury-charcoal dark:text-white">
+            <span className="font-medium text-ink dark:text-white">
               {order.guestEmail || order.shipping?.email}
             </span>
           </p>
-          <p className="text-2xl font-display font-semibold text-mart-green mt-4">
-            ${order.total?.toFixed(2)}
+          <p className="text-2xl font-display font-semibold text-brand mt-4">
+            {formatPrice(order.total)}
           </p>
-          <p className="text-xs uppercase tracking-wide text-luxury-muted dark:text-neutral-500 mt-1">
+          <p className="text-xs uppercase tracking-wide text-ink-muted dark:text-neutral-500 mt-1">
             {order.paymentMethod === 'cod' ? 'Cash on delivery' : order.paymentMethod}
           </p>
         </motion.div>
 
-        <div className="card-premium p-6 lg:p-8 mb-8">
-          <h3 className="font-display text-lg mb-6 text-luxury-charcoal dark:text-white">Order status</h3>
+        <div className="card p-6 lg:p-8 mb-8">
+          <h3 className="font-display text-lg mb-6 text-ink dark:text-white">Order status</h3>
           <OrderStatusStepper status={order.status || 'processing'} />
         </div>
 
-        <div className="card-premium p-6 lg:p-8 mb-8">
-          <h3 className="font-display text-lg mb-4 text-luxury-charcoal dark:text-white">Items</h3>
+        <div className="card p-6 lg:p-8 mb-8">
+          <h3 className="font-display text-lg mb-4 text-ink dark:text-white">Items</h3>
           <ul className="space-y-3">
             {(order.items || []).map((item, i) => (
               <li key={item.product || i} className="flex gap-3 items-center text-sm">
@@ -188,11 +188,11 @@ const OrderSuccessPage = () => {
                   <img src={item.image} alt="" className="w-12 h-12 rounded-lg object-cover shrink-0" />
                 )}
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium truncate text-luxury-charcoal dark:text-white">{item.name}</p>
-                  <p className="text-luxury-muted dark:text-neutral-400 text-xs">Qty {item.quantity}</p>
+                  <p className="font-medium truncate text-ink dark:text-white">{item.name}</p>
+                  <p className="text-ink-muted dark:text-neutral-400 text-xs">Qty {item.quantity}</p>
                 </div>
-                <span className="font-semibold text-luxury-charcoal dark:text-white">
-                  ${((item.price || 0) * (item.quantity || 1)).toFixed(2)}
+                <span className="font-semibold text-ink dark:text-white">
+                  {formatPrice((item.price || 0) * (item.quantity || 1))}
                 </span>
               </li>
             ))}
@@ -203,7 +203,7 @@ const OrderSuccessPage = () => {
           <button
             onClick={handleDownloadPDF}
             disabled={isDownloading}
-            className="flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors disabled:opacity-50"
+            className="flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-semibold py-3 px-6 rounded-xl transition-colors disabled:opacity-50"
           >
             <Download className="w-5 h-5" />
             {isDownloading ? 'Downloading...' : 'Download PDF'}
@@ -223,17 +223,17 @@ const OrderSuccessPage = () => {
             href={`https://wa.me/?text=${whatsappText}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-mart text-center"
+            className="btn-primary text-center"
           >
             WhatsApp support
           </a>
           <Link to="/products">
-            <RippleButton magnetic variantClass="btn-outline w-full sm:w-auto dark:text-white dark:border-white/20">
+            <RippleButton magnetic variantClass="btn-secondary w-full sm:w-auto dark:text-white dark:border-white/20">
               Continue shopping
             </RippleButton>
           </Link>
           {!order.user && (
-            <Link to="/register" className="btn-premium text-center">
+            <Link to="/register" className="btn-primary text-center">
               Create free account
             </Link>
           )}

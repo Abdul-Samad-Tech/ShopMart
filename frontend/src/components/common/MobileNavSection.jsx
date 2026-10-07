@@ -22,7 +22,7 @@ const MobileNavSection = ({ item, onClose }) => {
   ];
 
   return (
-    <div className="border-b border-luxury-line/60 pb-3">
+    <div className="border-b border-line/60 pb-3">
       <button
         type="button"
         onClick={() => setOpen(!open)}
@@ -42,7 +42,7 @@ const MobileNavSection = ({ item, onClose }) => {
             <Link
               to={item.href}
               onClick={onClose}
-              className="text-sm font-semibold text-primary-700 block py-1"
+              className="text-sm font-semibold text-brand block py-1"
             >
               All {item.label}
             </Link>
@@ -51,7 +51,7 @@ const MobileNavSection = ({ item, onClose }) => {
                 key={link.href + link.label}
                 to={link.href}
                 onClick={onClose}
-                className="text-sm text-luxury-muted hover:text-luxury-charcoal block py-1"
+                className="text-sm text-ink-muted hover:text-ink block py-1"
               >
                 {link.label}
               </Link>

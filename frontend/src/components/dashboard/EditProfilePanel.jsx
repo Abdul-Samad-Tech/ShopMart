@@ -46,10 +46,10 @@ const EditProfilePanel = () => {
   };
 
   return (
-    <div className="card-premium p-6 lg:p-8">
+    <div className="card p-6 lg:p-8">
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-gold flex items-center justify-center text-2xl font-display font-semibold text-luxury-charcoal shadow-gold-glow overflow-hidden">
+          <div className="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center text-2xl font-display font-semibold text-ink shadow-raised overflow-hidden">
             {form.avatar ? (
               <img src={form.avatar} alt="" className="w-full h-full object-cover" />
             ) : (
@@ -58,10 +58,10 @@ const EditProfilePanel = () => {
           </div>
           <div>
             <h2 className="font-display text-xl">{user?.name}</h2>
-            <p className="text-sm text-luxury-muted">{user?.email}</p>
+            <p className="text-sm text-ink-muted">{user?.email}</p>
           </div>
         </div>
-        <button type="button" onClick={() => setOpen(!open)} className="btn-outline !py-2.5 !px-6 !text-xs">
+        <button type="button" onClick={() => setOpen(!open)} className="btn-secondary !py-2.5 !px-6 !text-xs">
           {open ? 'Close' : 'Edit Profile'}
         </button>
       </div>
@@ -73,7 +73,7 @@ const EditProfilePanel = () => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             onSubmit={handleSubmit}
-            className="overflow-hidden border-t border-luxury-line pt-6 space-y-4"
+            className="overflow-hidden border-t border-line pt-6 space-y-4"
           >
             <AvatarPicker
               value={form.avatar}
@@ -92,8 +92,8 @@ const EditProfilePanel = () => {
                 className="opacity-60 pointer-events-none"
               />
             </div>
-            <p className="text-xs text-luxury-muted">Email is tied to your account and cannot be changed here.</p>
-            <button type="submit" disabled={saving} className="btn-premium !text-xs">
+            <p className="text-xs text-ink-muted">Email is tied to your account and cannot be changed here.</p>
+            <button type="submit" disabled={saving} className="btn-primary !text-xs">
               {saving ? 'Saving…' : 'Save changes'}
             </button>
           </motion.form>

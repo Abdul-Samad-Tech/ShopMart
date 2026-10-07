@@ -54,7 +54,7 @@ const GoogleSignIn = () => {
     <div className="space-y-3 pt-1">
       <GoogleOriginHint />
       <div className="divider-premium">
-        <span className="text-xs uppercase tracking-wide text-luxury-muted">or</span>
+        <span className="text-xs uppercase tracking-wide text-ink-muted">or</span>
       </div>
 
       {!ready && !clientId ? (
@@ -72,7 +72,7 @@ const GoogleSignIn = () => {
           />
         </div>
       ) : (
-        <p className="text-xs text-center text-luxury-muted">Google Sign-In not configured in .env</p>
+        <p className="text-xs text-center text-ink-muted">Google Sign-In not configured in .env</p>
       )}
     </div>
   );

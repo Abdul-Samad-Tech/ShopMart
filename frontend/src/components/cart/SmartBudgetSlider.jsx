@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setBudgetLimit } from '../../store/uiSlice';
 import { removeFromCart, addToCart } from '../../store/cartSlice';
 import { selectCartItems, selectCartTotals } from '../../store/cartSelectors';
-import { apiEndpoints } from '../../services/api';
+import { formatPrice } from '../../utils/helpers';
 
 const FREE_SHIPPING = 50;
 
@@ -56,10 +56,10 @@ const SmartBudgetSlider = () => {
   };
 
   return (
-    <div className="rounded-xl border border-mart-orange/30 bg-mart-orange/5 p-4 space-y-3">
+    <div className="rounded-xl border border-accent/30 bg-accent/5 p-4 space-y-3">
       <div className="flex justify-between items-center">
-        <p className="text-xs font-bold uppercase tracking-wide text-mart-orange">Smart budget</p>
-        <span className="text-sm font-semibold text-luxury-charcoal dark:text-white">${subtotal.toFixed(2)} / ${budget}</span>
+        <p className="text-xs font-bold uppercase tracking-wide text-accent">Smart budget</p>
+        <span className="text-sm font-semibold text-ink dark:text-white">{formatPrice(subtotal)} / {formatPrice(budget)}</span>
       </div>
       <input
         type="range"
@@ -68,7 +68,7 @@ const SmartBudgetSlider = () => {
         step={5}
         value={budget}
         onChange={(e) => dispatch(setBudgetLimit(Number(e.target.value)))}
-        className="w-full accent-mart-orange"
+        className="w-full accent-accent"
       />
       <AnimatePresence mode="wait">
         {over ? (
@@ -77,23 +77,23 @@ const SmartBudgetSlider = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="space-y-2 text-xs text-luxury-muted dark:text-mono-muted"
+            className="space-y-2 text-xs text-ink-muted"
           >
             <p>
-              You are <strong className="text-mart-orange">${(subtotal - budget).toFixed(2)}</strong> over budget.
+              You are <strong className="text-accent">{formatPrice(subtotal - budget)}</strong> over budget.
             </p>
             {alternatives.map(({ remove, add }) => (
               <button
                 key={add.id}
                 type="button"
                 onClick={() => applySwap(remove, add)}
-                className="w-full text-left p-3 rounded-lg border border-luxury-line dark:border-white/10 bg-white/60 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-colors"
+                className="w-full text-left p-3 rounded-lg border border-line dark:border-white/10 bg-white/60 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-colors"
               >
-                <span className="text-luxury-charcoal dark:text-white font-medium block">
+                <span className="text-ink dark:text-white font-medium block">
                   Swap {remove.name} → {add.name}
                 </span>
-                <span className="text-[10px] text-mart-green">
-                  Save ${(remove.price - add.price).toFixed(2)}
+                <span className="text-[10px] text-brand">
+                  Save {formatPrice(remove.price - add.price)}
                   {getsFreeShipping && ' · unlocks free delivery'}
                 </span>
               </button>
@@ -104,7 +104,7 @@ const SmartBudgetSlider = () => {
             key="ok"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-xs text-mart-green font-medium"
+            className="text-xs text-brand font-medium"
           >
             Within budget{subtotal >= FREE_SHIPPING ? ' · free delivery unlocked' : ''}
           </motion.p>

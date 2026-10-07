@@ -9,7 +9,7 @@ import { selectCartTotals } from '../../store/cartSelectors';
 import NotificationBell from './NotificationBell';
 import MegaMenu from './MegaMenu';
 import MobileNavSection from './MobileNavSection';
-import SearchBar from '../search/SearchBar';
+import { Sun, Moon } from 'lucide-react';
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -67,7 +67,7 @@ const Navbar = () => {
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2.5 rounded-full hover:bg-luxury-ivory dark:hover:bg-white/10 text-luxury-charcoal dark:text-white shrink-0"
+            className="p-2.5 rounded-full hover:bg-surface-raised dark:hover:bg-white/10 text-ink dark:text-white shrink-0"
             aria-label="Menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,18 +80,18 @@ const Navbar = () => {
           </button>
 
           <Link to="/" className="flex flex-col group shrink-0">
-            <span className="text-2xl font-display font-bold text-luxury-charcoal dark:text-white tracking-tight">
+            <span className="text-2xl font-display font-bold text-ink dark:text-white tracking-tight">
               {branding.siteName?.includes('Mart') ? (
                 <>
-                  <span className="text-mart-green">Shop</span>
-                  <span className="text-mart-orange">Mart</span>
+                  <span className="text-brand">Shop</span>
+                  <span className="text-accent">Mart</span>
                 </>
               ) : (
                 branding.siteName
               )}
             </span>
             {branding.tagline && (
-              <span className="text-[10px] uppercase tracking-luxury text-luxury-muted dark:text-neutral-400 -mt-0.5 hidden sm:block">
+              <span className="text-[10px] uppercase tracking-wide text-ink-muted dark:text-neutral-400 -mt-0.5 hidden sm:block">
                 {branding.tagline}
               </span>
             )}
@@ -115,10 +115,10 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => dispatch(toggleTheme())}
-                className="p-2.5 rounded-full hover:bg-luxury-ivory dark:hover:bg-white/10 text-luxury-charcoal dark:text-white"
+                className="min-w-11 min-h-11 p-2.5 rounded-full hover:bg-surface-raised text-ink inline-flex items-center justify-center"
                 aria-label="Toggle theme"
               >
-                {themeMode === 'dark' ? '☀️' : '🌙'}
+                {themeMode === 'dark' ? <Sun className="w-5 h-5" aria-hidden="true" /> : <Moon className="w-5 h-5" aria-hidden="true" />}
               </button>
             )}
 
@@ -127,7 +127,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => dispatch(openCartDrawer())}
-              className="relative p-2.5 rounded-full hover:bg-luxury-ivory dark:hover:bg-white/10 text-luxury-charcoal dark:text-white"
+              className="relative p-2.5 rounded-full hover:bg-surface-raised dark:hover:bg-white/10 text-ink dark:text-white"
               aria-label="Open shopping bag"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -137,7 +137,7 @@ const Navbar = () => {
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 flex items-center justify-center text-[10px] font-bold bg-gold-500 text-luxury-charcoal rounded-full"
+                  className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 flex items-center justify-center text-[10px] font-bold bg-accent text-ink rounded-full"
                 >
                   {quantity}
                 </motion.span>
@@ -149,20 +149,20 @@ const Navbar = () => {
                 {user?.role === 'admin' && (
                   <Link
                     to="/admin"
-                    className="hidden md:block text-xs font-semibold uppercase tracking-wide text-primary-700 dark:text-primary-300 hover:underline"
+                    className="hidden md:block text-xs font-semibold uppercase tracking-wide text-brand dark:text-brand hover:underline"
                   >
                     Admin
                   </Link>
                 )}
-                <Link to="/dashboard" className="hidden sm:flex items-center pl-2 border-l border-luxury-line ml-1">
-                  <span className="w-8 h-8 rounded-full bg-primary-100 text-primary-800 flex items-center justify-center text-sm font-semibold">
+                <Link to="/dashboard" className="hidden sm:flex items-center pl-2 border-l border-line ml-1">
+                  <span className="w-8 h-8 rounded-full bg-brand/10 text-brand flex items-center justify-center text-sm font-semibold">
                     {user?.name?.[0] || 'U'}
                   </span>
                 </Link>
               </>
             ) : (
               <Link to="/login" className="hidden sm:block ml-2">
-                <span className="btn-premium !py-2.5 !px-6 !text-xs">Sign In</span>
+                <span className="btn-primary !py-2.5 !px-6 !text-xs">Sign In</span>
               </Link>
             )}
           </div>
@@ -189,14 +189,14 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 left-0 h-screen w-96 max-w-[90vw] bg-white dark:bg-luxury-charcoal z-[100] shadow-2xl"
+              className="fixed top-0 left-0 h-screen w-96 max-w-[90vw] bg-white dark:bg-chrome z-[100] shadow-2xl"
             >
               <div className="h-full flex flex-col p-6">
                 <div className="flex justify-between items-center mb-8 shrink-0">
                   <h2 className="text-xl font-display font-bold">Menu</h2>
                   <button
                     onClick={() => setMobileOpen(false)}
-                    className="p-2 rounded-full hover:bg-luxury-ivory dark:hover:bg-white/10"
+                    className="p-2 rounded-full hover:bg-surface-raised dark:hover:bg-white/10"
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
@@ -216,8 +216,8 @@ const Navbar = () => {
                       onClick={() => setMobileOpen(false)}
                       className={`block px-4 py-3 rounded-lg transition-colors ${
                         isActive(item.href)
-                          ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 font-medium'
-                          : 'text-luxury-charcoal dark:text-white hover:bg-luxury-ivory dark:hover:bg-white/10'
+                          ? 'bg-brand/10 dark:bg-brand/30 text-brand dark:text-brand font-medium'
+                          : 'text-ink dark:text-white hover:bg-surface-raised dark:hover:bg-white/10'
                       }`}
                     >
                       {item.label}
@@ -226,11 +226,11 @@ const Navbar = () => {
                 </nav>
 
                 {isAuthenticated && user?.role === 'admin' && (
-                  <div className="mt-6 pt-6 border-t border-luxury-line shrink-0">
+                  <div className="mt-6 pt-6 border-t border-line shrink-0">
                     <Link
                       to="/admin"
                       onClick={() => setMobileOpen(false)}
-                      className="block px-4 py-3 rounded-lg text-primary-700 dark:text-primary-300 font-medium hover:bg-primary-100 dark:hover:bg-primary-900/30"
+                      className="block px-4 py-3 rounded-lg text-brand dark:text-brand font-medium hover:bg-brand/10 dark:hover:bg-brand-strong/30"
                     >
                       Admin Panel
                     </Link>
@@ -238,11 +238,11 @@ const Navbar = () => {
                 )}
 
                 {!isAuthenticated && (
-                  <div className="mt-6 pt-6 border-t border-luxury-line shrink-0">
+                  <div className="mt-6 pt-6 border-t border-line shrink-0">
                     <Link
                       to="/login"
                       onClick={() => setMobileOpen(false)}
-                      className="block btn-premium text-center"
+                      className="block btn-primary text-center"
                     >
                       Sign In
                     </Link>

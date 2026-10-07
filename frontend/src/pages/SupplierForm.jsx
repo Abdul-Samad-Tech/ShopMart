@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { TrendingUp, Banknote, Handshake, BarChart3 } from 'lucide-react';
 import PageHeader from '../components/ui/PageHeader';
 import { apiEndpoints } from '../services/api';
 
@@ -97,7 +98,7 @@ const SupplierForm = () => {
       />
 
       {/* Hero Section */}
-      <section className="section-premium bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+      <section className="section-premium bg-gradient-to-br from-brand to-brand text-white">
         <div className="container-premium text-center py-16">
           <h2 className="text-4xl font-display mb-4">Partner With Us</h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
@@ -113,10 +114,10 @@ const SupplierForm = () => {
           <h2 className="text-3xl font-display mb-12 text-center">Why Partner With ShopMart?</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { icon: '📈', title: 'Wide Reach', description: 'Access to millions of customers across Pakistan' },
-              { icon: '💰', title: 'Timely Payments', description: 'Reliable and prompt payment cycles' },
-              { icon: '🤝', title: 'Long-term Partnership', description: 'Build lasting business relationships' },
-              { icon: '📊', title: 'Market Insights', description: 'Access to customer trends and data' }
+              { icon: TrendingUp, title: 'Wide Reach', description: 'Access to millions of customers across Pakistan' },
+              { icon: Banknote, title: 'Timely Payments', description: 'Reliable and prompt payment cycles' },
+              { icon: Handshake, title: 'Long-term Partnership', description: 'Build lasting business relationships' },
+              { icon: BarChart3, title: 'Market Insights', description: 'Access to customer trends and data' }
             ].map((benefit, index) => (
               <motion.div
                 key={benefit.title}
@@ -124,11 +125,13 @@ const SupplierForm = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="card-premium p-6 text-center"
+                className="card p-6 text-center"
               >
-                <div className="text-4xl mb-4">{benefit.icon}</div>
+                <div className="flex justify-center mb-4 text-brand">
+                  <benefit.icon className="w-8 h-8" aria-hidden="true" />
+                </div>
                 <h3 className="font-display text-lg mb-2">{benefit.title}</h3>
-                <p className="text-sm text-luxury-muted">{benefit.description}</p>
+                <p className="text-sm text-ink-muted">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -136,13 +139,13 @@ const SupplierForm = () => {
       </section>
 
       {/* Application Form */}
-      <section className="section-premium bg-luxury-ivory dark:bg-luxury-slate/30">
+      <section className="section-premium bg-surface-raised dark:bg-surface-raised/30">
         <div className="container-premium max-w-4xl">
           <h2 className="text-3xl font-display mb-8 text-center">Supplier Application Form</h2>
-          <form onSubmit={handleSubmit} className="card-premium p-8">
+          <form onSubmit={handleSubmit} className="card p-8">
             {/* Company Information */}
             <div className="mb-8">
-              <h3 className="font-display text-xl mb-4 text-gold-600">Company Information</h3>
+              <h3 className="font-display text-xl mb-4 text-accent">Company Information</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">Company Name *</label>
@@ -152,7 +155,7 @@ const SupplierForm = () => {
                     required
                     value={formData.companyName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   />
                 </div>
                 <div>
@@ -163,7 +166,7 @@ const SupplierForm = () => {
                     required
                     value={formData.contactPerson}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   />
                 </div>
                 <div>
@@ -174,7 +177,7 @@ const SupplierForm = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   />
                 </div>
                 <div>
@@ -185,7 +188,7 @@ const SupplierForm = () => {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -196,7 +199,7 @@ const SupplierForm = () => {
                     required
                     value={formData.address}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   />
                 </div>
                 <div>
@@ -206,7 +209,7 @@ const SupplierForm = () => {
                     required
                     value={formData.city}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   >
                     <option value="">Select City</option>
                     <option value="Karachi">Karachi</option>
@@ -228,7 +231,7 @@ const SupplierForm = () => {
                     required
                     value={formData.businessRegistration}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   />
                 </div>
                 <div>
@@ -239,7 +242,7 @@ const SupplierForm = () => {
                     required
                     value={formData.taxNumber}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   />
                 </div>
               </div>
@@ -247,7 +250,7 @@ const SupplierForm = () => {
 
             {/* Product Information */}
             <div className="mb-8">
-              <h3 className="font-display text-xl mb-4 text-gold-600">Product Information</h3>
+              <h3 className="font-display text-xl mb-4 text-accent">Product Information</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">Product Category *</label>
@@ -256,7 +259,7 @@ const SupplierForm = () => {
                     required
                     value={formData.productCategory}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   >
                     <option value="">Select Category</option>
                     {categories.map(cat => (
@@ -271,7 +274,7 @@ const SupplierForm = () => {
                     required
                     value={formData.annualCapacity}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   >
                     <option value="">Select Capacity</option>
                     <option value="Less than 100,000 units">Less than 100,000 units</option>
@@ -289,7 +292,7 @@ const SupplierForm = () => {
                     value={formData.productDescription}
                     onChange={handleChange}
                     placeholder="Describe your products in detail..."
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none resize-none"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -300,7 +303,7 @@ const SupplierForm = () => {
                     value={formData.certifications}
                     onChange={handleChange}
                     placeholder="List any relevant certifications"
-                    className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                   />
                 </div>
               </div>
@@ -308,7 +311,7 @@ const SupplierForm = () => {
 
             {/* Additional Information */}
             <div className="mb-8">
-              <h3 className="font-display text-xl mb-4 text-gold-600">Additional Information</h3>
+              <h3 className="font-display text-xl mb-4 text-accent">Additional Information</h3>
               <div>
                 <label className="block text-sm font-medium mb-2">Additional Information</label>
                 <textarea
@@ -317,7 +320,7 @@ const SupplierForm = () => {
                   value={formData.additionalInfo}
                   onChange={handleChange}
                   placeholder="Any other information you would like to share..."
-                  className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none resize-none"
                 />
               </div>
             </div>
@@ -328,15 +331,15 @@ const SupplierForm = () => {
                 <input
                   type="checkbox"
                   required
-                  className="mt-1 w-5 h-5 rounded border-luxury-line"
+                  className="mt-1 w-5 h-5 rounded border-line"
                 />
-                <span className="text-sm text-luxury-muted">
+                <span className="text-sm text-ink-muted">
                   I confirm that all information provided is accurate and I agree to ShopMart's supplier terms and conditions.
                 </span>
               </label>
             </div>
 
-            <button type="submit" className="btn-premium w-full">
+            <button type="submit" className="btn-primary w-full">
               Submit Application
             </button>
           </form>
@@ -344,7 +347,7 @@ const SupplierForm = () => {
       </section>
 
       {/* Contact */}
-      <section className="section-premium bg-mart-green text-white">
+      <section className="section-premium bg-brand text-white">
         <div className="container-premium text-center">
           <h2 className="text-3xl font-display mb-4">Questions?</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">

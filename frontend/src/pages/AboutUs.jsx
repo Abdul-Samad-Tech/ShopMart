@@ -23,48 +23,48 @@ const AboutUs = () => {
             <h2 className="text-3xl font-display mb-6">Our Story</h2>
             {story.length > 0 ? (
               story.map((para, i) => (
-                <p key={i} className="text-luxury-muted leading-relaxed mb-4">{para}</p>
+                <p key={i} className="text-ink-muted leading-relaxed mb-4">{para}</p>
               ))
             ) : (
               <>
-                <p className="text-luxury-muted leading-relaxed mb-4">
+                <p className="text-ink-muted leading-relaxed mb-4">
                   Founded with a passion for bringing quality products to every household, ShopMart has grown from a small local store to a trusted retail chain across Pakistan. Our journey began with a simple mission: to provide customers with the best products at competitive prices while maintaining the highest standards of quality and service.
                 </p>
-                <p className="text-luxury-muted leading-relaxed mb-4">
+                <p className="text-ink-muted leading-relaxed mb-4">
                   Over the years, we have expanded our footprint, opened multiple stores in major cities, and built lasting relationships with millions of satisfied customers. Our commitment to excellence has made us a household name, trusted for quality, value, and reliability.
                 </p>
-                <p className="text-luxury-muted leading-relaxed">
+                <p className="text-ink-muted leading-relaxed">
                   Today, we continue to innovate and adapt to the changing needs of our customers, embracing technology while staying true to our core values of integrity, customer satisfaction, and community service.
                 </p>
               </>
             )}
           </div>
           {stats.length > 0 ? (
-            <div className="card-elevated p-10 grid grid-cols-2 gap-8">
+            <div className="card p-10 grid grid-cols-2 gap-8">
               {stats.map((s) => (
                 <div key={s.label} className="text-center">
                   <p className="text-3xl font-display text-gradient">{s.value}</p>
-                  <p className="text-xs uppercase tracking-wide text-luxury-muted mt-1">{s.label}</p>
+                  <p className="text-xs uppercase tracking-wide text-ink-muted mt-1">{s.label}</p>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="card-elevated p-10 grid grid-cols-2 gap-8">
+            <div className="card p-10 grid grid-cols-2 gap-8">
               <div className="text-center">
                 <p className="text-3xl font-display text-gradient">50+</p>
-                <p className="text-xs uppercase tracking-wide text-luxury-muted mt-1">Stores</p>
+                <p className="text-xs uppercase tracking-wide text-ink-muted mt-1">Stores</p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-display text-gradient">1M+</p>
-                <p className="text-xs uppercase tracking-wide text-luxury-muted mt-1">Happy Customers</p>
+                <p className="text-xs uppercase tracking-wide text-ink-muted mt-1">Happy Customers</p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-display text-gradient">500+</p>
-                <p className="text-xs uppercase tracking-wide text-luxury-muted mt-1">Brands</p>
+                <p className="text-xs uppercase tracking-wide text-ink-muted mt-1">Brands</p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-display text-gradient">15+</p>
-                <p className="text-xs uppercase tracking-wide text-luxury-muted mt-1">Years</p>
+                <p className="text-xs uppercase tracking-wide text-ink-muted mt-1">Years</p>
               </div>
             </div>
           )}
@@ -72,16 +72,16 @@ const AboutUs = () => {
       </section>
 
       {/* Vision & Mission */}
-      <section className="section-premium bg-luxury-ivory dark:bg-luxury-slate/30">
+      <section className="section-premium bg-surface-raised dark:bg-surface-raised/30">
         <div className="container-premium grid md:grid-cols-2 gap-12">
           <motion.div 
             initial={{ opacity: 0, x: -20 }} 
             whileInView={{ opacity: 1, x: 0 }} 
             viewport={{ once: true }}
-            className="card-premium p-8"
+            className="card p-8"
           >
-            <h2 className="text-2xl font-display mb-4 text-gold-600">Our Vision</h2>
-            <p className="text-luxury-muted leading-relaxed">
+            <h2 className="text-2xl font-display mb-4 text-accent">Our Vision</h2>
+            <p className="text-ink-muted leading-relaxed">
               To be Pakistan's most trusted and preferred retail destination, known for quality products, exceptional service, and unwavering commitment to customer satisfaction. We aim to transform the shopping experience by combining traditional values with modern convenience.
             </p>
           </motion.div>
@@ -89,10 +89,10 @@ const AboutUs = () => {
             initial={{ opacity: 0, x: 20 }} 
             whileInView={{ opacity: 1, x: 0 }} 
             viewport={{ once: true }}
-            className="card-premium p-8"
+            className="card p-8"
           >
-            <h2 className="text-2xl font-display mb-4 text-gold-600">Our Mission</h2>
-            <p className="text-luxury-muted leading-relaxed">
+            <h2 className="text-2xl font-display mb-4 text-accent">Our Mission</h2>
+            <p className="text-ink-muted leading-relaxed">
               To provide our customers with a wide range of quality products at competitive prices while maintaining the highest standards of service. We are committed to building long-term relationships with our customers, suppliers, and communities through trust, transparency, and mutual growth.
             </p>
           </motion.div>
@@ -105,9 +105,9 @@ const AboutUs = () => {
           <h2 className="text-3xl font-display mb-8 text-center container-premium">Our Core Values</h2>
           <div className="container-premium grid md:grid-cols-3 gap-8">
             {values.map((v, i) => (
-              <motion.div key={v.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="card-premium p-8">
+              <motion.div key={v.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="card p-8">
                 <h3 className="font-display text-xl mb-3">{v.title}</h3>
-                <p className="text-sm text-luxury-muted">{v.description}</p>
+                <p className="text-sm text-ink-muted">{v.description}</p>
               </motion.div>
             ))}
           </div>
@@ -124,9 +124,9 @@ const AboutUs = () => {
               { title: 'Community', description: 'We are committed to giving back to the communities that support us.' },
               { title: 'Teamwork', description: 'We believe in the power of collaboration and respect every member of our team.' },
             ].map((v, i) => (
-              <motion.div key={v.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="card-premium p-8">
+              <motion.div key={v.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="card p-8">
                 <h3 className="font-display text-xl mb-3">{v.title}</h3>
-                <p className="text-sm text-luxury-muted">{v.description}</p>
+                <p className="text-sm text-ink-muted">{v.description}</p>
               </motion.div>
             ))}
           </div>

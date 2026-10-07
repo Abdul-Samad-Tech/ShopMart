@@ -13,7 +13,8 @@ import PageHeader from '../components/ui/PageHeader';
 import PremiumSpinner from '../components/common/PremiumSpinner';
 import Skeleton from '../components/ui/Skeleton';
 import TiltCard from '../animations/TiltCard';
-import useOptimisticWishlist from '../hooks/useOptimisticWishlist';
+import { Heart, Check } from 'lucide-react';
+import { formatPrice } from '../utils/helpers';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -113,7 +114,7 @@ const ProductDetail = () => {
       <div className="page-shell bg-black min-h-screen">
         <CinematicProductStory product={product} onClassicView={() => setCinematic(false)} />
         {relatedProducts.length > 0 && (
-          <section className="py-20 bg-mono-black border-t border-white/10">
+          <section className="py-20 bg-chrome border-t border-white/10">
             <div className="container-premium">
               <h2 className="text-3xl font-display mb-10 text-center text-white">You May Also Like</h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -133,7 +134,7 @@ const ProductDetail = () => {
       type="button"
       onClick={onClick}
       className={`min-w-[3rem] px-4 py-2.5 rounded-xl text-sm font-medium border transition-all ${
-        active ? 'border-luxury-charcoal bg-luxury-charcoal text-white' : 'border-luxury-line hover:border-primary-400'
+        active ? 'border-chrome bg-chrome text-white' : 'border-line hover:border-brand'
       }`}
     >
       {children}
@@ -156,33 +157,33 @@ const ProductDetail = () => {
           <button
             type="button"
             onClick={() => setCinematic(true)}
-            className="mb-6 text-sm text-mart-green font-semibold hover:underline"
+            className="mb-6 text-sm text-brand font-semibold hover:underline"
           >
-            ✦ Cinematic story mode
+            Cinematic story mode
           </button>
         )}
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="grid lg:grid-cols-2 gap-12">
           <TiltCard maxTilt={8} className="rounded-2xl group product-image-wrap">
-            <div className="relative rounded-2xl overflow-hidden bg-luxury-ivory aspect-square">
+            <div className="relative rounded-2xl overflow-hidden bg-surface-raised aspect-square">
               <img src={product.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80'} alt={product.name} loading="lazy" className="w-full h-full object-cover product-image group-hover:opacity-0 transition-opacity duration-500" />
               {product.hoverImage && (
                 <img src={product.hoverImage} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 product-image" />
               )}
-              {product.discount > 0 && <span className="absolute top-6 left-6 badge-premium z-10">{product.discount}% Off</span>}
+              {product.discount > 0 && <span className="absolute top-6 left-6 badge z-10">{product.discount}% Off</span>}
             </div>
           </TiltCard>
 
           <div>
-            <p className="text-xs uppercase tracking-luxury text-gold-600 font-semibold mb-2">{product.brand}</p>
+            <p className="text-xs uppercase tracking-wide text-accent font-semibold mb-2">{product.brand}</p>
             <h1 className="text-3xl md:text-4xl font-display mb-4">{product.name}</h1>
-            <div className="flex items-baseline gap-3 mb-6 pb-6 border-b border-luxury-line">
-              <span className="text-3xl font-display font-semibold">${product.price?.toFixed(2)}</span>
-              {product.originalPrice && <span className="text-lg text-luxury-muted line-through">${product.originalPrice}</span>}
+            <div className="flex items-baseline gap-3 mb-6 pb-6 border-b border-line">
+              <span className="text-3xl font-display font-semibold">{formatPrice(product.price)}</span>
+              {product.originalPrice && <span className="text-lg text-ink-muted line-through">{formatPrice(product.originalPrice)}</span>}
             </div>
 
             <div className="flex items-center gap-3 mb-6">
-              <div className="flex text-gold-500">
+              <div className="flex text-accent">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
                     key={star}
@@ -194,7 +195,7 @@ const ProductDetail = () => {
                     disabled={!isAuthenticated}
                   >
                     <svg
-                      className={`w-6 h-6 ${star <= (hoverRating || userRating) ? 'fill-current' : 'fill-luxury-line dark:fill-white/20'}`}
+                      className={`w-6 h-6 ${star <= (hoverRating || userRating) ? 'fill-current' : 'fill-line dark:fill-white/20'}`}
                       viewBox="0 0 20 20"
                     >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -202,18 +203,18 @@ const ProductDetail = () => {
                   </button>
                 ))}
               </div>
-              <span className="text-sm text-luxury-muted">
+              <span className="text-sm text-ink-muted">
                 {product.rating?.toFixed(1) || '4.5'} ({product.reviews || 0} reviews)
               </span>
-              {!isAuthenticated && <span className="text-xs text-luxury-muted">(Login to rate)</span>}
+              {!isAuthenticated && <span className="text-xs text-ink-muted">(Login to rate)</span>}
             </div>
-            <p className="text-luxury-muted leading-relaxed mb-6">{product.description}</p>
+            <p className="text-ink-muted leading-relaxed mb-6">{product.description}</p>
 
             {product.specifications?.length > 0 && (
               <dl className="grid grid-cols-2 gap-3 mb-6 text-sm">
                 {product.specifications.map((s) => (
-                  <div key={s.label} className="bg-luxury-ivory dark:bg-white/5 rounded-lg p-3">
-                    <dt className="text-luxury-muted text-xs">{s.label}</dt>
+                  <div key={s.label} className="bg-surface-raised dark:bg-white/5 rounded-lg p-3">
+                    <dt className="text-ink-muted text-xs">{s.label}</dt>
                     <dd className="font-medium">{s.value}</dd>
                   </div>
                 ))}
@@ -222,7 +223,7 @@ const ProductDetail = () => {
 
             {product.sizes?.length > 0 && (
               <div className="mb-6">
-                <h3 className="label-premium">Size</h3>
+                <h3 className="label">Size</h3>
                 <div className="flex flex-wrap gap-2">
                   {product.sizes.map((size) => (
                     <OptionButton key={size} active={selectedSize === size} onClick={() => setSelectedSize(size)}>
@@ -235,7 +236,7 @@ const ProductDetail = () => {
 
             {product.colors?.length > 0 && (
               <div className="mb-6">
-                <h3 className="label-premium">Color</h3>
+                <h3 className="label">Color</h3>
                 <div className="flex flex-wrap gap-2">
                   {product.colors.map((color) => (
                     <OptionButton key={color} active={selectedColor === color} onClick={() => setSelectedColor(color)}>
@@ -247,20 +248,20 @@ const ProductDetail = () => {
             )}
 
             <div className="mb-8">
-              <h3 className="label-premium">Quantity</h3>
-              <div className="inline-flex items-center rounded-xl border border-luxury-line">
-                <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 hover:bg-luxury-ivory">
+              <h3 className="label">Quantity</h3>
+              <div className="inline-flex items-center rounded-xl border border-line">
+                <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 hover:bg-surface-raised">
                   −
                 </button>
                 <span className="w-12 text-center font-semibold">{quantity}</span>
-                <button type="button" onClick={() => setQuantity(quantity + 1)} className="w-12 h-12 hover:bg-luxury-ivory">
+                <button type="button" onClick={() => setQuantity(quantity + 1)} className="w-12 h-12 hover:bg-surface-raised">
                   +
                 </button>
               </div>
             </div>
 
             <div className="flex gap-3 mb-4">
-              <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.97 }} onClick={handleAddToCart} className="btn-premium flex-1">
+              <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.97 }} onClick={handleAddToCart} className="btn-primary flex-1">
                 Add to Bag
               </motion.button>
               <motion.button
@@ -268,49 +269,49 @@ const ProductDetail = () => {
                 whileTap={{ scale: 0.9 }}
                 animate={inWishlist ? { scale: [1, 1.2, 1] } : {}}
                 onClick={toggleWishlist}
-                className="btn-outline !px-4 text-lg"
+                className="btn-secondary !px-4 text-lg"
                 aria-label="Wishlist"
               >
-                {inWishlist ? '♥' : '♡'}
+                <Heart className={`w-5 h-5 ${inWishlist ? 'fill-current text-danger' : ''}`} aria-hidden="true" />
               </motion.button>
             </div>
 
             {product.features?.map((f) => (
-              <p key={f} className="text-sm text-luxury-muted flex items-center gap-2 mt-2">
-                <span className="text-gold-500">✓</span> {f}
+              <p key={f} className="text-sm text-ink-muted flex items-center gap-2 mt-2">
+                <Check className="w-4 h-4 text-accent shrink-0" aria-hidden="true" /> {f}
               </p>
             ))}
           </div>
         </motion.div>
 
         {/* Specifications Section */}
-        <section className="mt-16 pt-12 border-t border-luxury-line">
+        <section className="mt-16 pt-12 border-t border-line">
           <h2 className="text-2xl font-display mb-8">Specifications</h2>
-          <div className="card-premium p-8">
+          <div className="card p-8">
             {product.specifications?.length > 0 ? (
               <dl className="grid md:grid-cols-2 gap-6">
                 {product.specifications.map((s) => (
-                  <div key={s.label} className="flex justify-between py-3 border-b border-luxury-line last:border-0">
-                    <dt className="text-luxury-muted">{s.label}</dt>
-                    <dd className="font-medium text-luxury-charcoal dark:text-white">{s.value}</dd>
+                  <div key={s.label} className="flex justify-between py-3 border-b border-line last:border-0">
+                    <dt className="text-ink-muted">{s.label}</dt>
+                    <dd className="font-medium text-ink dark:text-white">{s.value}</dd>
                   </div>
                 ))}
               </dl>
             ) : (
-              <p className="text-luxury-muted">No specifications available for this product.</p>
+              <p className="text-ink-muted">No specifications available for this product.</p>
             )}
           </div>
         </section>
 
         {/* Customer Reviews Section */}
-        <section className="mt-16 pt-12 border-t border-luxury-line">
+        <section className="mt-16 pt-12 border-t border-line">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-display">Customer Reviews</h2>
             {isAuthenticated && (
               <button
                 type="button"
                 onClick={() => setShowReviewForm(!showReviewForm)}
-                className="btn-outline text-sm"
+                className="btn-secondary text-sm"
               >
                 {showReviewForm ? 'Cancel' : 'Write a Review'}
               </button>
@@ -318,19 +319,19 @@ const ProductDetail = () => {
           </div>
 
           {showReviewForm && (
-            <div className="card-premium p-6 mb-8">
+            <div className="card p-6 mb-8">
               <div className="mb-4">
-                <label className="label-premium">Your Rating</label>
+                <label className="label">Your Rating</label>
                 <div className="flex gap-2">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
                       key={star}
                       type="button"
                       onClick={() => setUserRating(star)}
-                      className="text-gold-500 hover:scale-110 transition-transform"
+                      className="text-accent hover:scale-110 transition-transform"
                     >
                       <svg
-                        className={`w-8 h-8 ${star <= userRating ? 'fill-current' : 'fill-luxury-line dark:fill-white/20'}`}
+                        className={`w-8 h-8 ${star <= userRating ? 'fill-current' : 'fill-line dark:fill-white/20'}`}
                         viewBox="0 0 20 20"
                       >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -340,30 +341,30 @@ const ProductDetail = () => {
                 </div>
               </div>
               <div className="mb-4">
-                <label className="label-premium">Your Review</label>
+                <label className="label">Your Review</label>
                 <textarea
                   value={reviewText}
                   onChange={(e) => setReviewText(e.target.value)}
                   placeholder="Share your experience with this product..."
-                  className="w-full min-h-[120px] p-4 rounded-xl border border-luxury-line focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                  className="w-full min-h-[120px] p-4 rounded-xl border border-line focus:border-brand focus:ring-2 focus:ring-brand outline-none transition-all"
                 />
               </div>
-              <button type="button" onClick={handleSubmitReview} className="btn-premium">Submit Review</button>
+              <button type="button" onClick={handleSubmitReview} className="btn-primary">Submit Review</button>
             </div>
           )}
 
           {loadingReviews ? (
-            <p className="text-luxury-muted text-center py-8">Loading reviews...</p>
+            <p className="text-ink-muted text-center py-8">Loading reviews...</p>
           ) : reviews.length === 0 ? (
-            <p className="text-luxury-muted text-center py-8">No reviews yet. Be the first to review this product!</p>
+            <p className="text-ink-muted text-center py-8">No reviews yet. Be the first to review this product!</p>
           ) : (
             <div className="space-y-6">
               {reviews.map((review) => (
-                <div key={review._id} className="card-premium p-6">
+                <div key={review._id} className="card p-6">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <p className="font-semibold text-luxury-charcoal dark:text-white">{review.userName}</p>
-                      <p className="text-xs text-luxury-muted">
+                      <p className="font-semibold text-ink dark:text-white">{review.userName}</p>
+                      <p className="text-xs text-ink-muted">
                         {new Date(review.createdAt).toLocaleDateString('en-US', { 
                           month: 'short', 
                           day: 'numeric',
@@ -371,11 +372,11 @@ const ProductDetail = () => {
                         })}
                       </p>
                     </div>
-                    <div className="flex text-gold-500">
+                    <div className="flex text-accent">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <svg
                           key={star}
-                          className={`w-4 h-4 ${star <= review.rating ? 'fill-current' : 'fill-luxury-line dark:fill-white/20'}`}
+                          className={`w-4 h-4 ${star <= review.rating ? 'fill-current' : 'fill-line dark:fill-white/20'}`}
                           viewBox="0 0 20 20"
                         >
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -383,8 +384,8 @@ const ProductDetail = () => {
                       ))}
                     </div>
                   </div>
-                  {review.title && <p className="font-medium text-luxury-charcoal dark:text-white mb-2">{review.title}</p>}
-                  <p className="text-luxury-muted leading-relaxed">{review.text}</p>
+                  {review.title && <p className="font-medium text-ink dark:text-white mb-2">{review.title}</p>}
+                  <p className="text-ink-muted leading-relaxed">{review.text}</p>
                   {review.verified && (
                     <span className="inline-flex items-center gap-1 mt-3 text-xs text-green-600">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -400,7 +401,7 @@ const ProductDetail = () => {
         </section>
 
         {relatedProducts.length > 0 && (
-          <section className="mt-20 pt-16 border-t border-luxury-line">
+          <section className="mt-20 pt-16 border-t border-line">
             <h2 className="text-3xl font-display mb-10 text-center">You May Also Like</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedProducts.map((p) => (

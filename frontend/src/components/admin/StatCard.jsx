@@ -7,7 +7,7 @@ const StatCard = ({ label, value, sub, icon: Icon }) => (
         {sub && <p className="text-xs text-white/60 mt-1">{sub}</p>}
       </div>
       {Icon && (
-        <div className="p-3 rounded-xl bg-white/10 text-primary-200">
+        <div className="p-3 rounded-xl bg-white/10 text-brand">
           <Icon className="w-5 h-5" />
         </div>
       )}

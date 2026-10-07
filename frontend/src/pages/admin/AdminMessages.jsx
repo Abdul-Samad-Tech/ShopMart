@@ -149,7 +149,7 @@ const AdminMessages = () => {
                       <p className="text-xs text-white/70 truncate">{msg.subject}</p>
                       <p className="text-[10px] text-white/40 mt-1">
                         {new Date(msg.createdAt).toLocaleString()}
-                        {msg.emailSent && ' · ✉ sent'}
+                        {msg.emailSent && ' · email sent'}
                       </p>
                     </button>
                   </li>
@@ -187,7 +187,7 @@ const AdminMessages = () => {
                 </div>
                 <div>
                   <p className="text-white/40 text-xs uppercase mb-1">Email</p>
-                  <a href={`mailto:${selected.email}`} className="text-primary-300 hover:underline">
+                  <a href={`mailto:${selected.email}`} className="text-brand hover:underline">
                     {selected.email}
                   </a>
                 </div>
@@ -213,7 +213,7 @@ const AdminMessages = () => {
               <div className="flex flex-wrap gap-2 pt-2">
                 <a
                   href={`mailto:${selected.email}?subject=${encodeURIComponent(`Re: ${selected.subject}`)}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-600 text-white text-xs font-semibold uppercase tracking-wide hover:bg-primary-500"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand text-white text-xs font-semibold uppercase tracking-wide hover:bg-brand"
                 >
                   <Mail className="w-4 h-4" />
                   Reply via email

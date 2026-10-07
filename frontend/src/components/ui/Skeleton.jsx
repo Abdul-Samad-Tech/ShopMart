@@ -3,7 +3,7 @@ import { memo } from 'react';
 const Skeleton = memo(function Skeleton({ className = '', rounded = 'rounded-xl' }) {
   return (
     <div
-      className={`skeleton-shimmer bg-luxury-line/60 dark:bg-white/10 ${rounded} ${className}`}
+      className={`skeleton-shimmer bg-line/60 dark:bg-white/10 ${rounded} ${className}`}
       aria-hidden
     />
   );
@@ -11,7 +11,7 @@ const Skeleton = memo(function Skeleton({ className = '', rounded = 'rounded-xl'
 
 export const ProductCardSkeleton = memo(function ProductCardSkeleton() {
   return (
-    <div className="card-premium overflow-hidden">
+    <div className="card overflow-hidden">
       <Skeleton className="aspect-[4/5] w-full rounded-none" rounded="rounded-none" />
       <div className="p-5 space-y-3">
         <Skeleton className="h-2 w-16" />
@@ -35,7 +35,7 @@ export const ProductGridSkeleton = memo(function ProductGridSkeleton({ count = 8
 
 export const HeroSkeleton = memo(function HeroSkeleton() {
   return (
-    <div className="min-h-[70vh] bg-luxury-ivory dark:bg-luxury-slate animate-pulse">
+    <div className="min-h-[70vh] bg-surface-raised dark:bg-surface-raised animate-pulse">
       <div className="container-premium py-24 space-y-6">
         <Skeleton className="h-3 w-32" />
         <Skeleton className="h-16 w-full max-w-lg" />
@@ -51,7 +51,7 @@ export const HeroSkeleton = memo(function HeroSkeleton() {
 
 export const PageHeaderSkeleton = memo(function PageHeaderSkeleton() {
   return (
-    <div className="bg-luxury-ivory dark:bg-luxury-slate py-16">
+    <div className="bg-surface-raised dark:bg-surface-raised py-16">
       <div className="container-premium space-y-4">
         <Skeleton className="h-3 w-24" />
         <Skeleton className="h-12 w-80 max-w-full" />

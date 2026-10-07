@@ -106,7 +106,7 @@ const Blog = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="card-elevated overflow-hidden"
+            className="card overflow-hidden"
           >
             <div className="grid lg:grid-cols-2">
               <img
@@ -115,15 +115,15 @@ const Blog = () => {
                 className="w-full h-full object-cover min-h-[400px]"
               />
               <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-gold-100 text-gold-700 w-fit mb-4">
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-accent/15 text-accent w-fit mb-4">
                   Featured
                 </span>
-                <span className="text-sm text-luxury-muted mb-2">{posts[0].category}</span>
+                <span className="text-sm text-ink-muted mb-2">{posts[0].category}</span>
                 <h2 className="text-3xl font-display mb-4">{posts[0].title}</h2>
-                <p className="text-luxury-muted mb-6 leading-relaxed">{posts[0].excerpt}</p>
-                <div className="flex items-center gap-4 text-sm text-luxury-muted">
+                <p className="text-ink-muted mb-6 leading-relaxed">{posts[0].excerpt}</p>
+                <div className="flex items-center gap-4 text-sm text-ink-muted">
                   <span>{posts[0].date}</span>
-                  <button className="text-primary-600 font-medium hover:underline">Read More</button>
+                  <button className="text-brand font-medium hover:underline">Read More</button>
                 </div>
               </div>
             </div>
@@ -142,7 +142,7 @@ const Blog = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="card-premium overflow-hidden hover:shadow-premium-lg transition-shadow"
+                className="card overflow-hidden hover:shadow-raised transition-shadow"
               >
                 <img
                   src={post.image}
@@ -150,14 +150,14 @@ const Blog = () => {
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-luxury-ivory dark:bg-white/10 text-luxury-charcoal dark:text-white mb-3">
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-surface-raised dark:bg-white/10 text-ink dark:text-white mb-3">
                     {post.category}
                   </span>
                   <h3 className="font-display text-lg mb-2 line-clamp-2">{post.title}</h3>
-                  <p className="text-sm text-luxury-muted mb-4 line-clamp-3">{post.excerpt}</p>
+                  <p className="text-sm text-ink-muted mb-4 line-clamp-3">{post.excerpt}</p>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-luxury-muted">{post.date}</span>
-                    <button className="text-primary-600 font-medium hover:underline">Read More</button>
+                    <span className="text-ink-muted">{post.date}</span>
+                    <button className="text-brand font-medium hover:underline">Read More</button>
                   </div>
                 </div>
               </motion.article>
@@ -167,7 +167,7 @@ const Blog = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="section-premium bg-mart-green text-white">
+      <section className="section-premium bg-brand text-white">
         <div className="container-premium text-center max-w-2xl">
           <h2 className="text-3xl font-display mb-4">Stay Updated</h2>
           <p className="text-white/80 mb-8">
@@ -179,7 +179,7 @@ const Blog = () => {
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 outline-none focus:border-white/40"
             />
-            <button className="btn-mart bg-white text-mart-green hover:bg-white/90">
+            <button className="btn-primary bg-white text-brand hover:bg-white/90">
               Subscribe
             </button>
           </div>

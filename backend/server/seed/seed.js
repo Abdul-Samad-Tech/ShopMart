@@ -130,8 +130,8 @@ const seed = async () => {
   });
 
   const adminEmail = (process.env.ADMIN_EMAIL || 'admin@shophub.com').toLowerCase().trim();
-  const adminPassword = process.env.ADMIN_PASSWORD || 'ShopHub@Admin2026';
-  const adminName = process.env.ADMIN_NAME || 'ShopHub Admin';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'ShopMart@Admin2026';
+  const adminName = process.env.ADMIN_NAME || 'ShopMart Admin';
 
   const adminUser = await User.create({
     name: adminName,
@@ -183,7 +183,7 @@ const seed = async () => {
       broadcast: true,
       type: 'promo',
       title: 'Weekly Deals Live',
-      message: 'Save on groceries and household essentials — free delivery over $50.',
+      message: 'Save on groceries and household essentials — free delivery over Rs. 50.',
       link: '/products',
     },
     {

@@ -76,7 +76,7 @@ const AdminUsers = () => {
         </div>
         <button
           onClick={handleAddUser}
-          className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors"
+          className="px-4 py-2 bg-brand hover:bg-brand-strong text-white rounded-lg transition-colors"
         >
           Add User
         </button>
@@ -101,7 +101,7 @@ const AdminUsers = () => {
                 <td>
                   <span
                     className={`px-2 py-0.5 rounded-full text-xs uppercase ${
-                      u.role === 'admin' ? 'bg-primary-500/30 text-primary-200' : 'bg-white/10 text-white/60'
+                      u.role === 'admin' ? 'bg-brand/30 text-brand' : 'bg-white/10 text-white/60'
                     }`}
                   >
                     {u.role}
@@ -141,7 +141,7 @@ const AdminUsers = () => {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand"
                   required
                 />
               </div>
@@ -151,7 +151,7 @@ const AdminUsers = () => {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand"
                   required
                 />
               </div>
@@ -163,7 +163,7 @@ const AdminUsers = () => {
                   type="password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand"
                   required={!editingUser}
                 />
               </div>
@@ -172,7 +172,7 @@ const AdminUsers = () => {
                 <select
                   value={formData.role}
                   onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-brand"
                 >
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
@@ -189,7 +189,7 @@ const AdminUsers = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex-1 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors disabled:opacity-50"
+                  className="flex-1 px-4 py-2 bg-brand hover:bg-brand-strong text-white rounded-lg transition-colors disabled:opacity-50"
                 >
                   {submitting ? 'Saving...' : editingUser ? 'Update' : 'Create'}
                 </button>

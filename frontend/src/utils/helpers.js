@@ -1,9 +1,12 @@
 // Format price to currency
 export const formatPrice = (price) => {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(price);
+  const value = Number(price);
+  if (!Number.isFinite(value)) return 'Rs. 0';
+  const formatted = new Intl.NumberFormat('en-PK', {
+    minimumFractionDigits: value % 1 === 0 ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+  return `Rs. ${formatted}`;
 };
 
 // Calculate discount percentage

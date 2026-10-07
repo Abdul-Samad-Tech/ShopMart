@@ -18,18 +18,18 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-luxury-charcoal/60 backdrop-blur-sm"
+          className="fixed inset-0 bg-chrome/60 backdrop-blur-sm"
         />
         <motion.div
           initial={{ opacity: 0, scale: 0.96, y: 8 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 8 }}
-          className={`relative card-elevated ${sizes[size]} w-full max-h-[90vh] overflow-y-auto`}
+          className={`relative card ${sizes[size]} w-full max-h-[90vh] overflow-y-auto`}
         >
           {title && (
-            <div className="flex items-center justify-between p-6 border-b border-luxury-line">
+            <div className="flex items-center justify-between p-6 border-b border-line">
               <h2 className="font-display text-xl">{title}</h2>
-              <button type="button" onClick={onClose} className="p-2 rounded-full hover:bg-luxury-ivory text-luxury-muted transition-colors" aria-label="Close">
+              <button type="button" onClick={onClose} className="p-2 rounded-full hover:bg-surface-raised text-ink-muted transition-colors" aria-label="Close">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>

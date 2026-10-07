@@ -2,11 +2,7 @@ import { useEffect, useMemo, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  closeCommandPalette,
-  cycleMatrixMode,
-  openCommandPalette,
-} from '../../store/uiSlice';
+import { closeCommandPalette, openCommandPalette } from '../../store/uiSlice';
 import { openCartDrawer } from '../../store/cartSlice';
 import { toggleTheme } from '../../store/siteSlice';
 
@@ -14,7 +10,6 @@ const CommandPalette = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const open = useSelector((state) => state.ui.commandPaletteOpen);
-  const matrixOverride = useSelector((state) => state.ui.matrixModeOverride);
   const [query, setQuery] = useState('');
   const [index, setIndex] = useState(0);
 
@@ -27,14 +22,8 @@ const CommandPalette = () => {
       { id: 'dashboard', label: 'My account', hint: 'Navigate', run: () => navigate('/dashboard') },
       { id: 'contact', label: 'Contact support', hint: 'Navigate', run: () => navigate('/contact') },
       { id: 'dark', label: 'Toggle dark / light theme', hint: 'Theme', run: () => dispatch(toggleTheme()) },
-      {
-        id: 'matrix',
-        label: `Matrix mode (${matrixOverride})`,
-        hint: 'Cycle auto / on / off',
-        run: () => dispatch(cycleMatrixMode()),
-      },
     ],
-    [dispatch, navigate, matrixOverride]
+    [dispatch, navigate]
   );
 
   const filtered = useMemo(() => {
@@ -109,13 +98,13 @@ const CommandPalette = () => {
             initial={{ opacity: 0, scale: 0.96, y: -12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: -8 }}
-            className="fixed left-1/2 top-[18%] z-[101] w-[min(92vw,520px)] -translate-x-1/2 glass-panel glass-panel-light dark:glass-panel-dark rounded-2xl shadow-glow-lg overflow-hidden"
+            className="fixed left-1/2 top-[18%] z-[101] w-[min(92vw,520px)] -translate-x-1/2 glass-panel glass-panel-light dark:glass-panel-dark rounded-2xl shadow-rest-lg overflow-hidden"
           >
             <input
               autoFocus
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Type a command… (shop, cart, matrix)"
+              placeholder="Type a command… (shop, cart, theme)"
               className="w-full px-5 py-4 bg-transparent border-b border-white/10 text-white placeholder:text-white/40 outline-none text-sm"
             />
             <ul className="max-h-72 overflow-y-auto py-2">

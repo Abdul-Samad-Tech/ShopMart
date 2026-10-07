@@ -1,12 +1,12 @@
 import RippleButton from '../../animations/RippleButton';
 
 const variantMap = {
-  primary: 'btn-premium',
-  gold: 'btn-gold',
-  outline: 'btn-outline',
-  ghost: 'btn-ghost-light',
+  primary: 'btn-primary',
+  gold: 'btn-primary',
+  outline: 'btn-secondary',
+  ghost: 'btn-ghost',
   secondary:
-    'inline-flex items-center justify-center gap-2 rounded-full font-semibold text-sm tracking-wide bg-luxury-ivory text-luxury-charcoal border border-luxury-line hover:bg-white transition-all',
+    'inline-flex items-center justify-center gap-2 rounded-full font-semibold text-sm tracking-wide bg-surface-raised text-ink border border-line hover:bg-white transition-all',
   danger:
     'inline-flex items-center justify-center gap-2 rounded-full font-semibold text-sm bg-red-50 text-red-700 border border-red-100 hover:bg-red-100 transition-all',
 };

@@ -130,8 +130,8 @@ const EventGallery = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-xl font-medium transition-all ${
                   selectedCategory === category
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-luxury-ivory dark:bg-white/10 text-luxury-charcoal dark:text-white hover:bg-primary-100'
+                    ? 'bg-brand text-white'
+                    : 'bg-surface-raised dark:bg-white/10 text-ink dark:text-white hover:bg-brand/10'
                 }`}
               >
                 {category === 'all' ? 'All Events' : category}
@@ -151,7 +151,7 @@ const EventGallery = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="card-premium overflow-hidden hover:shadow-premium-lg transition-shadow group"
+                className="card overflow-hidden hover:shadow-raised transition-shadow group"
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
                   <img
@@ -161,7 +161,7 @@ const EventGallery = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-gold-500 text-white mb-2">
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-accent text-white mb-2">
                       {event.category}
                     </span>
                     <h3 className="text-white font-display text-lg">{event.title}</h3>
@@ -169,7 +169,7 @@ const EventGallery = () => {
                   </div>
                 </div>
                 <div className="p-4">
-                  <p className="text-sm text-luxury-muted">{event.description}</p>
+                  <p className="text-sm text-ink-muted">{event.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -178,7 +178,7 @@ const EventGallery = () => {
       </section>
 
       {/* Stats */}
-      <section className="section-premium bg-luxury-ivory dark:bg-luxury-slate/30">
+      <section className="section-premium bg-surface-raised dark:bg-surface-raised/30">
         <div className="container-premium">
           <div className="grid md:grid-cols-4 gap-6 text-center">
             {[
@@ -193,10 +193,10 @@ const EventGallery = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="card-premium p-6"
+                className="card p-6"
               >
-                <p className="text-3xl font-display text-primary-600 mb-2">{stat.value}</p>
-                <p className="text-sm text-luxury-muted">{stat.label}</p>
+                <p className="text-3xl font-display text-brand mb-2">{stat.value}</p>
+                <p className="text-sm text-ink-muted">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -204,7 +204,7 @@ const EventGallery = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-premium bg-mart-green text-white">
+      <section className="section-premium bg-brand text-white">
         <div className="container-premium text-center">
           <h2 className="text-3xl font-display mb-4">Join Our Next Event</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
@@ -216,7 +216,7 @@ const EventGallery = () => {
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 outline-none focus:border-white/40"
             />
-            <button className="btn-mart bg-white text-mart-green hover:bg-white/90">
+            <button className="btn-primary bg-white text-brand hover:bg-white/90">
               Subscribe
             </button>
           </div>

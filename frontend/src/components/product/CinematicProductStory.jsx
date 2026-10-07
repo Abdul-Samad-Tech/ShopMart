@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import AddToCartButton from '../cart/AddToCartButton';
+import { formatPrice } from '../../utils/helpers';
 
 const STORY_SECTIONS = (product) => [
   {
@@ -22,8 +22,8 @@ const STORY_SECTIONS = (product) => [
   {
     id: 'value',
     title: 'Everyday Value',
-    subtitle: `$${product.price?.toFixed(2)}`,
-    body: `Rated ${product.rating || 4.5}★ by ${product.reviews || 0} shoppers.`,
+    subtitle: formatPrice(product.price),
+    body: `Rated ${product.rating || 4.5} stars by ${product.reviews || 0} shoppers.`,
     image: product.gallery?.[0] || product.image,
   },
 ];
@@ -37,7 +37,7 @@ const CinematicProductStory = ({ product, onClassicView }) => {
   return (
     <div ref={containerRef} className="relative">
       <div className="fixed top-20 left-0 right-0 z-40 h-0.5 bg-white/10">
-        <motion.div className="h-full bg-mart-orange origin-left" style={{ width: progressWidth }} />
+        <motion.div className="h-full bg-accent origin-left" style={{ width: progressWidth }} />
       </div>
 
       <div className="fixed top-24 right-4 z-40 flex gap-2">
@@ -70,7 +70,7 @@ const CinematicProductStory = ({ product, onClassicView }) => {
             className="relative z-10 container-premium max-w-2xl text-center px-6"
             style={{ perspective: 1000 }}
           >
-            <p className="text-mart-orange text-xs uppercase tracking-[0.3em] mb-4">{section.subtitle}</p>
+            <p className="text-accent text-xs uppercase tracking-[0.3em] mb-4">{section.subtitle}</p>
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">{section.title}</h2>
             <p className="text-white/70 text-lg leading-relaxed mb-8">{section.body}</p>
             {i === sections.length - 1 && (

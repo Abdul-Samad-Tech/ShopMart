@@ -3,9 +3,9 @@ import User from '../models/User.js';
 const DEMO_ACCOUNTS = [
   { name: 'Demo Member', email: 'demo@shophub.com', password: 'demo123', role: 'user' },
   {
-    name: process.env.ADMIN_NAME || 'ShopHub Admin',
+    name: process.env.ADMIN_NAME || 'ShopMart Admin',
     email: (process.env.ADMIN_EMAIL || 'admin@shophub.com').toLowerCase().trim(),
-    password: process.env.ADMIN_PASSWORD || 'ShopHub@Admin2026',
+    password: process.env.ADMIN_PASSWORD || 'ShopMart@Admin2026',
     role: 'admin',
   },
 ];

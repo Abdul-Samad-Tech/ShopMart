@@ -27,18 +27,18 @@ const AppBootstrap = ({ children }) => {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-8 bg-luxury-cream">
-        <div className="card-premium p-10 max-w-md text-center">
+      <div className="min-h-screen flex items-center justify-center p-8 bg-surface">
+        <div className="card p-10 max-w-md text-center">
           <h2 className="font-display text-2xl mb-3">Unable to connect</h2>
-          <p className="text-luxury-muted text-sm mb-6">
-            In terminal run <code className="text-primary-700">npm run dev</code> and wait until you see{' '}
-            <code className="text-primary-700">API running</code> and <code className="text-primary-700">Local: http://localhost:5173</code>.
+          <p className="text-ink-muted text-sm mb-6">
+            In terminal run <code className="text-brand">npm run dev</code> and wait until you see{' '}
+            <code className="text-brand">API running</code> and <code className="text-brand">Local: http://localhost:5173</code>.
           </p>
           <p className="text-xs text-red-600/80">{error}</p>
           <button
             type="button"
             onClick={() => dispatch(fetchSiteContent())}
-            className="btn-premium mt-6"
+            className="btn-primary mt-6"
           >
             Retry
           </button>

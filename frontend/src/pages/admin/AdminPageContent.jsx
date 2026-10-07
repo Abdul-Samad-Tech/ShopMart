@@ -89,7 +89,7 @@ const AdminPageContent = () => {
         <h1 className="text-2xl font-display font-bold text-white">Page Content</h1>
         <button
           onClick={() => setShowForm(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700"
+          className="flex items-center gap-2 px-4 py-2 bg-brand text-white rounded-lg hover:bg-brand-strong"
         >
           <Plus className="w-4 h-4" />
           Add Page
@@ -153,7 +153,7 @@ const AdminPageContent = () => {
               />
             </div>
             <div className="flex gap-2">
-              <button type="submit" className="px-4 py-2 bg-primary-600 text-white rounded hover:bg-primary-700">
+              <button type="submit" className="px-4 py-2 bg-brand text-white rounded hover:bg-brand-strong">
                 {editingPage ? 'Update' : 'Create'}
               </button>
               <button

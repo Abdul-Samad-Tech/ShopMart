@@ -119,14 +119,14 @@ const Careers = () => {
       />
 
       {/* Hero Section */}
-      <section className="section-premium bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+      <section className="section-premium bg-gradient-to-br from-brand to-brand text-white">
         <div className="container-premium text-center py-16">
           <h2 className="text-4xl font-display mb-4">Build Your Career With ShopMart</h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Join a dynamic team and grow your career in Pakistan's leading retail chain. We offer competitive benefits, 
             growth opportunities, and a supportive work environment.
           </p>
-          <a href="#apply" className="inline-block btn-mart bg-white text-primary-600 hover:bg-white/90">
+          <a href="#apply" className="inline-block btn-primary bg-white text-brand hover:bg-white/90">
             Apply Now
           </a>
         </div>
@@ -144,12 +144,12 @@ const Careers = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="card-premium p-6 text-center"
+                className="card p-6 text-center"
               >
-                <svg className="w-8 h-8 text-gold-500 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-8 h-8 text-accent mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <p className="text-sm text-luxury-muted">{benefit}</p>
+                <p className="text-sm text-ink-muted">{benefit}</p>
               </motion.div>
             ))}
           </div>
@@ -157,7 +157,7 @@ const Careers = () => {
       </section>
 
       {/* Open Positions */}
-      <section className="section-premium bg-luxury-ivory dark:bg-luxury-slate/30">
+      <section className="section-premium bg-surface-raised dark:bg-surface-raised/30">
         <div className="container-premium">
           <h2 className="text-3xl font-display mb-12 text-center">Open Positions</h2>
           <div className="space-y-12">
@@ -172,15 +172,15 @@ const Careers = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: (catIndex * 3 + jobIndex) * 0.05 }}
-                      className="card-premium p-6 hover:shadow-premium-lg transition-shadow"
+                      className="card p-6 hover:shadow-raised transition-shadow"
                     >
                       <div className="flex justify-between items-start mb-3">
                         <h4 className="font-display text-lg">{job.title}</h4>
-                        <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-600">
+                        <span className="px-3 py-1 rounded-full text-xs font-medium bg-brand/10 text-brand">
                           {job.type}
                         </span>
                       </div>
-                      <div className="flex items-center gap-4 text-sm text-luxury-muted">
+                      <div className="flex items-center gap-4 text-sm text-ink-muted">
                         <span className="flex items-center gap-2">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -188,7 +188,7 @@ const Careers = () => {
                           {job.location}
                         </span>
                       </div>
-                      <a href="#apply" className="inline-block mt-4 text-sm font-medium text-primary-600 hover:underline">
+                      <a href="#apply" className="inline-block mt-4 text-sm font-medium text-brand hover:underline">
                         Apply Now →
                       </a>
                     </motion.div>
@@ -204,7 +204,7 @@ const Careers = () => {
       <section id="apply" className="section-premium">
         <div className="container-premium max-w-3xl">
           <h2 className="text-3xl font-display mb-8 text-center">Apply Online</h2>
-          <form onSubmit={handleSubmit} className="card-premium p-8">
+          <form onSubmit={handleSubmit} className="card p-8">
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block text-sm font-medium mb-2">First Name *</label>
@@ -214,7 +214,7 @@ const Careers = () => {
                   required
                   value={formData.firstName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                 />
               </div>
               <div>
@@ -225,7 +225,7 @@ const Careers = () => {
                   required
                   value={formData.lastName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                 />
               </div>
             </div>
@@ -239,7 +239,7 @@ const Careers = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                 />
               </div>
               <div>
@@ -250,7 +250,7 @@ const Careers = () => {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                 />
               </div>
             </div>
@@ -263,7 +263,7 @@ const Careers = () => {
                   required
                   value={formData.position}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                 >
                   <option value="">Select Position</option>
                   {jobCategories.flatMap(cat => cat.jobs).map(job => (
@@ -278,7 +278,7 @@ const Careers = () => {
                   required
                   value={formData.experience}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
                 >
                   <option value="">Select Experience</option>
                   <option value="0-1">0-1 Years</option>
@@ -297,7 +297,7 @@ const Careers = () => {
                 required
                 value={formData.city}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
               >
                 <option value="">Select City</option>
                 <option value="Karachi">Karachi</option>
@@ -319,7 +319,7 @@ const Careers = () => {
                 value={formData.coverLetter}
                 onChange={handleChange}
                 placeholder="Tell us why you're interested in this position..."
-                className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none resize-none"
               />
             </div>
 
@@ -331,12 +331,12 @@ const Careers = () => {
                 required
                 accept=".pdf,.doc,.docx"
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-luxury-line focus:border-primary-500 outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-line focus:border-brand outline-none"
               />
-              <p className="text-xs text-luxury-muted mt-2">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
+              <p className="text-xs text-ink-muted mt-2">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
             </div>
 
-            <button type="submit" className="btn-premium w-full">
+            <button type="submit" className="btn-primary w-full">
               Submit Application
             </button>
           </form>
@@ -344,7 +344,7 @@ const Careers = () => {
       </section>
 
       {/* Contact */}
-      <section className="section-premium bg-mart-green text-white">
+      <section className="section-premium bg-brand text-white">
         <div className="container-premium text-center">
           <h2 className="text-3xl font-display mb-4">Questions?</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">

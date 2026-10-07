@@ -10,8 +10,6 @@ import { ensureDemoUsers } from '../server/utils/ensureDemoUsers.js';
 await connectDB();
 await ensureDemoUsers();
 console.log('Updated demo + admin accounts.');
-
-console.log('\nDemo: demo@shophub.com / demo123');
-console.log('Admin: admin@shophub.com / ShopHub@Admin2026\n');
+console.log('Sign in with the demo emails. Passwords come from ADMIN_PASSWORD and the demo user record, and are not printed here.');
 
 await mongoose.disconnect();

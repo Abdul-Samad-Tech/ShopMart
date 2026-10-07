@@ -38,17 +38,17 @@ const FilterDrawer = ({ open, onClose }) => {
             role="dialog"
             aria-label="Product filters"
           >
-            <div className="flex items-center justify-between p-5 border-b border-luxury-line dark:border-white/10 shrink-0">
+            <div className="flex items-center justify-between p-5 border-b border-line dark:border-white/10 shrink-0">
               <div>
-                <p className="text-xs uppercase tracking-luxury text-gold-600 dark:text-gold-400 font-semibold">
+                <p className="text-xs uppercase tracking-wide text-accent dark:text-accent font-semibold">
                   Refine
                 </p>
-                <h2 className="font-display text-lg text-luxury-charcoal dark:text-white">Filters</h2>
+                <h2 className="font-display text-lg text-ink dark:text-white">Filters</h2>
               </div>
               <button
                 type="button"
                 onClick={onClose}
-                className="p-2.5 rounded-full hover:bg-luxury-ivory dark:hover:bg-white/10 text-luxury-charcoal dark:text-white"
+                className="p-2.5 rounded-full hover:bg-surface-raised dark:hover:bg-white/10 text-ink dark:text-white"
                 aria-label="Close filters"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

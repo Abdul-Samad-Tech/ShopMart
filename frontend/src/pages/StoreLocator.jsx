@@ -87,8 +87,8 @@ const StoreLocator = () => {
                 onClick={() => setSelectedCity(city)}
                 className={`px-6 py-3 rounded-xl font-medium transition-all ${
                   selectedCity === city
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-luxury-ivory dark:bg-white/10 text-luxury-charcoal dark:text-white hover:bg-primary-100'
+                    ? 'bg-brand text-white'
+                    : 'bg-surface-raised dark:bg-white/10 text-ink dark:text-white hover:bg-brand/10'
                 }`}
               >
                 {city === 'all' ? 'All Cities' : city}
@@ -108,39 +108,39 @@ const StoreLocator = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="card-premium p-6 hover:shadow-premium-lg transition-shadow"
+                className="card p-6 hover:shadow-raised transition-shadow"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="font-display text-lg font-semibold">{store.name}</h3>
-                    <span className="text-xs uppercase tracking-wide text-gold-600">{store.city}</span>
+                    <span className="text-xs uppercase tracking-wide text-accent">{store.city}</span>
                   </div>
-                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-luxury-ivory dark:bg-white/10">
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-surface-raised dark:bg-white/10">
                     {store.area}
                   </span>
                 </div>
                 
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-primary-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span className="text-luxury-muted">{store.address}</span>
+                    <span className="text-ink-muted">{store.address}</span>
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-primary-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    <span className="text-luxury-muted">{store.phone}</span>
+                    <span className="text-ink-muted">{store.phone}</span>
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-primary-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span className="text-luxury-muted">{store.timings}</span>
+                    <span className="text-ink-muted">{store.timings}</span>
                   </div>
                 </div>
                 
@@ -148,7 +148,7 @@ const StoreLocator = () => {
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand hover:text-brand"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -162,14 +162,14 @@ const StoreLocator = () => {
       </section>
 
       {/* Map Section */}
-      <section className="section-premium bg-luxury-ivory dark:bg-luxury-slate/30">
+      <section className="section-premium bg-surface-raised dark:bg-surface-raised/30">
         <div className="container-premium text-center">
           <h2 className="text-3xl font-display mb-4">Find Us on Map</h2>
-          <p className="text-luxury-muted mb-8 max-w-2xl mx-auto">
+          <p className="text-ink-muted mb-8 max-w-2xl mx-auto">
             Click on any store above to get directions, or use the map below to explore all our locations.
           </p>
-          <div className="card-premium p-4 h-96 bg-luxury-line dark:bg-white/5 flex items-center justify-center">
-            <p className="text-luxury-muted">Interactive map will be displayed here</p>
+          <div className="card p-4 h-96 bg-line dark:bg-white/5 flex items-center justify-center">
+            <p className="text-ink-muted">Interactive map will be displayed here</p>
           </div>
         </div>
       </section>

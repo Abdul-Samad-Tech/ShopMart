@@ -34,9 +34,9 @@ const CategoryAisle3D = ({ categories }) => {
                   loading="lazy" 
                 />
                 <div className="p-3 text-center">
-                  <p className="text-[11px] font-bold text-mart-green leading-tight line-clamp-2">{cat.name}</p>
+                  <p className="text-[11px] font-bold text-brand leading-tight line-clamp-2">{cat.name}</p>
                   {cat.itemCount && (
-                    <p className="text-[9px] text-luxury-muted mt-1 uppercase tracking-wide">{cat.itemCount}</p>
+                    <p className="text-[9px] text-ink-muted mt-1 uppercase tracking-wide">{cat.itemCount}</p>
                   )}
                 </div>
               </div>

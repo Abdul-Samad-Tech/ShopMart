@@ -6,7 +6,7 @@ import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 const RippleButton = memo(function RippleButton({
   children,
   className = '',
-  variantClass = 'btn-premium',
+  variantClass = 'btn-primary',
   onClick,
   type = 'button',
   magnetic = true,

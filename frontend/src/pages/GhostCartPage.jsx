@@ -46,8 +46,8 @@ const GhostCartPage = () => {
     <div className="page-shell">
       <PageHeader title="Ghost Cart" subtitle="Shared shopping bag" breadcrumbs={[{ label: 'Home', to: '/' }, { label: 'Shared cart' }]} />
       <div className="container-premium py-16 text-center">
-        <p className="text-luxury-muted mb-6">{error}</p>
-        <Link to="/products" className="btn-premium">
+        <p className="text-ink-muted mb-6">{error}</p>
+        <Link to="/products" className="btn-primary">
           Continue shopping
         </Link>
       </div>

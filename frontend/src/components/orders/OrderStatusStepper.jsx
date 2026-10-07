@@ -22,13 +22,13 @@ const OrderStatusStepper = ({ status }) => {
           <li key={step.key} className="flex items-center gap-1 flex-1 min-w-0">
             <span
               className={`w-2 h-2 rounded-full shrink-0 ${
-                done ? (active ? 'bg-mart-orange animate-pulse' : 'bg-mart-green') : 'bg-luxury-line dark:bg-white/20'
+                done ? (active ? 'bg-accent animate-pulse' : 'bg-brand') : 'bg-line dark:bg-white/20'
               }`}
               title={step.label}
             />
             {i < STEPS.length - 1 && (
               <span
-                className={`h-px flex-1 ${i < currentIdx ? 'bg-mart-green/60' : 'bg-luxury-line dark:bg-white/10'}`}
+                className={`h-px flex-1 ${i < currentIdx ? 'bg-brand/60' : 'bg-line dark:bg-white/10'}`}
               />
             )}
           </li>

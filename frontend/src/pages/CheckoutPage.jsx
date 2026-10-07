@@ -11,7 +11,7 @@ import { apiEndpoints } from '../services/api';
 import { clearCart } from '../store/cartSlice';
 import { addLocalNotification } from '../store/notificationSlice';
 import { selectCartItems, selectCartTotals } from '../store/cartSelectors';
-import { slideInLeft, slideInRight } from '../animations/motionPresets';
+import { formatPrice } from '../utils/helpers';
 
 const initialForm = {
   firstName: '',
@@ -119,17 +119,16 @@ const CheckoutPage = () => {
       
       dispatch(clearCart());
 
-      toast.success('Order placed successfully! 🎉', {
+      toast.success('Order placed successfully', {
         duration: 4000,
         position: 'top-center',
         style: {
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          color: '#fff',
+          background: '#146B45',
+          color: '#F4F1EA',
           padding: '16px 24px',
           borderRadius: '12px',
           fontSize: '15px',
           fontWeight: '500',
-          boxShadow: '0 10px 40px rgba(102, 126, 234, 0.4)',
         },
       });
 
@@ -168,7 +167,7 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div className="page-shell bg-gradient-subtle">
+    <div className="page-shell bg-surface">
       <PageHeader
         title="Checkout"
         subtitle="Secure, encrypted checkout"
@@ -177,10 +176,10 @@ const CheckoutPage = () => {
 
       <div className="container-premium py-12">
         {!isAuthenticated && (
-          <div className="mb-8 p-4 rounded-xl border border-mart-green/30 bg-mart-green/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <p className="text-sm text-luxury-charcoal dark:text-neutral-200">
+          <div className="mb-8 p-4 rounded-xl border border-brand/30 bg-brand/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <p className="text-sm text-ink dark:text-neutral-200">
               Checking out as guest — no account needed.{' '}
-              <Link to="/login" className="text-mart-green font-semibold hover:underline">
+              <Link to="/login" className="text-brand font-semibold hover:underline">
                 Sign in
               </Link>{' '}
               to save order history.
@@ -195,9 +194,9 @@ const CheckoutPage = () => {
             initial="hidden"
             animate="visible"
           >
-            <div className="card-premium p-8 lg:p-10 border-l-4 border-l-primary-500">
+            <div className="card p-8 lg:p-10 border-l-4 border-l-brand">
               <h2 className="font-display text-2xl mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-primary-100 text-primary-800 flex items-center justify-center text-sm font-bold">
+                <span className="w-8 h-8 rounded-full bg-brand/10 text-brand flex items-center justify-center text-sm font-bold">
                   1
                 </span>
                 Contact
@@ -240,9 +239,9 @@ const CheckoutPage = () => {
               </div>
             </div>
 
-            <div className="card-premium p-8 lg:p-10 border-l-4 border-l-gold-500">
+            <div className="card p-8 lg:p-10 border-l-4 border-l-accent">
               <h2 className="font-display text-2xl mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-gold-100 text-gold-800 flex items-center justify-center text-sm font-bold">
+                <span className="w-8 h-8 rounded-full bg-accent/15 text-accent flex items-center justify-center text-sm font-bold">
                   2
                 </span>
                 Shipping
@@ -265,13 +264,13 @@ const CheckoutPage = () => {
               </div>
             </div>
 
-            <div className="card-premium p-8 lg:p-10">
+            <div className="card p-8 lg:p-10">
               <h2 className="font-display text-2xl mb-2">Payment</h2>
-              <p className="text-xs text-luxury-muted mb-4">Secure checkout — popular options in Pakistan</p>
+              <p className="text-xs text-ink-muted mb-4">Secure checkout — popular options in Pakistan</p>
 
               {/* Loyalty Points Option */}
               {isAuthenticated && loyaltyCard && loyaltyCard.isActive && (
-                <div className="mb-6 p-4 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-xl border border-primary-200 dark:border-primary-700">
+                <div className="mb-6 p-4 bg-gradient-to-r from-brand to-brand dark:from-brand/20 dark:to-brand/20 rounded-xl border border-brand dark:border-brand">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <input
@@ -279,17 +278,17 @@ const CheckoutPage = () => {
                         id="useLoyaltyPoints"
                         checked={useLoyaltyPoints}
                         onChange={(e) => setUseLoyaltyPoints(e.target.checked)}
-                        className="w-5 h-5 text-primary-600 rounded"
+                        className="w-5 h-5 text-brand rounded"
                       />
-                      <label htmlFor="useLoyaltyPoints" className="font-semibold text-primary-800 dark:text-primary-200">
+                      <label htmlFor="useLoyaltyPoints" className="font-semibold text-brand dark:text-brand">
                         Pay with Loyalty Points
                       </label>
                     </div>
-                    <span className="text-sm font-bold text-primary-700 dark:text-primary-300">
+                    <span className="text-sm font-bold text-brand dark:text-brand">
                       {loyaltyCard.pointsBalance} pts
                     </span>
                   </div>
-                  <p className="text-xs text-primary-600 dark:text-primary-400">
+                  <p className="text-xs text-brand dark:text-brand">
                     1 point = PKR 1. You need {Math.floor(totals.total)} points for this order.
                   </p>
                 </div>
@@ -307,8 +306,8 @@ const CheckoutPage = () => {
                     key={m.id}
                     className={`flex items-center gap-2 px-5 py-3 rounded-xl border cursor-pointer transition-all ${
                       formData.paymentMethod === m.id
-                        ? 'border-primary-500 bg-primary-50 ring-2 ring-primary-100 dark:bg-primary-900/30'
-                        : 'border-luxury-line hover:border-primary-300'
+                        ? 'border-brand bg-brand/10 ring-2 ring-brand dark:bg-brand/30'
+                        : 'border-line hover:border-brand'
                     }`}
                   >
                     <input
@@ -317,9 +316,9 @@ const CheckoutPage = () => {
                       value={m.id}
                       checked={formData.paymentMethod === m.id}
                       onChange={handleChange}
-                      className="text-primary-600"
+                      className="text-brand"
                     />
-                    <span className="w-7 h-7 rounded-md bg-luxury-charcoal text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                    <span className="w-7 h-7 rounded-md bg-chrome text-white text-[10px] font-bold flex items-center justify-center shrink-0">
                       {m.badge}
                     </span>
                     <span className="text-sm font-medium">{m.label}</span>
@@ -332,9 +331,9 @@ const CheckoutPage = () => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="mt-6 pt-6 border-t border-luxury-line space-y-4"
+                  className="mt-6 pt-6 border-t border-line space-y-4"
                 >
-                  <h3 className="font-semibold text-sm text-luxury-charcoal dark:text-white">
+                  <h3 className="font-semibold text-sm text-ink dark:text-white">
                     {formData.paymentMethod === 'card' ? 'Card Details' : 'Account Details'}
                   </h3>
                   
@@ -404,11 +403,11 @@ const CheckoutPage = () => {
                 </motion.div>
               )}
               
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-luxury-line">
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-line">
                 {['Visa', 'Mastercard', 'COD', 'Easypaisa', 'JazzCash'].map((badge) => (
                   <span
                     key={badge}
-                    className="px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wide bg-luxury-ivory dark:bg-white/10 text-luxury-muted"
+                    className="px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wide bg-surface-raised dark:bg-white/10 text-ink-muted"
                   >
                     {badge}
                   </span>
@@ -416,8 +415,8 @@ const CheckoutPage = () => {
               </div>
             </div>
 
-            <button type="submit" disabled={submitting} className="btn-gold w-full !py-4 text-base">
-              {submitting ? 'Processing…' : `Place Order — $${totals.total.toFixed(2)}`}
+            <button type="submit" disabled={submitting} className="btn-primary w-full !py-4 text-base">
+              {submitting ? 'Processing…' : `Place Order — ${formatPrice(totals.total)}`}
             </button>
           </motion.form>
 
@@ -427,22 +426,22 @@ const CheckoutPage = () => {
             animate="visible"
             className="lg:sticky lg:top-28 h-fit"
           >
-            <MotionSection variant="scale" className="card-elevated p-6 lg:p-8">
+            <MotionSection variant="scale" className="card p-6 lg:p-8">
               <h2 className="font-display text-xl mb-4">Your Order</h2>
               <div className="space-y-3 mb-6 max-h-52 overflow-y-auto text-sm pr-1">
                 {items.map((item) => (
                   <div key={item.id} className="flex gap-3 items-center">
-                    <img src={item.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80'} alt="" className="w-14 h-14 rounded-xl object-cover shadow-premium" />
+                    <img src={item.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80'} alt="" className="w-14 h-14 rounded-xl object-cover shadow-rest" />
                     <div className="flex-1 min-w-0">
                       <p className="font-medium truncate">{item.name}</p>
-                      <p className="text-luxury-muted text-xs">Qty {item.quantity}</p>
+                      <p className="text-ink-muted text-xs">Qty {item.quantity}</p>
                     </div>
-                    <span className="font-semibold">${(item.price * item.quantity).toFixed(2)}</span>
+                    <span className="font-semibold">{formatPrice(item.price * item.quantity)}</span>
                   </div>
                 ))}
               </div>
               <OrderSummary showPromo />
-              <Link to="/cart" className="text-sm text-primary-700 block mt-4 hover:underline">
+              <Link to="/cart" className="text-sm text-brand block mt-4 hover:underline">
                 ← Edit bag
               </Link>
             </MotionSection>

@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { closeQuickView } from '../../store/uiSlice';
-import AddToCartButton from '../cart/AddToCartButton';
+import { Star } from 'lucide-react';
+import { formatPrice } from '../../utils/helpers';
 
 const QuickViewModal = () => {
   const dispatch = useDispatch();
@@ -67,7 +68,7 @@ const QuickViewModal = () => {
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: 'spring', delay: 0.2 }}
-                    className="absolute top-6 left-6 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xl font-bold px-6 py-3 rounded-full shadow-lg"
+                    className="absolute top-6 left-6 bg-accent text-white text-sm font-semibold px-4 py-2 rounded-md"
                   >
                     {product.discount}% OFF
                   </motion.span>
@@ -98,17 +99,13 @@ const QuickViewModal = () => {
                   transition={{ delay: 0.3 }}
                   className="flex items-center gap-3 mb-8"
                 >
-                  <div className="flex text-yellow-400 text-2xl">
+                  <div className="flex text-accent gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <motion.span 
-                        key={i} 
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ type: 'spring', delay: 0.4 + i * 0.1 }}
-                        className={i < Math.floor(product.rating || 4) ? '' : 'opacity-30'}
-                      >
-                        ★
-                      </motion.span>
+                      <Star
+                        key={i}
+                        className={`w-4 h-4 ${i < Math.floor(product.rating || 4) ? 'fill-current' : 'opacity-30'}`}
+                        aria-hidden="true"
+                      />
                     ))}
                   </div>
                   <span className="text-sm text-slate-400">
@@ -129,12 +126,12 @@ const QuickViewModal = () => {
                   transition={{ delay: 0.5 }}
                   className="flex items-baseline gap-4 mb-8"
                 >
-                  <span className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                    ${product.price?.toFixed(2)}
+                  <span className="text-4xl md:text-5xl font-display font-semibold text-ink">
+                    {formatPrice(product.price)}
                   </span>
                   {product.originalPrice && (
-                    <span className="text-xl text-slate-500 line-through">
-                      ${product.originalPrice}
+                    <span className="text-xl text-ink-muted line-through">
+                      {formatPrice(product.originalPrice)}
                     </span>
                   )}
                 </motion.div>

@@ -45,21 +45,21 @@ const VerifyOTPPage = () => {
         <p className="text-slate-600 mb-8">
           Enter the 6-digit OTP sent to <span className="font-semibold">{email}</span>
         </p>
-        <div className="card-premium p-8 space-y-5">
+        <div className="card p-8 space-y-5">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="label-premium">Enter OTP</label>
+              <label className="label">Enter OTP</label>
               <input
                 type="text"
                 required
                 maxLength={6}
                 value={otp}
                 onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
-                className="input-premium text-center text-2xl tracking-widest"
+                className="input text-center text-2xl tracking-widest"
                 placeholder="000000"
               />
             </div>
-            <motion.button type="submit" className="btn-premium w-full" disabled={loading}>
+            <motion.button type="submit" className="btn-primary w-full" disabled={loading}>
               {loading ? 'Verifying...' : 'Verify OTP'}
             </motion.button>
           </form>
@@ -67,12 +67,12 @@ const VerifyOTPPage = () => {
         <div className="text-center mt-6 space-y-2">
           <p className="text-sm text-slate-500">
             Didn't receive OTP?{' '}
-            <button onClick={handleResend} className="text-indigo-600 hover:text-indigo-700 font-medium">
+            <button onClick={handleResend} className="text-brand-text hover:text-brand-strong font-medium">
               Resend OTP
             </button>
           </p>
           <p className="text-sm text-slate-500">
-            <Link to="/forgot-password" className="text-indigo-600 hover:text-indigo-700 font-medium">
+            <Link to="/forgot-password" className="text-brand-text hover:text-brand-strong font-medium">
               Change email
             </Link>
           </p>

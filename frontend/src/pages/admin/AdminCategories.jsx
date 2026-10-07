@@ -137,7 +137,7 @@ const AdminCategories = () => {
         </div>
         <button
           type="button"
-          className="btn-gold text-sm !py-2.5 !px-5"
+          className="btn-primary text-sm !py-2.5 !px-5"
           onClick={() => {
             setForm(emptyForm);
             setEditingId(null);
@@ -155,40 +155,40 @@ const AdminCategories = () => {
       {showForm && (
         <form onSubmit={handleSubmit} className="admin-glass p-6 grid sm:grid-cols-2 gap-4">
           <input
-            className="input-premium bg-white/5 border-white/20 text-white"
+            className="input bg-white/5 border-white/20 text-white"
             placeholder="Name"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             required
           />
           <input
-            className="input-premium bg-white/5 border-white/20 text-white"
+            className="input bg-white/5 border-white/20 text-white"
             placeholder="Slug"
             value={form.slug}
             onChange={(e) => setForm({ ...form, slug: e.target.value })}
             required
           />
           <input
-            className="input-premium bg-white/5 border-white/20 text-white"
+            className="input bg-white/5 border-white/20 text-white"
             placeholder="Icon (emoji or icon name)"
             value={form.icon}
             onChange={(e) => setForm({ ...form, icon: e.target.value })}
           />
           <input
-            className="input-premium bg-white/5 border-white/20 text-white"
+            className="input bg-white/5 border-white/20 text-white"
             placeholder="Order"
             type="number"
             value={form.order}
             onChange={(e) => setForm({ ...form, order: e.target.value })}
           />
           <input
-            className="input-premium bg-white/5 border-white/20 text-white"
+            className="input bg-white/5 border-white/20 text-white"
             placeholder="Item Count (e.g., 500+ items)"
             value={form.itemCount}
             onChange={(e) => setForm({ ...form, itemCount: e.target.value })}
           />
           <input
-            className="input-premium bg-white/5 border-white/20 text-white"
+            className="input bg-white/5 border-white/20 text-white"
             placeholder="Href (e.g., /products?category=X)"
             value={form.href}
             onChange={(e) => setForm({ ...form, href: e.target.value })}
@@ -198,14 +198,14 @@ const AdminCategories = () => {
             <div className="flex gap-4 mb-2">
               <button
                 type="button"
-                className={`text-sm px-3 py-1 rounded ${!useFileUpload ? 'bg-primary-600 text-white' : 'bg-white/10 text-white/70'}`}
+                className={`text-sm px-3 py-1 rounded ${!useFileUpload ? 'bg-brand text-white' : 'bg-white/10 text-white/70'}`}
                 onClick={() => setUseFileUpload(false)}
               >
                 URL
               </button>
               <button
                 type="button"
-                className={`text-sm px-3 py-1 rounded ${useFileUpload ? 'bg-primary-600 text-white' : 'bg-white/10 text-white/70'}`}
+                className={`text-sm px-3 py-1 rounded ${useFileUpload ? 'bg-brand text-white' : 'bg-white/10 text-white/70'}`}
                 onClick={() => setUseFileUpload(true)}
               >
                 Upload File
@@ -214,7 +214,7 @@ const AdminCategories = () => {
             
             {!useFileUpload ? (
               <input
-                className="input-premium bg-white/5 border-white/20 text-white w-full"
+                className="input bg-white/5 border-white/20 text-white w-full"
                 placeholder="Image URL"
                 value={form.image}
                 onChange={(e) => {
@@ -228,7 +228,7 @@ const AdminCategories = () => {
                   type="file"
                   accept="image/*"
                   onChange={handleFileSelect}
-                  className="input-premium bg-white/5 border-white/20 text-white w-full"
+                  className="input bg-white/5 border-white/20 text-white w-full"
                 />
                 <p className="text-xs text-white/50">Upload an image file (JPG, PNG, WebP)</p>
               </div>
@@ -259,13 +259,13 @@ const AdminCategories = () => {
             </div>
             <div className="grid sm:grid-cols-2 gap-2">
               <input
-                className="input-premium bg-white/5 border-white/20 text-white text-sm"
+                className="input bg-white/5 border-white/20 text-white text-sm"
                 placeholder="Sub category name"
                 value={subCategoryInput.name}
                 onChange={(e) => setSubCategoryInput({ ...subCategoryInput, name: e.target.value })}
               />
               <input
-                className="input-premium bg-white/5 border-white/20 text-white text-sm"
+                className="input bg-white/5 border-white/20 text-white text-sm"
                 placeholder="Slug"
                 value={subCategoryInput.slug}
                 onChange={(e) => setSubCategoryInput({ ...subCategoryInput, slug: e.target.value })}
@@ -281,10 +281,10 @@ const AdminCategories = () => {
           </div>
 
           <div className="sm:col-span-2 flex gap-3">
-            <button type="submit" className="btn-premium !text-xs" disabled={submitting}>
+            <button type="submit" className="btn-primary !text-xs" disabled={submitting}>
               {submitting ? 'Saving...' : (editingId ? 'Update' : 'Create')}
             </button>
-            <button type="button" className="btn-outline !text-xs border-white/30 text-white" onClick={resetForm} disabled={submitting}>
+            <button type="button" className="btn-secondary !text-xs border-white/30 text-white" onClick={resetForm} disabled={submitting}>
               Cancel
             </button>
           </div>

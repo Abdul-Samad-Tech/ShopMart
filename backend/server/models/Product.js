@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema(
     originalPrice: { type: Number },
     discount: { type: Number, default: 0 },
     category: { type: String, required: true, index: true },
-    brand: { type: String, default: 'ShopHub' },
+    brand: { type: String, default: 'ShopMart' },
     image: { type: String, required: true },
     hoverImage: { type: String, default: '' },
     gallery: [String],

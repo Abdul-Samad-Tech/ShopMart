@@ -10,7 +10,7 @@ const FormField = ({
   className = '',
 }) => (
   <div className={className}>
-    <label className="label-premium" htmlFor={name}>
+    <label className="label" htmlFor={name}>
       {label}
     </label>
     <input
@@ -22,7 +22,7 @@ const FormField = ({
       onChange={onChange}
       placeholder={placeholder}
       autoComplete={autoComplete}
-      className="input-premium"
+      className="input"
     />
   </div>
 );

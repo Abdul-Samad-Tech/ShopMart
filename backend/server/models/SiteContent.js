@@ -14,7 +14,7 @@ const siteContentSchema = new mongoose.Schema(
   {
     key: { type: String, default: 'main', unique: true },
     branding: {
-      siteName: { type: String, default: 'ShopHub' },
+      siteName: { type: String, default: 'ShopMart' },
       tagline: { type: String, default: 'Curated Excellence' },
       logoUrl: { type: String, default: '' },
     },
@@ -35,12 +35,12 @@ const siteContentSchema = new mongoose.Schema(
       defaultMode: { type: String, enum: ['light', 'dark'], default: 'light' },
       allowToggle: { type: Boolean, default: true },
       accents: {
-        primary: { type: String, default: '#7349ad' },
-        gold: { type: String, default: '#c9a227' },
-        charcoal: { type: String, default: '#1a1816' },
-        cream: { type: String, default: '#faf8f5' },
-        midnight: { type: String, default: '#0f172a' },
-        slate: { type: String, default: '#475569' },
+        primary: { type: String, default: '#146B45' },
+        gold: { type: String, default: '#9A4E24' },
+        charcoal: { type: String, default: '#1C1917' },
+        cream: { type: String, default: '#F6F3EC' },
+        midnight: { type: String, default: '#121614' },
+        slate: { type: String, default: '#5C564E' },
       },
     },
     trustBar: [
