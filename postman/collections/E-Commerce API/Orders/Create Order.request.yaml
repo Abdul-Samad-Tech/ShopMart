@@ -1,0 +1,51 @@
+$kind: http-request
+name: Create Order
+method: POST
+url: '{{baseUrl}}/api/orders'
+order: 1000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "items": [
+        {
+          "productId": "{{productId}}",
+          "name": "Sample Product",
+          "price": 1000,
+          "quantity": 1,
+          "image": ""
+        }
+      ],
+      "shipping": {
+        "firstName": "Test",
+        "lastName": "User",
+        "email": "testuser@example.com",
+        "phone": "03001234567",
+        "address": "123 Test Street",
+        "city": "Karachi",
+        "country": "Pakistan"
+      },
+      "paymentMethod": "cod",
+      "subtotal": 1000,
+      "tax": 0,
+      "total": 1000,
+      "discount": 0,
+      "shippingCost": 0
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status is 201 or 400", function () {
+        pm.expect(pm.response.code).to.be.oneOf([201, 400]);
+      });
+      if (pm.response.code === 201) {
+        pm.test("Response has orderId", function () {
+          const json = pm.response.json();
+          pm.expect(json).to.have.property("orderId");
+          pm.environment.set("orderId", json._id);
+        });
+      }

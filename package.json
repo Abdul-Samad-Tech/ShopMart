@@ -1,0 +1,30 @@
+{
+  "name": "e-commerce",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node backend/scripts/free-ports.js && concurrently -k -n api,web -c magenta,blue \"npm run dev:server\" \"npm run dev:client\"",
+    "users:reset": "node backend/scripts/ensure-demo-users.js",
+    "dev:client": "node backend/scripts/wait-for-api.js && cd frontend && npm run dev",
+    "dev:server": "cd backend && npm run dev",
+    "dev:all": "npm run dev",
+    "start": "npm run dev",
+    "seed": "cd backend && npm run seed",
+    "admin:create": "cd backend && npm run admin:create",
+    "db:check": "cd backend && npm run db:check",
+    "gemini:check": "cd backend && npm run gemini:check",
+    "db:local": "cd backend && npm run db:local",
+    "build": "cd frontend && npm run build",
+    "lint": "cd frontend && npm run lint",
+    "preview": "cd frontend && npm run preview",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "mongodb": "^7.5.0",
+    "multer": "^2.2.0"
+  }
+}

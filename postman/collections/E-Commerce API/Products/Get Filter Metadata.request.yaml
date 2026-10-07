@@ -1,0 +1,7 @@
+$kind: http-request
+name: Get Filter Metadata
+method: GET
+url: '{{baseUrl}}/api/products/filters/meta'
+order: 6000
+auth:
+  type: noauth

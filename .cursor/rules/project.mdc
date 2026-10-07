@@ -1,0 +1,23 @@
+---
+description: ShopMart project standards for every session
+alwaysApply: true
+---
+
+# ShopMart
+
+Pakistani online supermarket. Stack: React 19, Vite, Redux Toolkit, Tailwind 3.4, Express 5, MongoDB. Plain JavaScript (no TypeScript unless asked).
+
+Code lives in `frontend/src` and `backend/server` (not a single root `src/` or `server/`).
+
+## Rules
+
+1. Never use emoji as UI icons. Use lucide-react or custom SVG only.
+2. Currency is PKR (Rs.) everywhere, never "$".
+3. Colors, radius, shadows, and fonts come from Tailwind theme tokens or CSS variables. No hardcoded hex inside components.
+4. Animation uses the `motion` package (`import from "motion/react"`). One easing curve across the site. Always respect `prefers-reduced-motion` via `frontend/src/hooks/usePrefersReducedMotion.js`.
+5. Any component copied from an external library (21st.dev, Animate UI, Forge UI, Vengeance UI, Uilora, Uiverse) must be rewritten to our tokens, placed in `frontend/src/components/ui/`, and stripped of demo gradients, glows, and default shadows.
+6. Avoid AI-slop patterns: purple gradients, dark glow shadows, bounce easing, nested cards, glassmorphism everywhere, side-border accent cards, gray text on colored backgrounds.
+7. Every interactive element needs a keyboard focus style, an aria-label, and a min 44px touch target on mobile.
+8. Never touch `.env` or print secrets.
+9. Mobile-first. Test 360px, 768px, and 1280px.
+10. After finishing a task, list the files changed and anything that must be tested manually.

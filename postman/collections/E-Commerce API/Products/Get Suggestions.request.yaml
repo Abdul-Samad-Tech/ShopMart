@@ -1,0 +1,10 @@
+$kind: http-request
+name: Get Suggestions
+method: GET
+url: '{{baseUrl}}/api/products/suggest'
+order: 5000
+auth:
+  type: noauth
+queryParams:
+  - key: q
+    value: shirt
