@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node server/index.js",
     "start": "node server/index.js",
+    "vercel-build": "echo 'Build complete'",
     "seed": "node server/seed/seed.js",
     "admin:create": "node scripts/create-admin.js",
     "db:check": "node scripts/check-db.js",
