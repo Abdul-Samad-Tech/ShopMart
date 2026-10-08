@@ -119,7 +119,7 @@ const LoginPage = () => {
           >
             <motion.div variants={itemVariants} className="mb-8">
               <h1 className="text-4xl font-display font-bold text-white mb-3">Sign In</h1>
-              <p className="text-white/60">Enter your credentials to access your account</p>
+              <p className="text-white/60">Enter your credentials to access your account - Test auto deploy</p>
             </motion.div>
 
             <motion.div
