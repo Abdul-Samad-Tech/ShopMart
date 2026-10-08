@@ -1,0 +1,6 @@
+backend
+node_modules
+postman
+*.md
+website_items.txt
+ChatGPT*.png
