@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://your-backend-api.com/api/:path*"
+      "destination": "https://backend-self-chi-44.vercel.app/api/:path*"
     },
     {
       "source": "/(.*)",
