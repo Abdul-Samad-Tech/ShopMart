@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { formatPrice } from '../../utils/helpers';
+import useOptimisticCart from '../../hooks/useOptimisticCart';
 
 const CartItem = ({ item }) => {
   const { removeItem, setQuantity } = useOptimisticCart();

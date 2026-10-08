@@ -9,6 +9,7 @@ import { selectCartTotals } from '../../store/cartSelectors';
 import NotificationBell from './NotificationBell';
 import MegaMenu from './MegaMenu';
 import MobileNavSection from './MobileNavSection';
+import SearchBar from '../search/SearchBar';
 import { Sun, Moon } from 'lucide-react';
 
 const Navbar = () => {

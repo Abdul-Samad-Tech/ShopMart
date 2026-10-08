@@ -3,6 +3,7 @@ import { Plus, Pencil, Trash2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { apiEndpoints } from '../../services/api';
 import { formatPrice } from '../../utils/helpers';
+import Loader from '../../components/common/Loader';
 
 const emptyForm = {
   name: '',

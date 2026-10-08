@@ -15,6 +15,7 @@ import {
 import { apiEndpoints } from '../../services/api';
 import StatCard from '../../components/admin/StatCard';
 import { formatPrice } from '../../utils/helpers';
+import Loader from '../../components/common/Loader';
 
 const AdminOverview = () => {
   const [stats, setStats] = useState(null);

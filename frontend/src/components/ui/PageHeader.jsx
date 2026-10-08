@@ -1,21 +1,27 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import HeroVideo from '../common/HeroVideo';
 
 const PageHeader = ({ title, subtitle, breadcrumbs }) => {
   return (
-    <section className="relative bg-chrome text-white overflow-hidden">
-      <div className="container-premium relative z-10 py-16 md:py-20">
+    <section className="relative h-[200px] sm:h-[220px] md:h-[240px] text-white overflow-hidden">
+      <HeroVideo fit="cover" />
+      <div className="container-premium relative z-10 h-full flex flex-col justify-center py-5 md:py-6">
         {breadcrumbs && (
-          <nav className="flex flex-wrap items-center gap-2 text-sm text-white/60 mb-6">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-white/60 mb-2 sm:mb-3">
             {breadcrumbs.map((crumb, i) => (
               <span key={i} className="flex items-center gap-2">
-                {i > 0 && <span className="text-white/30">/</span>}
+                {i > 0 && <span className="text-white/30" aria-hidden="true">/</span>}
                 {crumb.to ? (
-                  <Link to={crumb.to} className="hover:text-accent transition-colors">
+                  <Link
+                    to={crumb.to}
+                    className="hover:text-accent transition-colors min-h-11 inline-flex items-center"
+                    aria-label={crumb.label}
+                  >
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className="text-white/90">{crumb.label}</span>
+                  <span className="text-white/90" aria-current="page">{crumb.label}</span>
                 )}
               </span>
             ))}
@@ -23,23 +29,23 @@ const PageHeader = ({ title, subtitle, breadcrumbs }) => {
         )}
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-accent text-xs font-semibold uppercase tracking-wide mb-3">
+          <p className="text-accent text-[10px] sm:text-xs font-semibold uppercase tracking-wide mb-1.5">
             ShopMart
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-semibold text-white mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-white leading-tight">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-lg text-white/75 max-w-xl font-light">{subtitle}</p>
+            <p className="mt-1.5 text-sm sm:text-base text-white/75 max-w-xl font-light line-clamp-2">{subtitle}</p>
           )}
         </motion.div>
       </div>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+      <div className="absolute bottom-0 inset-x-0 z-10 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
     </section>
   );
 };

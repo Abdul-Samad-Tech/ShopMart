@@ -12,6 +12,7 @@ import EditProfilePanel from '../components/dashboard/EditProfilePanel';
 import MotionSection from '../components/ui/MotionSection';
 import { listItemReveal } from '../animations/motionPresets';
 import { formatPrice } from '../utils/helpers';
+import OrderStatusStepper from '../components/orders/OrderStatusStepper';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();

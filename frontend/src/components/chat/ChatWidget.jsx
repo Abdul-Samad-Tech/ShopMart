@@ -4,6 +4,7 @@ import { MessageCircle, X, Send, Sparkles, KeyRound, Search, ShoppingBag, Tag, T
 import { useNavigate } from 'react-router-dom';
 import { apiEndpoints } from '../../services/api';
 import { formatPrice } from '../../utils/helpers';
+import { useSelector } from 'react-redux';
 
 const STORAGE_KEY = 'shophub_gemini_api_key';
 const WELCOME = 'Hi! I\'m your personal shopping assistant. I can help you find products, discover deals, or answer any questions. What are you looking for today?';

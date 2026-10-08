@@ -6,6 +6,7 @@ import { registerStart, registerSuccess, registerFailure } from '../store/authSl
 import { apiEndpoints } from '../services/api';
 import toast from 'react-hot-toast';
 import GoogleSignIn from '../components/auth/GoogleSignIn';
+import HeroVideo from '../components/common/HeroVideo';
 import { getApiErrorMessage } from '../utils/apiError';
 import { Sparkles, Lock, Mail, User, ArrowRight, Eye, EyeOff, Check, Gift, Zap, Package, Heart } from 'lucide-react';
 
@@ -72,8 +73,9 @@ const RegisterPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-chrome overflow-hidden relative">
-      <div className="relative min-h-screen flex">
+    <div className="min-h-screen overflow-hidden relative">
+      <HeroVideo />
+      <div className="relative z-10 min-h-screen flex">
         {/* Left Side - Hero Section */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}

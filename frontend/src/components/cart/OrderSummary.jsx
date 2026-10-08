@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { applyPromoCode, removePromo } from '../../store/cartSlice';
 import { selectCartTotals } from '../../store/cartSelectors';
 import { formatPrice } from '../../utils/helpers';
+import toast from 'react-hot-toast';
 
 const OrderSummary = ({ onCheckout, showPromo = true, compact = false }) => {
   const dispatch = useDispatch();

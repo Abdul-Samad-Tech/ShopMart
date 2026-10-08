@@ -12,6 +12,7 @@ import { clearCart } from '../store/cartSlice';
 import { addLocalNotification } from '../store/notificationSlice';
 import { selectCartItems, selectCartTotals } from '../store/cartSelectors';
 import { formatPrice } from '../utils/helpers';
+import { slideInLeft, slideInRight } from '../animations/motionPresets';
 
 const initialForm = {
   firstName: '',
@@ -40,6 +41,7 @@ const CheckoutPage = () => {
   const [loyaltyCard, setLoyaltyCard] = useState(null);
   const [useLoyaltyPoints, setUseLoyaltyPoints] = useState(false);
   const hasNavigated = useRef(false);
+  const orderPlaced = useRef(false);
 
   useEffect(() => {
     if (authUser) {
@@ -117,6 +119,8 @@ const CheckoutPage = () => {
         return;
       }
       
+      orderPlaced.current = true;
+      hasNavigated.current = true;
       dispatch(clearCart());
 
       toast.success('Order placed successfully', {
@@ -145,9 +149,9 @@ const CheckoutPage = () => {
 
       // Navigate to order success page with order data
       const orderId = order.orderId || order._id || order.id;
-      // Store order in localStorage for reliability
       localStorage.setItem('lastOrder', JSON.stringify(order));
-      navigate(`/order/success/${orderId}`, { state: { order } });
+      const emailQuery = formData.email ? `?email=${encodeURIComponent(formData.email)}` : '';
+      navigate(`/order/success/${orderId}${emailQuery}`, { state: { order } });
     } catch (err) {
       toast.error(err.response?.data?.message || 'Checkout failed');
     } finally {
@@ -156,13 +160,14 @@ const CheckoutPage = () => {
   };
 
   useEffect(() => {
+    if (orderPlaced.current) return;
     if (items.length === 0 && !hasNavigated.current) {
       hasNavigated.current = true;
       navigate('/cart');
     }
   }, [items.length, navigate]);
 
-  if (items.length === 0) {
+  if (items.length === 0 && !orderPlaced.current) {
     return null;
   }
 

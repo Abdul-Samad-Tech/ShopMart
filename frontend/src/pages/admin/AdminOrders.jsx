@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { apiEndpoints } from '../../services/api';
 import { formatPrice } from '../../utils/helpers';
+import Loader from '../../components/common/Loader';
 
 const statuses = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
 

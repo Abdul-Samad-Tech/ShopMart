@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { formatPrice } from '../../utils/helpers';
+import AddToCartButton from '../cart/AddToCartButton';
 
 const STORY_SECTIONS = (product) => [
   {

@@ -15,6 +15,7 @@ import Skeleton from '../components/ui/Skeleton';
 import TiltCard from '../animations/TiltCard';
 import { Heart, Check } from 'lucide-react';
 import { formatPrice } from '../utils/helpers';
+import useOptimisticWishlist from '../hooks/useOptimisticWishlist';
 
 const ProductDetail = () => {
   const { id } = useParams();

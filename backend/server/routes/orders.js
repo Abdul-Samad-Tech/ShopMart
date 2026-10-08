@@ -158,7 +158,10 @@ router.get('/track/:id', async (req, res) => {
       return res.status(400).json({ message: 'Email is required to view this order' });
     }
 
-    const order = await Order.findById(req.params.id);
+    let order = await Order.findOne({ orderId: req.params.id });
+    if (!order && /^[a-f\d]{24}$/i.test(req.params.id)) {
+      order = await Order.findById(req.params.id);
+    }
     if (!order) return res.status(404).json({ message: 'Order not found' });
 
     const orderEmail = (order.guestEmail || order.shipping?.email || '').toLowerCase();

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, X, Search } from 'lucide-react';
 import { formatPrice } from '../../utils/helpers';
+import { useDebounce } from '../../hooks/useDebounce';
 import { apiEndpoints } from '../../services/api';
 
 const SearchBar = () => {

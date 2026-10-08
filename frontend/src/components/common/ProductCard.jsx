@@ -8,6 +8,7 @@ import TiltCard from '../../animations/TiltCard';
 import AddToCartButton from '../cart/AddToCartButton';
 import { Heart, Eye } from 'lucide-react';
 import { formatPrice } from '../../utils/helpers';
+import { getProductImage } from '../../utils/imageMapping';
 
 const ProductCard = memo(function ProductCard({ product }) {
   const dispatch = useDispatch();

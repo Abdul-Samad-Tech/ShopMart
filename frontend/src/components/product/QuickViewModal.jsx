@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { closeQuickView } from '../../store/uiSlice';
 import { Star } from 'lucide-react';
 import { formatPrice } from '../../utils/helpers';
+import AddToCartButton from '../cart/AddToCartButton';
 
 const QuickViewModal = () => {
   const dispatch = useDispatch();

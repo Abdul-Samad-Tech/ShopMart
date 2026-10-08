@@ -45,8 +45,7 @@ export const StaggerGrid = memo(function StaggerGrid({ children, className = '' 
     <motion.div
       className={className}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: '-60px' }}
+      animate="show"
       variants={{
         hidden: { opacity: 0 },
         show: { opacity: 1, transition: { staggerChildren: 0.07 } },

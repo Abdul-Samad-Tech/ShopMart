@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { apiEndpoints } from '../services/api';
 import api from '../services/api';
 import ProductCard from '../components/common/ProductCard';
-import HeroBackground from '../components/common/HeroBackground';
+import HeroVideo from '../components/common/HeroVideo';
 import CategoryAisle3D from '../components/home/CategoryAisle3D';
 import { IconShipping, IconReturns, IconSecure, IconSupport } from '../components/ui/TrustIcons';
 import ScrollReveal, { StaggerGrid, StaggerItem } from '../animations/ScrollReveal';
@@ -113,15 +113,10 @@ const HomePage = () => {
 
   return (
     <div className="page-shell">
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-chrome">
-        {/* Cinematic background layers */}
-        <div className="absolute inset-0 bg-chrome" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
-        
-        <HeroBackground hero={hero} />
-        <div className="absolute inset-0 bg-chrome/75"></div>
-        
-        <div className="container-premium relative z-10 py-20 md:py-32">
+      <section className="relative min-h-[56vh] md:min-h-[64vh] max-h-[720px] flex items-center overflow-hidden">
+        <HeroVideo fit="cover" />
+
+        <div className="container-premium relative z-10 py-12 md:py-20">
           <div className="max-w-5xl mx-auto">
             <motion.div 
               initial="hidden" 

@@ -5,6 +5,7 @@ import { setBudgetLimit } from '../../store/uiSlice';
 import { removeFromCart, addToCart } from '../../store/cartSlice';
 import { selectCartItems, selectCartTotals } from '../../store/cartSelectors';
 import { formatPrice } from '../../utils/helpers';
+import { apiEndpoints } from '../../services/api';
 
 const FREE_SHIPPING = 50;
 

@@ -3,9 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from '../components/common/ProductCard';
 import PageHeader from '../components/ui/PageHeader';
-import PremiumSpinner from '../components/common/PremiumSpinner';
 import { ProductGridSkeleton } from '../components/ui/Skeleton';
-import { StaggerGrid, StaggerItem } from '../animations/ScrollReveal';
 import ProductFilters from '../components/filters/ProductFilters';
 import FilterDrawer from '../components/filters/FilterDrawer';
 import { fetchProducts, fetchFilterMeta, setSortBy } from '../store/productSlice';
@@ -161,13 +159,11 @@ const ProductListing = () => {
                 </button>
               </div>
             ) : (
-              <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {filteredProducts.map((product) => (
-                  <StaggerItem key={product.id}>
-                    <ProductCard product={product} />
-                  </StaggerItem>
+                  <ProductCard key={product.id} product={product} />
                 ))}
-              </StaggerGrid>
+              </div>
             )}
           </div>
         </div>

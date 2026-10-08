@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Banknote, Handshake, BarChart3 } from 'lucide-react';
 import PageHeader from '../components/ui/PageHeader';
+import HeroVideo from '../components/common/HeroVideo';
 import { apiEndpoints } from '../services/api';
 
 const SupplierForm = () => {
@@ -98,8 +99,9 @@ const SupplierForm = () => {
       />
 
       {/* Hero Section */}
-      <section className="section-premium bg-gradient-to-br from-brand to-brand text-white">
-        <div className="container-premium text-center py-16">
+      <section className="section-premium relative overflow-hidden text-white">
+        <HeroVideo />
+        <div className="container-premium relative z-10 text-center py-16">
           <h2 className="text-4xl font-display mb-4">Partner With Us</h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Join our network of trusted suppliers and reach millions of customers across Pakistan. We are always looking for 
