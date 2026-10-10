@@ -178,10 +178,24 @@ const start = async () => {
     process.exit(1);
   }
 
-  app.listen(PORT, () => {
-    console.log(`API running on http://localhost:${PORT}`);
-    console.log(`Health: http://localhost:${PORT}/api/health`);
-  });
+  // Only listen if not running in Vercel serverless environment
+  if (process.env.VERCEL !== '1') {
+    app.listen(PORT, () => {
+      console.log(`API running on http://localhost:${PORT}`);
+      console.log(`Health: http://localhost:${PORT}/api/health`);
+    });
+  }
 };
 
-start();
+// For Vercel serverless
+const handler = async (req, res) => {
+  await connectDB();
+  return app(req, res);
+};
+
+export default handler;
+
+// Only start the server if not in Vercel environment
+if (process.env.VERCEL !== '1') {
+  start();
+}
