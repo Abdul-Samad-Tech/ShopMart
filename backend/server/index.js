@@ -90,6 +90,11 @@ app.use(
         callback(null, true);
         return;
       }
+      // Allow frontend Vercel URL
+      if (origin === 'https://frontend-puce-five-13.vercel.app') {
+        callback(null, true);
+        return;
+      }
       callback(new Error('Not allowed by CORS'));
     },
     credentials: true,

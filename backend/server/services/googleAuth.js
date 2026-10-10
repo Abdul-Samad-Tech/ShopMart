@@ -9,6 +9,7 @@ export async function authenticateGoogleCredential(credential) {
   ).trim();
 
   if (!clientId || !clientId.includes('.apps.googleusercontent.com')) {
+    console.error('[Google Auth] Missing or invalid CLIENT_ID:', clientId);
     throw new Error('Google Sign-In is not configured on the server');
   }
 
