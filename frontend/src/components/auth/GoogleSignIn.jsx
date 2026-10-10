@@ -50,6 +50,10 @@ const GoogleSignIn = () => {
     }
   };
 
+  const handleError = (error) => {
+    toast.error('Google sign-in cancelled or failed');
+  };
+
   return (
     <div className="space-y-3 pt-1">
       <GoogleOriginHint />
@@ -62,7 +66,7 @@ const GoogleSignIn = () => {
         <div className="w-full flex justify-center min-h-[44px]">
           <GoogleLogin
             onSuccess={handleSuccess}
-            onError={() => toast.error('Google sign-in cancelled')}
+            onError={handleError}
             theme="outline"
             size="large"
             text="continue_with"
