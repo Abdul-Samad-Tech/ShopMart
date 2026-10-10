@@ -68,3 +68,27 @@ VITE_GOOGLE_CLIENT_ID=876379877197-69okmbelj6hup5s98rep0gqcdbihq8l8.apps.googleu
 - MongoDB URI uses the existing Atlas connection
 - Email credentials are from your existing setup
 - After adding variables, redeploy both projects
+
+## Manual Steps Required:
+Due to CLI limitations, please manually add these variables in Vercel Dashboard:
+
+### Backend - Missing Variable:
+1. Go to https://vercel.com/abdulsamadzubairkamal-1356s-projects/backend/settings/environment-variables
+2. Add: `ADMIN_PASSWORD` = `ShopHub@Admin2026`
+3. Click Save and Redeploy
+
+### Optional Email Variables (if needed):
+```
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=phantompulsee@gmail.com
+SMTP_PASS="ndla njlb zmci ebqk"
+MAIL_FROM="ShopHub <phantompulsee@gmail.com>"
+```
+
+### Optional AI Variables (if needed):
+```
+GEMINI_API_KEY=AIzaSyD4HGAmF0qgjmJruBybRaYmIH0QteIKSMg
+GEMINI_MODEL=gemini-2.5-flash
+```
