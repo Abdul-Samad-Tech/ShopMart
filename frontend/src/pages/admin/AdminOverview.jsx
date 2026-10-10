@@ -35,7 +35,10 @@ const AdminOverview = () => {
     return (
       <div className="admin-glass p-8 text-center">
         <p className="text-red-300">{error}</p>
-        <p className="text-sm text-white/50 mt-2">Sign in as admin@shophub.com after running npm run seed</p>
+        <p className="text-sm text-white/50 mt-2">Please sign in with admin credentials to access this page.</p>
+        <Link to="/login" className="inline-block mt-4 px-6 py-2 bg-brand text-white rounded-lg hover:bg-brand-strong transition-colors">
+          Go to Login
+        </Link>
       </div>
     );
   }

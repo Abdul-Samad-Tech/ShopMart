@@ -151,8 +151,11 @@ const seed = async () => {
     }));
     const subtotal = items.reduce((s, i) => s + i.price * i.quantity, 0);
     const tax = subtotal * 0.1;
+    const generateOrderId = () => `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    
     await Order.insertMany([
       {
+        orderId: generateOrderId(),
         user: demoUser._id,
         items,
         shipping: { city: 'New York', country: 'US' },
@@ -164,6 +167,7 @@ const seed = async () => {
         createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
       },
       {
+        orderId: generateOrderId(),
         user: demoUser._id,
         items: [items[0]],
         shipping: { city: 'Los Angeles', country: 'US' },
