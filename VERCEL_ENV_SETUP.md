@@ -70,12 +70,7 @@ VITE_GOOGLE_CLIENT_ID=876379877197-69okmbelj6hup5s98rep0gqcdbihq8l8.apps.googleu
 - After adding variables, redeploy both projects
 
 ## Manual Steps Required:
-Due to CLI limitations, please manually add these variables in Vercel Dashboard:
-
-### Backend - Missing Variable:
-1. Go to https://vercel.com/abdulsamadzubairkamal-1356s-projects/backend/settings/environment-variables
-2. Add: `ADMIN_PASSWORD` = `ShopHub@Admin2026`
-3. Click Save and Redeploy
+✅ All environment variables have been configured via CLI including ADMIN_PASSWORD.
 
 ### Optional Email Variables (if needed):
 ```
