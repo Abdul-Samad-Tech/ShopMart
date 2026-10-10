@@ -5,8 +5,15 @@ const AdminRoute = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
 
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
-  if (user?.role !== 'admin') return <Navigate to="/dashboard" replace />;
+  if (!isAuthenticated) {
+    localStorage.removeItem('user');
+    return <Navigate to="/login" replace />;
+  }
+  
+  if (user?.role !== 'admin') {
+    localStorage.removeItem('user');
+    return <Navigate to="/login?redirect=admin" replace />;
+  }
 
   return <Outlet />;
 };

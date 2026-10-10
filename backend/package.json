@@ -9,6 +9,7 @@
     "vercel-build": "echo 'Build complete'",
     "seed": "node server/seed/seed.js",
     "admin:create": "node scripts/create-admin.js",
+    "admin:check": "node scripts/check-admin.js",
     "db:check": "node scripts/check-db.js",
     "gemini:check": "node scripts/check-gemini.js",
     "db:local": "docker compose up -d mongo"

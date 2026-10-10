@@ -35,10 +35,21 @@ const AdminOverview = () => {
     return (
       <div className="admin-glass p-8 text-center">
         <p className="text-red-300">{error}</p>
-        <p className="text-sm text-white/50 mt-2">Please sign in with admin credentials to access this page.</p>
-        <Link to="/login" className="inline-block mt-4 px-6 py-2 bg-brand text-white rounded-lg hover:bg-brand-strong transition-colors">
-          Go to Login
-        </Link>
+        <p className="text-sm text-white/50 mt-2">Admin access required. Please sign in with admin@shophub.com</p>
+        <div className="flex gap-4 justify-center mt-4">
+          <Link to="/login" className="inline-block px-6 py-2 bg-brand text-white rounded-lg hover:bg-brand-strong transition-colors">
+            Go to Login
+          </Link>
+          <button
+            onClick={() => {
+              localStorage.removeItem('user');
+              window.location.href = '/login';
+            }}
+            className="inline-block px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+          >
+            Sign Out
+          </button>
+        </div>
       </div>
     );
   }

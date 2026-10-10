@@ -42,7 +42,7 @@ export async function sendEmail({ to, subject, html, replyTo }) {
   }
   try {
     const info = await transport.sendMail({
-      from: process.env.MAIL_FROM || `ShopMart <${process.env.SMTP_USER}>`,
+      from: process.env.MAIL_FROM || `ShopHub <${process.env.SMTP_USER}>`,
       to,
       subject,
       html,
@@ -65,7 +65,7 @@ export function sendWelcomeEmail(user) {
   if (!user?.email) return;
   sendEmailAsync({
     to: user.email,
-    subject: `Welcome to ShopMart, ${user.name?.split(' ')[0] || 'there'}!`,
+    subject: `Welcome to ShopHub, ${user.name?.split(' ')[0] || 'there'}!`,
     html: welcomeEmail(user.name),
   });
 }
@@ -143,21 +143,21 @@ export async function sendContactNotificationEmail(contactMessage) {
 
   const result = await sendEmail({
     to: inbox,
-    subject: `[ShopMart Contact] ${contactMessage.subject}`,
+    subject: `[ShopHub Contact] ${contactMessage.subject}`,
     html,
     replyTo: contactMessage.email,
   });
 
   sendEmailAsync({
     to: contactMessage.email,
-    subject: 'We received your message — ShopMart',
+    subject: 'We received your message — ShopHub',
     html: contactAutoReplyEmail(contactMessage.name),
   });
 
   if (ccSite && ccSite !== inbox) {
     sendEmailAsync({
       to: ccSite,
-      subject: `[ShopMart Contact] ${contactMessage.subject}`,
+      subject: `[ShopHub Contact] ${contactMessage.subject}`,
       html,
       replyTo: contactMessage.email,
     });
@@ -183,7 +183,7 @@ export function sendSupplierFormEmail(data) {
   if (!data?.email) return;
   sendEmailAsync({
     to: data.email,
-    subject: 'Supplier Application Received — ShopMart',
+    subject: 'Supplier Application Received — ShopHub',
     html: supplierFormEmail(data),
   });
 }
@@ -192,7 +192,7 @@ export function sendCareerApplicationEmail(data) {
   if (!data?.email) return;
   sendEmailAsync({
     to: data.email,
-    subject: 'Career Application Received — ShopMart',
+    subject: 'Career Application Received — ShopHub',
     html: careerApplicationEmail(data),
   });
 }
@@ -201,7 +201,7 @@ export function sendGiftCardPurchaseEmail(data) {
   if (!data?.email) return;
   sendEmailAsync({
     to: data.email,
-    subject: 'Gift Card Purchased — ShopMart',
+    subject: 'Gift Card Purchased — ShopHub',
     html: giftCardPurchaseEmail(data),
   });
 }
@@ -210,7 +210,7 @@ export function sendLoyaltyPointsEarnedEmail(data) {
   if (!data?.email) return;
   sendEmailAsync({
     to: data.email,
-    subject: 'Loyalty Points Earned — ShopMart',
+    subject: 'Loyalty Points Earned — ShopHub',
     html: loyaltyPointsEarnedEmail(data),
   });
 }
@@ -219,7 +219,7 @@ export function sendPromoCodeAppliedEmail(data) {
   if (!data?.email) return;
   sendEmailAsync({
     to: data.email,
-    subject: 'Promo Code Applied — ShopMart',
+    subject: 'Promo Code Applied — ShopHub',
     html: promoCodeAppliedEmail(data),
   });
 }
@@ -228,7 +228,7 @@ export function sendLoyaltyCardActivatedEmail(data) {
   if (!data?.email) return;
   sendEmailAsync({
     to: data.email,
-    subject: 'Loyalty Card Activated — ShopMart',
+    subject: 'Loyalty Card Activated — ShopHub',
     html: loyaltyCardActivatedEmail(data),
   });
 }
@@ -265,7 +265,7 @@ export function sendOTPEmail(email, otp) {
           <p>For your security, please do not share this OTP with anyone.</p>
         </div>
         <div class="footer">
-          <p>&copy; 2026 ShopMart. All rights reserved.</p>
+          <p>&copy; 2026 ShopHub. All rights reserved.</p>
         </div>
       </div>
     </body>
@@ -274,7 +274,7 @@ export function sendOTPEmail(email, otp) {
   
   sendEmailAsync({
     to: email,
-    subject: 'Password Reset OTP — ShopMart',
+    subject: 'Password Reset OTP — ShopHub',
     html: otpHtml,
   });
 }

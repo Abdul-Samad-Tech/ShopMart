@@ -63,7 +63,7 @@ const AppLayout = () => {
     localStorage.removeItem('token');
     dispatch(restoreSession())
       .unwrap()
-      .then(() => {
+      .then((user) => {
         dispatch(fetchDashboard()).then((result) => {
           if (result.payload?.wishlist) {
             dispatch(setWishlistIds(result.payload.wishlist));
@@ -71,6 +71,7 @@ const AppLayout = () => {
         });
       })
       .catch(() => {
+        localStorage.removeItem('user');
         dispatch(logout());
       });
   }, [dispatch]);

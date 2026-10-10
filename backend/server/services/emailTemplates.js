@@ -1,5 +1,5 @@
 const brand = {
-  name: 'ShopMart',
+  name: 'ShopHub',
   color: '#146B45',
   dark: '#1C1917',
   cream: '#F6F3EC',
@@ -38,7 +38,7 @@ const layout = (title, body) => `
 
 export const welcomeEmail = (name) =>
   layout(
-    'Welcome to ShopMart',
+    'Welcome to ShopHub',
     `
     <h2 style="font-family:Georgia,serif;color:${brand.dark};margin-top:0;">Welcome, ${name}!</h2>
     <p>Thank you for joining <strong>${brand.name}</strong>. Your account is ready — explore our curated collection, save favourites, and enjoy a seamless checkout experience.</p>
