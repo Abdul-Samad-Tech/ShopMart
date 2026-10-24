@@ -49,12 +49,14 @@ api.interceptors.response.use(
   async (error) => {
     const config = error.config;
     const isAuth = config?.url?.includes('/auth/');
+    const databaseWarming = error.response?.status === 503;
     const transient =
       !config?.__retry &&
-      isAuth &&
-      (!error.response ||
-        error.code === 'ECONNRESET' ||
-        String(error.message).includes('ECONNRESET'));
+      (databaseWarming ||
+        (isAuth &&
+          (!error.response ||
+            error.code === 'ECONNRESET' ||
+            String(error.message).includes('ECONNRESET'))));
 
     if (transient) {
       config.__retry = true;

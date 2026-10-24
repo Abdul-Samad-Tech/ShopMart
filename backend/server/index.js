@@ -117,8 +117,14 @@ app.get('/api/health', (_req, res) => {
   res.status(dbReady ? 200 : 503).json({ ok: dbReady, db: dbReady });
 });
 
-app.use('/api', (req, res, next) => {
+app.use('/api', async (req, res, next) => {
   if (req.path === '/health') return next();
+  if (mongoose.connection.readyState === 1) return next();
+  try {
+    await connectDB();
+  } catch (err) {
+    console.error('MongoDB connection failed:', err.message);
+  }
   if (mongoose.connection.readyState !== 1) {
     return res.status(503).json({ message: 'Database not connected. Check MONGODB_URI in .env' });
   }

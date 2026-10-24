@@ -2,7 +2,7 @@ import express from 'express';
 import crypto from 'crypto';
 import User from '../models/User.js';
 import { sendWelcomeEmail } from '../services/mail.js';
-import { authenticateGoogleCredential } from '../services/googleAuth.js';
+import { authenticateGoogleAccessToken, authenticateGoogleCredential } from '../services/googleAuth.js';
 import { sendOTPEmail } from '../services/mail.js';
 import { protect } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
@@ -103,12 +103,10 @@ router.post('/login', validateBody(loginSchema), async (req, res) => {
 
 router.post('/google', validateBody(googleSchema), async (req, res) => {
   try {
-    const { credential } = req.body;
-    if (!credential) {
-      return res.status(400).json({ message: 'Google credential missing' });
-    }
-
-    const { user, isNewUser } = await authenticateGoogleCredential(credential);
+    const { credential, accessToken } = req.body;
+    const { user, isNewUser } = credential
+      ? await authenticateGoogleCredential(credential)
+      : await authenticateGoogleAccessToken(accessToken);
     const safe = await User.findById(user._id);
 
     issueSession(res, 200, {

@@ -14,9 +14,14 @@ export const loginSchema = z.object({
   password: z.string().min(1, 'Password is required').max(128),
 });
 
-export const googleSchema = z.object({
-  credential: z.string().trim().min(20, 'Google credential missing').max(8000),
-});
+export const googleSchema = z
+  .object({
+    credential: z.string().trim().min(20).max(8000).optional(),
+    accessToken: z.string().trim().min(20).max(8000).optional(),
+  })
+  .refine((data) => data.credential || data.accessToken, {
+    message: 'Google credential missing',
+  });
 
 export const sendOtpSchema = z.object({
   email,

@@ -3,15 +3,52 @@ import User from '../models/User.js';
 import { sendWelcomeEmail } from './mail.js';
 import { verifyGoogleIdToken } from './verifyGoogleToken.js';
 
-export async function authenticateGoogleCredential(credential) {
+function readGoogleClientId() {
   const clientId = String(
     process.env.GOOGLE_CLIENT_ID || process.env.VITE_GOOGLE_CLIENT_ID || ''
   ).trim();
-
   if (!clientId || !clientId.includes('.apps.googleusercontent.com')) {
-    console.error('[Google Auth] Missing or invalid CLIENT_ID:', clientId);
     throw new Error('Google Sign-In is not configured on the server');
   }
+  return clientId;
+}
+
+async function upsertGoogleUser(profile) {
+  const email = profile.email.toLowerCase();
+  const googleId = profile.sub;
+  let isNewUser = false;
+  let user = await User.findOne({ $or: [{ googleId }, { email }] });
+
+  if (user) {
+    if (!user.googleId) user.googleId = googleId;
+    if (user.authProvider !== 'local') user.authProvider = 'google';
+    if (profile.picture && !user.avatar) user.avatar = profile.picture;
+    if (profile.name && user.name !== profile.name) user.name = profile.name;
+    user.logActivity('google_login', {});
+    await user.save({ validateBeforeSave: false });
+  } else {
+    isNewUser = true;
+    user = await User.create({
+      name: profile.name || email.split('@')[0],
+      email,
+      googleId,
+      authProvider: 'google',
+      avatar: profile.picture || '',
+      password: crypto.randomBytes(32).toString('hex'),
+    });
+    user.logActivity('google_register', { email });
+    await user.save({ validateBeforeSave: false });
+  }
+
+  if (isNewUser) {
+    sendWelcomeEmail(user);
+  }
+
+  return { user, isNewUser };
+}
+
+export async function authenticateGoogleCredential(credential) {
+  const clientId = readGoogleClientId();
 
   let payload;
   try {
@@ -33,38 +70,42 @@ export async function authenticateGoogleCredential(credential) {
     throw new Error('Google account email not available');
   }
 
-  const email = payload.email.toLowerCase();
-  const googleId = payload.sub;
-  let isNewUser = false;
+  return upsertGoogleUser(payload);
+}
 
-  let user = await User.findOne({ $or: [{ googleId }, { email }] });
-
-  if (user) {
-    if (!user.googleId) user.googleId = googleId;
-    if (user.authProvider !== 'local') user.authProvider = 'google';
-    if (payload.picture && !user.avatar) user.avatar = payload.picture;
-    if (payload.name && user.name !== payload.name) user.name = payload.name;
-    user.logActivity('google_login', {});
-    await user.save({ validateBeforeSave: false });
-  } else {
-    isNewUser = true;
-    user = await User.create({
-      name: payload.name || email.split('@')[0],
-      email,
-      googleId,
-      authProvider: 'google',
-      avatar: payload.picture || '',
-      password: crypto.randomBytes(32).toString('hex'),
-    });
-    user.logActivity('google_register', { email });
-    await user.save({ validateBeforeSave: false });
+export async function authenticateGoogleAccessToken(accessToken) {
+  const clientId = readGoogleClientId();
+  const infoRes = await fetch(
+    `https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=${encodeURIComponent(accessToken)}`
+  );
+  if (!infoRes.ok) {
+    throw new Error('Google sign-in expired. Please try again.');
+  }
+  const info = await infoRes.json();
+  if (info.azp !== clientId && info.aud !== clientId) {
+    throw new Error('Google app misconfigured (wrong Client ID).');
   }
 
-  if (isNewUser) {
-    sendWelcomeEmail(user);
+  const profileRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+  if (!profileRes.ok) {
+    throw new Error('Google account email not available');
+  }
+  const profile = await profileRes.json();
+  if (!profile.email) {
+    throw new Error('Google account email not available');
+  }
+  if (profile.email_verified === false) {
+    throw new Error('Google email is not verified');
   }
 
-  return { user, isNewUser };
+  return upsertGoogleUser({
+    email: profile.email,
+    sub: profile.sub || info.sub,
+    name: profile.name,
+    picture: profile.picture,
+  });
 }
 
 export function isGoogleConfigured() {
