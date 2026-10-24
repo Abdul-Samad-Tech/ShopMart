@@ -91,7 +91,7 @@ app.use(
         return;
       }
       // Allow frontend Vercel URL
-      if (origin === 'https://frontend-puce-five-13.vercel.app') {
+      if (origin === 'https://frontend-puce-five-13.vercel.app' || origin === 'https://shop-mart-lime.vercel.app') {
         callback(null, true);
         return;
       }
